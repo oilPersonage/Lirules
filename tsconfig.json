@@ -1,0 +1,40 @@
+{
+  "exclude": ["node_modules"],
+  "compilerOptions": {
+    "baseUrl": "./",
+    "noEmit": false,
+    "noEmitOnError":false,
+    "noImplicitAny": false,
+    "jsx": "react-jsx",
+    "strict": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "esModuleInterop": true,
+    "allowJs": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "target": "ES5",
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "removeComments": true,
+    "keyofStringsOnly": true,
+    "resolveJsonModule": true,
+    "sourceMap": true,
+    "watch": true,
+    "lib": ["dom", "es2015", "esnext"],
+    "paths": {
+      "@src/*": ["./src/*"],
+      "@components/*": ["./src/components/*"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@models/*": ["./src/models/*"],
+      "@pages/*": ["./src/pages/*"],
+      "@assets/*": ["./assets/*"],
+      "@utils/*": ["./src/utils/*"],
+      "@reducers/*": ["./src/reducers/*"],
+      "@constants/*": ["./src/constants/*"],
+      "@services/*": ["./src/services/*"],
+      "@api/*": ["./src/api/*"],
+      "@mocks/*": ["./src/__mocks__/*"]
+    }
+  }
+}
