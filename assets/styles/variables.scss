@@ -1,0 +1,12 @@
+$base: 4px;
+$spaceM: $base * 15;
+$spaceS: $base * 3;
+
+$white: white;
+$black: #0d0d0d;
+$accent: #F9FE00;
+
+$bezier: cubic-bezier(.17, .67, .58, 1);
+
+$fastTransitionHover: 0.1s $bezier;
+$middleTransitionHover: 0.3s $bezier;

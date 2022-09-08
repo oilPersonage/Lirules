@@ -1,0 +1,22 @@
+@import "@assets/styles/variables.scss";
+
+.Navigation {
+  display: flex;
+  flex-direction: row-reverse;
+  margin-right: $base * 12;
+
+  &__item {
+    cursor: pointer;
+    opacity: 0;
+    margin: 0 $spaceS * 2;
+
+    p {
+      opacity: 0.7;
+      transition: $fastTransitionHover;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+}

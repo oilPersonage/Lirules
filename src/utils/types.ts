@@ -7,3 +7,6 @@ export type MockError = {
 };
 
 export type ApiPromise<T> = Promise<ApiResponse<T>>;
+
+export declare type Nullable<T> = T | null;
+export declare type Undefinable<T> = T | undefined;

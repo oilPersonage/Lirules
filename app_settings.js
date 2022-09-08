@@ -1,5 +1,5 @@
-const APP_DEFAULT_PORT = 3031;
+const APP_DEFAULT_PORT = 9031;
 
 module.exports = {
-    APP_DEFAULT_PORT,
+  APP_DEFAULT_PORT,
 };

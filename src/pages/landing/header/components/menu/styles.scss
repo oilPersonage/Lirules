@@ -1,0 +1,41 @@
+@import "@assets/styles/variables.scss";
+
+.Menu {
+  position: absolute;
+  z-index: 10;
+  right: 0;
+  top: 0;
+  color: $white;
+  display: flex;
+  align-items: center;
+  width: 100vw;
+  padding: 0 $spaceM;
+  margin-top: $spaceS* 2;
+
+  &__socialWrapper {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row-reverse;
+    margin-right: auto;
+  }
+
+  &__socialIcon, &__accountButton {
+    display: flex;
+    font-size: 40px;
+    margin-right: $spaceS;
+    fill: $white;
+    transition: $middleTransitionHover;
+    cursor: pointer;
+  }
+
+  &__socialIcon {
+    svg {
+      opacity: 0.7;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+}
+

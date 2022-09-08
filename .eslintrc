@@ -1,10 +1,16 @@
 {
   "parser": "@typescript-eslint/parser",
-  "plugins": ["react", "react-hooks", "@typescript-eslint", "prettier"],
+  "plugins": [
+    "import",
+    "@typescript-eslint",
+    "@typescript-eslint/tslint",
+    "react",
+    "jest"
+  ],
   "extends": [
-    "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:prettier/recommended",
+    "react-app",
+    "plugin:prettier/recommended"
   ],
   "parserOptions": {
     "project": "./tsconfig.json",
@@ -15,11 +21,81 @@
     }
   },
   "rules": {
-    "react/react-in-jsx-scope": "off",
-    "camelcase": "error",
-    "spaced-comment": "error",
-    "quotes": ["error", "single"],
-    "no-duplicate-imports": "error"
+    "@typescript-eslint/indent": "off",
+    "@typescript-eslint/interface-name-prefix": 0,
+    "@typescript-eslint/explicit-function-return-type": 0,
+    "@typescript-eslint/no-var-requires": 0,
+    "@typescript-eslint/no-explicit-any": [
+      "warn",
+      {
+        "ignoreRestArgs": false
+      }
+    ],
+    "@typescript-eslint/tslint/config": [
+      "error",
+      {
+        "rules": {
+          "ordered-imports": [
+            true,
+            {
+              "module-source-path": "full",
+              "grouped-imports": true,
+              "import-sources-order": "lowercase-first",
+              "groups": [
+                {
+                  "name": "React",
+                  "match": "^react",
+                  "order": 1
+                },
+                {
+                  "name": "Assets",
+                  "match": "^@assets\/",
+                  "order": 5
+                },
+                {
+                  "name": "Components",
+                  "match": "^@components\/",
+                  "order": 10
+                },
+                {
+                  "name": "Redusers",
+                  "match": "^@reducers\/",
+                  "order": 20
+                },
+                {
+                  "name": "Pages",
+                  "match": "^@pages\/",
+                  "order": 40
+                },
+                {
+                  "name": "Utils",
+                  "match": "^@utils\/",
+                  "order": 30
+                },
+                {
+                  "name": "Current directory",
+                  "match": "^[.]",
+                  "order": 50
+                },
+                {
+                  "name": "Vendors & Packages",
+                  "match": "^[^\\.]",
+                  "order": 2
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "import/no-default-export": "warn",
+    "react/self-closing-comp": "warn",
+    "jsx-a11y/anchor-is-valid": 0,
+    "jest/no-disabled-tests": "warn",
+    "jest/no-focused-tests": "error",
+    "jest/no-identical-title": "error",
+    "jest/prefer-to-have-length": "warn",
+    "jest/valid-expect": "error"
   },
   "settings": {
     "react": {
