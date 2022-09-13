@@ -3,18 +3,34 @@
 .Navigation {
   display: flex;
   flex-direction: row-reverse;
-  margin-right: $base * 12;
+
+
+  &__logotype {
+    display: block;
+    height: 20px;
+    width: 100px;
+    margin-top: 3px;
+    margin-right: $spaceS * 2;
+  }
 
   &__item {
     cursor: pointer;
     opacity: 0;
-    margin: 0 $spaceS * 2;
+    margin: 0 0 0 $spaceS * 3;
 
-    p {
+    p, a {
+      color: $white;
       opacity: 0.7;
+      margin: 0;
       transition: $fastTransitionHover;
 
       &:hover {
+        opacity: 1;
+      }
+    }
+
+    &_active {
+      p {
         opacity: 1;
       }
     }

@@ -2,8 +2,11 @@
 
 .Dots {
   position: fixed;
+  z-index: 8;
   left: auto;
   right: $spaceS * 2;
+  padding: 0 $base;
+  border-radius: $spaceS;
   top: 50%;
   transform: translateY(-50%);
   display: flex;
@@ -11,19 +14,17 @@
   align-items: center;
 
   &__dot {
-    width: $spaceS;
-    height: $spaceS;
-    margin: $spaceS 0;
+    width: $base;
+    height: $base;
+    margin: $base * 2 0;
     border-radius: 50%;
     background: $white;
     box-sizing: content-box;
     transition: $middleTransitionHover;
 
     &_active {
-      box-shadow: 0 0 0 2px rgba($accent, 0.3);
-      transform: scale(2);
+      box-shadow: 0 0 0 3px rgba($accent, 0.3);
       background: $accent;
-      margin: $spaceS * 2 0;
     }
   }
 }

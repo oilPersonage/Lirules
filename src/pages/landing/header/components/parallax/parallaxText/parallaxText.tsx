@@ -1,17 +1,27 @@
+import { useDispatch } from 'react-redux';
+
+import { motion } from 'framer-motion';
+
 import { Button } from '@components/Button';
+
+import { landingActions } from '@reducers/landing/index';
+
 import { titleItem, titleList } from '@pages/landing/header/components/framerMotionConfig';
 import styles from '@pages/landing/header/components/parallax/styles.scss';
-import { landingActions } from '@reducers/landing/index';
-import { motion } from 'framer-motion';
 
 const TITLE = 'Lirules';
 
 interface IParallaxText {
   isStartAnimation: boolean;
-  setIsHover: (boolean) => void;
 }
 
-export function ParallaxText({ isStartAnimation, setIsHover }: IParallaxText) {
+export function ParallaxText({ isStartAnimation }: IParallaxText) {
+  const dispatch = useDispatch();
+
+  function onSetIsHover() {
+    dispatch(landingActions.setIsHover());
+  }
+
   return (
     <div className={styles.Parallax__textWrapper}>
       <motion.div
@@ -48,8 +58,8 @@ export function ParallaxText({ isStartAnimation, setIsHover }: IParallaxText) {
           opacity: isStartAnimation ? 1 : 0,
         }}
         transition={{ delay: 3.5 }}
-        onMouseLeave={() => setIsHover(false)}
-        onMouseOver={() => setIsHover(true)}
+        onMouseLeave={onSetIsHover}
+        onMouseOver={onSetIsHover}
       >
         <Button>Пройти курс</Button>
       </motion.div>

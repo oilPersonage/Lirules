@@ -1,4 +1,7 @@
 export type LandingState = {
-  activeDot: number;
+  activeNav: number;
+  isHover: boolean;
   isStartAnimation: boolean;
+  setSpeed?: (number, boolean) => void;
+  landingMouseRef?: HTMLElement;
 };

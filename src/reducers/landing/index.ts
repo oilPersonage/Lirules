@@ -1,11 +1,13 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '@src/reducers';
 
 import { LandingState } from './types';
 
 const initialState: LandingState = {
-  activeDot: 0,
   isStartAnimation: false,
+  activeNav: 0,
+  isHover: false,
+  landingMouseRef: undefined,
 };
 
 export const landingSlice = createSlice({
@@ -13,16 +15,34 @@ export const landingSlice = createSlice({
   initialState,
   reducers: {
     /** CLAIM **/
-    setActiveDot: (state, action) => {
+    setActiveNav: (state, action: PayloadAction<number>) => {
       return {
         ...state,
-        activeDot: action.payload,
+        activeNav: action.payload,
       };
     },
     startAnimation: (state) => {
       return {
         ...state,
         isStartAnimation: true,
+      };
+    },
+    setIsHover: (state) => {
+      return {
+        ...state,
+        isHover: !state.isHover,
+      };
+    },
+    setLandingMouseRefRef: (state, action: PayloadAction<HTMLElement>) => {
+      return {
+        ...state,
+        landingMouseRef: action.payload,
+      };
+    },
+    setSpeedFunction: (state, action: PayloadAction<(number, boolean) => void>) => {
+      return {
+        ...state,
+        setSpeed: action.payload,
       };
     },
     clear: () => initialState,
@@ -37,6 +57,5 @@ export const landingActions = {
 
 export const landingSelectors = {
   /** CLAIM SELECTORS **/
-  activeDot: (state: RootState): number => state.landing.activeDot,
-  isStartAnimation: (state: RootState): boolean => state.landing.isStartAnimation,
+  landing: (state: RootState): LandingState => state.landing,
 };

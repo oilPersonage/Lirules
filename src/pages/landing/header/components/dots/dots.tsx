@@ -1,31 +1,28 @@
 import { useMemo } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
-import { DotsArray } from '@pages/landing/header/components/dots/types';
-import { dotsItem, dotsList } from '@pages/landing/header/components/framerMotionConfig';
-import { landingSelectors } from '@reducers/landing';
 import cn from 'classnames';
 import { motion } from 'framer-motion';
 
+import { landingSelectors } from '@reducers/landing';
+
+import { LANDING_COUNT } from '@pages/landing/const';
+import { DotsArray } from '@pages/landing/header/components/dots/types';
+import { dotsItem, dotsList } from '@pages/landing/header/components/framerMotionConfig';
+
 import styles from './styles.scss';
 
-const COUNT_DOTS = 4;
-
-interface IDots {
-  isStartAnimation: boolean;
-}
-
-export function Dots({ isStartAnimation }: IDots) {
-  const activeDot = useSelector(landingSelectors.activeDot);
+export function Dots() {
+  const { activeNav, isStartAnimation } = useSelector(landingSelectors.landing);
 
   const renderDots = useMemo(() => {
     const dotsArray: DotsArray[] = [];
-    for (let i = 0; i < COUNT_DOTS; i++) {
-      dotsArray.push({ active: activeDot === i });
+    for (let i = 0; i < LANDING_COUNT; i++) {
+      dotsArray.push({ active: activeNav === i });
     }
 
     return dotsArray;
-  }, [activeDot]);
+  }, [activeNav]);
 
   return (
     <motion.div

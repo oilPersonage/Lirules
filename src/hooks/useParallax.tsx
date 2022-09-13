@@ -1,13 +1,15 @@
-import { useCallback, useRef, useState } from 'react';
+import { RefObject, useCallback, useEffect, useRef, useState } from 'react';
 
 import { useAnimationFrame } from '@hooks/useRequestAnimationFrame';
+
+import { isNotNil } from '@utils/typeguard';
 
 const coord = {
   x: 0,
   y: 0,
 };
 
-export function useParallax() {
+export function useParallax(landingMouseRef?: HTMLElement) {
   const [pos, setPos] = useState([0, 0]);
   const [mousePos, setMousePos] = useState([0, 0]);
   const aspectMousePosition = useRef({ x: 0, y: 0 });
@@ -33,5 +35,11 @@ export function useParallax() {
     };
   }, []);
 
-  return { mouseMove, pos, mousePos };
+  useEffect(() => {
+    if (isNotNil(landingMouseRef)) {
+      landingMouseRef.addEventListener('mousemove', mouseMove);
+    }
+  }, [landingMouseRef, mouseMove]);
+
+  return { pos, mousePos };
 }

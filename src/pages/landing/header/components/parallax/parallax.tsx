@@ -1,5 +1,7 @@
+import { RefObject } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+import { useParallax } from '@hooks/useParallax';
 import Vimeo from '@u-wave/react-vimeo';
 import cn from 'classnames';
 
@@ -9,16 +11,11 @@ import { IParallaxItem, parallaxItems } from './parallaxItems';
 import { ParallaxText } from './parallaxText';
 import styles from './styles.scss';
 
-interface IParallax {
-  pos: number[];
-  mousePos: number[];
-  isHover: boolean;
-  setIsHover: (boolean) => void;
-}
-
-export function Parallax({ pos, mousePos, isHover, setIsHover }: IParallax) {
-  const isStartAnimation = useSelector(landingSelectors.isStartAnimation);
+export function Parallax() {
+  const { isStartAnimation, isHover, landingMouseRef } = useSelector(landingSelectors.landing);
   const dispatch = useDispatch();
+
+  const { pos, mousePos } = useParallax(landingMouseRef);
 
   const transformCursor = `translate(${mousePos[0]}px, ${mousePos[1]}px)`;
 
@@ -53,9 +50,7 @@ export function Parallax({ pos, mousePos, isHover, setIsHover }: IParallax) {
           style={{ transform: setTransformParallaxItem(item) }}
         >
           {item.img && <img src={item.img} className={styles.Parallax__img} alt="" />}
-          {item.text && (
-            <ParallaxText setIsHover={setIsHover} isStartAnimation={isStartAnimation} />
-          )}
+          {item.text && <ParallaxText isStartAnimation={isStartAnimation} />}
           {item.video && (
             <div className={styles.Parallax__video}>
               <div className={styles.Parallax__videoWrapper}>

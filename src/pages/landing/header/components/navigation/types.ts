@@ -1,5 +1,3 @@
-import { IMenu } from '@pages/landing/header/components/menu/types';
-
-export interface INavigation extends IMenu {
+export interface INavigation {
   isStartAnimation: boolean;
 }

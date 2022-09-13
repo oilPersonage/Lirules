@@ -1,24 +1,8 @@
-// import { useEffect } from "react"
-// import { webApi } from "./utils/axios"
+import { useRoutes } from 'react-router-dom';
 
-import { Landing } from '@pages/landing';
+import { localRoutes } from '@src/configuration/localRoutes';
 
-export function Router() {
-  // useEffect(() => {
-  //   webApi.post('/user', {
-  //     "email": "andre-wsa1@yandex.ru",
-  //     "password": "qwerty123",
-  //     "name": "Andrei",
-  //     "language": "ru",
-  //     "platform": "desktop",
-  //     "timezone": 3,
-  //     "deviceId": "1123"
-  //   })
-  //  }, [])
-
-  return (
-    <div>
-      <Landing />
-    </div>
-  );
+export function RenderRoutes() {
+  const routerList = useRoutes(localRoutes);
+  return routerList;
 }
