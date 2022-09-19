@@ -11,10 +11,7 @@ import { landingActions, landingSelectors } from '@reducers/landing';
 
 import { isNotNil } from '@utils/typeguard';
 
-import {
-  navigationItem,
-  navigationList,
-} from '@pages/landing/header/components/framerMotionConfig';
+import { navigationItem, navigationList } from '@pages/landing/header/framerMotionConfig';
 
 import styles from './styles.scss';
 import { INavigation } from './types';
@@ -61,9 +58,9 @@ export function Navigation({ isStartAnimation }: INavigation) {
 
   return (
     <>
-      <motion.div onClick={() => onClick(0)}>
+      <motion.div className={styles.Navigation__logotype} onClick={() => onClick(0)}>
         <a href="#" onMouseOver={onSetIsHover} onMouseOut={onSetIsHover}>
-          <Logotype className={styles.Navigation__logotype} />
+          <Logotype />
         </a>
       </motion.div>
       <motion.ul

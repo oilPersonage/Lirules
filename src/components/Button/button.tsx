@@ -16,6 +16,10 @@ const classTypes: Record<ButtonType, string> = {
   outline: styles.Button__outline,
 };
 
-export function Button({ size = 'lg', children, type = 'link' }: IButton) {
-  return <div className={cn(styles.Button, classTypes[type], classSizes[size])}>{children}</div>;
+export function Button({ size = 'lg', children, type = 'link', onClick }: IButton) {
+  return (
+    <div className={cn(styles.Button, classTypes[type], classSizes[size])} onClick={onClick}>
+      {children}
+    </div>
+  );
 }

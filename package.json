@@ -8,8 +8,9 @@
   "license": "UNLICENSED",
   "scripts": {
     "start": "webpack-dev-server --progress --mode=development",
-    "build:prod": "webpack --mode=production --env.buildTarget=fs",
+    "build": "webpack --mode=production --env.buildTarget=fs",
     "build:dev": "webpack --mode=development --env.buildTarget=fs",
+    "deploy": "gh-pages -d build",
     "analyze": "webpack --mode=production --env.analyze=true",
     "lint": "npm-run-all --parallel lint:*",
     "lint:ts": "eslint \"src/**/*.ts{,x}\"",

@@ -7,15 +7,13 @@ import { landingActions } from '@reducers/landing';
 
 import { isNotNil } from '@utils/typeguard';
 
+import { About } from '@pages/landing/content/about';
+import { Contacts } from '@pages/landing/content/contacts';
+import { Tariffs } from '@pages/landing/content/tariffs/tariffs';
 import { LandingHeader } from '@pages/landing/header';
 import styles from '@pages/landing/styles.scss';
 
-export interface ILandingContent {
-  isHover: boolean;
-  setIsHover: (boolean) => void;
-  containerRef: RefObject<HTMLDivElement>;
-  headerRef: RefObject<HTMLDivElement>;
-}
+export const LANDING_PAGES = [Tariffs, About, Contacts];
 
 export default function LandingContent() {
   const dispatch = useDispatch();
@@ -32,11 +30,13 @@ export default function LandingContent() {
     <div className={styles.Landing}>
       <div className={styles.Landing__scrollWrapper} ref={containerRef}>
         <LandingHeader />
-        <div className={styles.Landing__testBlock}>ABOUT.ME</div>
-        <div className={styles.Landing__testBlock}>INFO</div>
-        <div className={styles.Landing__testBlock}>TARIFFS</div>
-        <div className={styles.Landing__testBlock}>CAUSES</div>
-        <div className={styles.Landing__testBlock}>CONTACTS</div>
+        <div className={styles.Landing__test}>CAUSES</div>
+        <div className={styles.Landing__test}>CAUSES</div>
+        {LANDING_PAGES.map((Page, index) => (
+          <div key={index} className={styles.Landing__page}>
+            <Page index={index + 3} />
+          </div>
+        ))}
       </div>
     </div>
   );

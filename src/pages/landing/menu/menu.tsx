@@ -8,8 +8,8 @@ import WhatsApp from '@assets/icons/whatsapp.svg';
 
 import { landingActions, landingSelectors } from '@reducers/landing';
 
-import { menuItem, menuList } from '@pages/landing/header/components/framerMotionConfig';
-import { Navigation } from '@pages/landing/header/components/navigation';
+import { menuItem, menuList } from '@pages/landing/header/framerMotionConfig';
+import { Navigation } from '@pages/landing/menu/navigation';
 
 import styles from './styles.scss';
 
@@ -31,7 +31,7 @@ export function Menu() {
       >
         <motion.div variants={menuItem}>
           <a
-            href="#"
+            href="@pages/landing/menu/menu#"
             onMouseOver={onSetIsHover}
             onMouseOut={onSetIsHover}
             className={styles.Menu__socialIcon}
@@ -41,7 +41,7 @@ export function Menu() {
         </motion.div>
         <motion.div variants={menuItem}>
           <a
-            href="#"
+            href="@pages/landing/menu/menu#"
             className={styles.Menu__socialIcon}
             onMouseOver={onSetIsHover}
             onMouseOut={onSetIsHover}

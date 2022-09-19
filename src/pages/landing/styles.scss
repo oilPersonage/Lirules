@@ -6,16 +6,24 @@
   max-width: 100vw;
   overflow: hidden;
 
+
+  &__page {
+    min-height: 100vh;
+    max-height: 100vh;
+    min-width: 100vw;
+    display: flex;
+  }
+
   //remove after test
-  &__testBlock {
+  &__test {
     min-height: 100vh;
     min-width: 100vw;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 100px;
     color: white;
     font-family: "Alfa Slab One";
+
 
     &:nth-child(2n) {
       background: $black;

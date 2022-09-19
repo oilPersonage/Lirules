@@ -1,0 +1,48 @@
+@import "@assets/styles/variables.scss";
+
+.About {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  padding-bottom: $spaceM * 2;
+
+  > * {
+    color: $white;
+  }
+
+  &__description {
+    font-weight: 100;
+    font-size: 16px;
+    line-height: 1.4;
+    max-width: $spaceM * 12;
+    text-align: center;
+  }
+
+  &__content {
+    flex: 1;
+  }
+
+  &__partnerList {
+    display: flex;
+  }
+
+  &__partnerWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__partnerItem {
+    margin: 0 $spaceS;
+
+    p {
+      margin: 0;
+    }
+  }
+
+  &__partnerTitle {
+    margin-bottom: $spaceS * 2;
+    font-weight: 700;
+  }
+}

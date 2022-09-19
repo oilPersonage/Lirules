@@ -1,0 +1,52 @@
+@import "@assets/styles/variables.scss";
+
+.Contacts {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0 0 0 $spaceM;
+  width: 100vw;
+  color: white;
+
+  &__title {
+    margin-bottom: $spaceM;
+  }
+
+  &__formTitle {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: $base * 2;
+  }
+
+  &__description {
+    margin: 0 0 $spaceS * 3
+  }
+
+  &__formRef {
+    position: relative;
+    left: 100px;
+  }
+
+  &__content {
+    max-width: $spaceM * 8;
+  }
+
+  &__form {
+    margin-bottom: $spaceM;
+  }
+
+  &__imageWrapper {
+    height: 115vh;
+    position: absolute;
+    bottom: 0%;
+    left: auto;
+    right: 250px;
+    opacity: 0.4;
+    //transform: translateY(-50%);
+
+    img {
+      height: 100%;
+    }
+  }
+}

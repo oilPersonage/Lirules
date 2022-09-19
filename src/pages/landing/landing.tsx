@@ -4,8 +4,8 @@ import { useDispatch } from 'react-redux';
 import { landingActions } from '@reducers/landing';
 
 import LandingContent from '@pages/landing/content/content';
-import { Dots } from '@pages/landing/header/components/dots';
-import { Menu } from '@pages/landing/header/components/menu';
+import { Dots } from '@pages/landing/dots';
+import { Menu } from '@pages/landing/menu';
 
 export default function Landing() {
   const dispatch = useDispatch();

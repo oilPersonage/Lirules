@@ -1,3 +1,5 @@
+import cn from 'classnames';
+
 import bg from '@assets/images/landing/bg.png';
 import lensB from '@assets/images/landing/lens-b.png';
 import lensM from '@assets/images/landing/lens-m.png';
@@ -6,7 +8,6 @@ import lensVB from '@assets/images/landing/lens-wb.png';
 import lirules from '@assets/images/landing/lirules.png';
 import phone from '@assets/images/landing/phone.png';
 import balloons from '@assets/images/landing/sphere.png';
-import cn from 'classnames';
 
 import styles from './styles.scss';
 
@@ -40,11 +41,11 @@ export const parallaxItems: IParallaxItem[] = [
     img: lensM,
     className: cn(styles.Parallax__imgWrapper, styles.Parallax__imgWrapper_lensM),
   },
-  {
-    aspect: 5,
-    img: lensS,
-    className: cn(styles.Parallax__imgWrapper, styles.Parallax__imgWrapper_lensS),
-  },
+  // {
+  //   aspect: 5,
+  //   img: lensS,
+  //   className: cn(styles.Parallax__imgWrapper, styles.Parallax__imgWrapper_lensS),
+  // },
   {
     aspect: 25,
     img: lirules,

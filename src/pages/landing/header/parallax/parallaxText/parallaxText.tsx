@@ -4,10 +4,10 @@ import { motion } from 'framer-motion';
 
 import { Button } from '@components/Button';
 
-import { landingActions } from '@reducers/landing/index';
+import { landingActions } from '@reducers/landing';
 
-import { titleItem, titleList } from '@pages/landing/header/components/framerMotionConfig';
-import styles from '@pages/landing/header/components/parallax/styles.scss';
+import { titleItem, titleList } from '@pages/landing/header/framerMotionConfig';
+import styles from '@pages/landing/header/parallax/styles.scss';
 
 const TITLE = 'Lirules';
 
@@ -61,7 +61,7 @@ export function ParallaxText({ isStartAnimation }: IParallaxText) {
         onMouseLeave={onSetIsHover}
         onMouseOver={onSetIsHover}
       >
-        <Button>Пройти курс</Button>
+        <Button type="accent">Пройти курс</Button>
       </motion.div>
     </div>
   );

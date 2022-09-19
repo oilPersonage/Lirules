@@ -14,9 +14,7 @@ import styles from './styles.scss';
 export function Parallax() {
   const { isStartAnimation, isHover, landingMouseRef } = useSelector(landingSelectors.landing);
   const dispatch = useDispatch();
-
-  const { pos, mousePos } = useParallax(landingMouseRef);
-
+  const { pos, mousePos } = useParallax({ landingMouseRef });
   const transformCursor = `translate(${mousePos[0]}px, ${mousePos[1]}px)`;
 
   function setTransformParallaxItem(item: IParallaxItem) {

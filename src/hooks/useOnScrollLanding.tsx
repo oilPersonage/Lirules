@@ -9,9 +9,10 @@ import { isNotNil } from '@utils/typeguard';
 
 import { LANDING_COUNT } from '@pages/landing/const';
 
+window.scrollPosition = 0;
 let speed = 0;
-let rounded = 0;
 let position = 0;
+let rounded = 0;
 let screenHeight;
 let isPrevPage = false;
 
@@ -24,26 +25,31 @@ export function useOnScrollLanding(containerRef: RefObject<HTMLElement>) {
     speed = index;
   }
 
-  useAnimationFrame(() => {
-    position += speed;
-    speed *= 0.6;
-    const diff = rounded - position;
-    rounded = Math.round(position);
-    position += diff * 0.055;
+  useAnimationFrame({
+    callback: () => {
+      position += speed;
+      speed *= 0.6;
+      const diff = rounded - position;
+      rounded = Math.round(position);
+      position += diff * 0.055;
+      window.scrollPosition = position;
 
-    // устанавливаем активное меню только при изменении rounded
-    if (isNotNil(containerRef.current)) {
-      if (activeN.current !== rounded) {
-        activeN.current = rounded;
-        dispatch(landingActions.setActiveNav(rounded));
+      // устанавливаем активное меню только при изменении rounded
+      if (isNotNil(containerRef.current)) {
+        if (activeN.current !== rounded) {
+          activeN.current = rounded;
+          window.isAnimate = activeN.current === 0;
+          dispatch(landingActions.setActiveNav(rounded));
+        }
+
+        const skewY = -(position % 1) * Math.abs(diff) * 15 * (isPrevPage ? 1 : -1);
+
+        containerRef.current.style.transform = `translateY(${
+          -position * screenHeight
+        }px) skewY(${skewY}deg)`;
       }
-
-      const skewY = -(position % 1) * Math.abs(diff) * 15 * (isPrevPage ? 1 : -1);
-
-      containerRef.current.style.transform = `translateY(${
-        -position * screenHeight
-      }px) skewY(${skewY}deg)`;
-    }
+    },
+    isAnimate: true, // for start animation
   });
 
   useEffect(() => {

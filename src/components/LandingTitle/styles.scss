@@ -1,0 +1,13 @@
+@import "@assets/styles/variables.scss";
+
+.LandingTitle {
+  display: flex;
+  font-size: 36px;
+  color: $white;
+  text-transform: uppercase;
+  margin: $spaceM * 2 0 $spaceS * 2;
+
+  span {
+    color: $accent;
+  }
+}

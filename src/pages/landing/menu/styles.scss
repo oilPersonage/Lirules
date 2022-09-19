@@ -7,10 +7,8 @@
   top: 0;
   color: $white;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  width: 100vw;
-  padding: 0 $spaceM;
+  padding: 0 $spaceM 0 0;
   margin-top: $spaceS* 2;
 
   &__socialWrapper {

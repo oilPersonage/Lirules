@@ -5,13 +5,8 @@
   align-items: center;
   justify-content: center;
   padding: $spaceS;
-  background: $accent;
   font-family: Montserrat;
   transition: $middleTransitionHover;
-
-  &:hover {
-    box-shadow: 0 0 0 5px rgba($accent, 0.3);
-  }
 
   // sizes
   &__lg {
@@ -20,6 +15,15 @@
     border-radius: 5px;
     font-weight: 700;
     cursor: pointer;
+  }
+
+  &__accent {
+    background: $accent;
+    color: black;
+
+    &:hover {
+      box-shadow: 0 0 0 5px rgba($accent, 0.3);
+    }
   }
 }
 
