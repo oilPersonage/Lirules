@@ -17,6 +17,7 @@ module.exports = async (env = {}, argv) => {
     output: {
       publicPath: isDev ? '/' : undefined,
       filename: isDev ? '[name].js' : '[name].[contenthash].js',
+      path: path.resolve(__dirname, 'build'),
     },
     devtool: 'inline-source-map',
     devServer: {

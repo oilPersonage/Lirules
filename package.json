@@ -3,13 +3,13 @@
   "version": "1.0.0",
   "private": false,
   "files": [
-    "dist"
+    "build"
   ],
   "license": "UNLICENSED",
   "scripts": {
     "start": "webpack-dev-server --progress --mode=development",
-    "build": "webpack --mode=production --env.buildTarget=fs",
-    "build:dev": "webpack --mode=development --env.buildTarget=fs",
+    "build": "webpack --mode=production ",
+    "build:dev": "webpack --mode=development",
     "deploy": "gh-pages -d build",
     "analyze": "webpack --mode=production --env.analyze=true",
     "lint": "npm-run-all --parallel lint:*",

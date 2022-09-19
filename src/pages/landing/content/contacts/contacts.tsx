@@ -31,7 +31,7 @@ export function Contacts({ index }: { index: number }) {
   const { activeNav } = useSelector(landingSelectors.landing);
 
   const onConfirm = useCallback((newState) => {
-    console.log('onConfirm', { newState });
+    // console.log('onConfirm', { newState });
   }, []);
 
   useAnimationFrame({
