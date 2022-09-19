@@ -1,1 +1,0 @@
-export { NAME } from './template';

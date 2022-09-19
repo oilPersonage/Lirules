@@ -1,1 +1,0 @@
-export const MOCK_ERROR_MESSAGE = 'Тестовое сообщение: ошибка запроса';

@@ -1,1 +1,0 @@
-export { ParallaxText } from './parallaxText';

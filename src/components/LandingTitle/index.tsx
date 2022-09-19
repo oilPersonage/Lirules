@@ -1,1 +1,0 @@
-export { LandingTitle } from './landingTitle';
