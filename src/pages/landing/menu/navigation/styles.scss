@@ -1,4 +1,4 @@
-@import "@assets/styles/variables.scss";
+@import "@styles/variables.scss";
 
 .Navigation {
   display: flex;
@@ -6,14 +6,41 @@
   padding-left: 0;
 
 
+  &__list {
+    position: fixed;
+    z-index: 100;
+    height: 100vh;
+    width: 400px;
+    top: 0;
+    right: -10px;
+    padding: $spaceL;
+    background: $black;
+    flex-direction: column-reverse;
+    justify-content: center;
+    display: none;
+
+    &_open {
+      display: flex;
+    }
+
+    @include respond($breakpoint: sm) {
+      padding: $spaceS * 3;
+      padding-bottom: $spaceL * 2;
+    }
+
+    @include respond($breakpoint: md) {
+      width: calc(100vw + 10px);
+    }
+  }
+
   &__logotype {
     position: fixed;
-    z-index: 10;
+    z-index: 100;
     display: block;
     height: 20px;
     width: 100px;
-    top: $spaceS * 2;
-    left: $spaceM;
+    top: $spaceM;
+    left: $spaceL;
 
     svg {
       width: 100%;
@@ -21,31 +48,180 @@
     }
   }
 
+  &__itemContent {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex: 1;
+    height: 100%;
+    flex-direction: column;
+  }
+
   &__item {
     cursor: pointer;
-    opacity: 0;
-    margin: 0 0 0 $spaceS * 3;
-
-    &:last-child {
-      margin-left: 0;
-    }
+    opacity: 1;
+    transition: $middleTransitionHover;
+    background: $black;
+    margin: $spaceS 0;
 
     p {
+      font-weight: 700;
+      font-size: 14px;
+      text-transform: uppercase;
       color: $white;
-      opacity: 0.7;
-      margin: 0;
+      opacity: 0.6;
+      margin: 0 0 $base;
       cursor: pointer;
-      transition: $fastTransitionHover;
+      transition: $middleTransitionHover;
+      position: relative;
 
-      &:hover {
-        opacity: 1;
+      &:after {
+        content: '';
+        position: absolute;
+        left: -$spaceS;
+        top: 7px;
+        width: $base;
+        height: $base;
+        background: $white;
+        display: none;
+        border-radius: 50%;
       }
+    }
+
+    span {
+      font-size: 14px;
+      color: $white;
+      transition: $middleTransitionHover;
+      opacity: 0.7;
+
     }
 
     &_active {
+      position: relative;
+
+      p {
+        color: $white;
+        opacity: 1;
+
+        &:after {
+          display: flex;
+        }
+      }
+    }
+
+
+    &:hover {
+      opacity: 1;
+      transform: translateX(-10px);
+
       p {
         opacity: 1;
+        color: $accent;
       }
+
+      span {
+        opacity: 1;
+      }
+    }
+
+    @include respond($breakpoint: md) {
+      p, span {
+        opacity: 1;
+      }
+      span {
+        font-size: 12px;
+      }
+
+      &_active {
+        p {
+          color: $accent
+        }
+      }
+    }
+  }
+
+  &__overlay {
+    position: fixed;
+    z-index: 99;
+    right: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba($black, 0.6);
+  }
+
+  &__hamburgerWrapper {
+    position: fixed;
+    z-index: 100;
+    right: $spaceS * 3;
+    top: 0;
+    width: $spaceL + $base*2;
+    height: $spaceL;
+    padding: $spaceM $spaceM $base * 4;
+    cursor: pointer;
+
+    @include respond($breakpoint: md) {
+      height: $spaceS * 4 + $base * 2;
+      padding: $spaceM - $base $spaceM $base * 4;
+      right: 0;
+    }
+  }
+
+  &__hamburger {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    span {
+      list-style: none;
+      position: absolute;
+      left: 0%;
+      transform: translateY(-50%);
+      width: 100%;
+      height: 4px;
+      background: #fff;
+      transition: $middleTransitionHover;
+      opacity: 1;
+    }
+
+    span:nth-of-type(1) {
+      top: 25%;
+    }
+
+    span:nth-of-type(2), span:nth-of-type(3) {
+      top: 75%;
+    }
+
+    &_active span:nth-of-type(1) {
+      top: -20%;
+      opacity: 0;
+    }
+
+    &_active span:nth-of-type(2) {
+      top: 50%;
+      transform: rotate(45deg);
+    }
+
+    &_active span:nth-of-type(3) {
+      top: 50%;
+      transform: rotate(-45deg);
+    }
+
+
+    @include respond($breakpoint: md) {
+      span {
+        height: 4px;
+      }
+    }
+  }
+
+  @include respond($breakpoint: md) {
+
+    &__logotype {
+      left: $spaceM;
+      top: $spaceM;
+      height: 16px;
+      width: 80px;
     }
   }
 }

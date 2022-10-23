@@ -2,7 +2,8 @@ export {};
 
 declare global {
   interface Window {
-    isAnimate: boolean;
+    isAnimateParallax: boolean;
     scrollPosition: number;
+    isAnimateScroll: boolean;
   }
 }

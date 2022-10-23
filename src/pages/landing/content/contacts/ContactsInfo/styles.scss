@@ -1,0 +1,49 @@
+@import "@styles/variables.scss";
+
+.Info {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100vw;
+  padding: $spaceS $spaceL;
+  display: flex;
+  font-size: 12px;
+  opacity: 0.7;
+
+  &__box {
+    margin-right: $spaceL;
+
+    &_location {
+      display: flex;
+    }
+  }
+
+  &__item {
+    margin: 0 0 $base;
+
+    p, span {
+      text-decoration: underline;
+      margin: 0;
+      display: block;
+      cursor: pointer;
+    }
+  }
+
+  &__item span {
+    margin-bottom: $base;
+  }
+
+  &__Icon {
+    margin-top: 2px;
+    margin-right: $spaceS;
+  }
+
+
+  @include respond($breakpoint: md) {
+    padding: $spaceM 0 $spaceL $spaceM;
+
+    &__box_location {
+      display: none;
+    }
+  }
+}

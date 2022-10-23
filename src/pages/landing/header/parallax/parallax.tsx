@@ -1,4 +1,3 @@
-import { RefObject } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { useParallax } from '@hooks/useParallax';
@@ -12,6 +11,8 @@ import { ParallaxText } from './parallaxText';
 import styles from './styles.scss';
 
 export function Parallax() {
+  const isMobile = window.innerWidth < 600;
+
   const { isStartAnimation, isHover, landingMouseRef } = useSelector(landingSelectors.landing);
   const dispatch = useDispatch();
   const { pos, mousePos } = useParallax({ landingMouseRef });
@@ -47,7 +48,10 @@ export function Parallax() {
           className={item.className}
           style={{ transform: setTransformParallaxItem(item) }}
         >
-          {item.img && <img src={item.img} className={styles.Parallax__img} alt="" />}
+          {!isMobile && item.img && <img src={item.img} className={styles.Parallax__img} alt="" />}
+          {isMobile && item.mobileImg && (
+            <img src={item.mobileImg} className={styles.Parallax__img} alt="" />
+          )}
           {item.text && <ParallaxText isStartAnimation={isStartAnimation} />}
           {item.video && (
             <div className={styles.Parallax__video}>

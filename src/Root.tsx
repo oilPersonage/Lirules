@@ -5,8 +5,7 @@ import { HashRouter } from 'react-router-dom';
 
 import { store } from '@src/store';
 import { RenderRoutes } from '@src/Router';
-
-import '@assets/styles/styles.scss';
+import '@styles/styles.scss';
 
 const container = document.getElementById('root');
 

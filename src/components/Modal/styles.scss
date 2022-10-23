@@ -1,0 +1,50 @@
+@import "@assets/styles/variables.scss";
+
+@keyframes ModalAnimation {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.Modal {
+  z-index: 100;
+  background: white;
+  position: relative;
+  margin: $spaceL auto $spaceL * 2;
+  border-radius: 5px;
+  max-width: 500px;
+  padding: $spaceL $spaceL;
+
+  &__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1040;
+    width: 100vw;
+    min-height: 100vh;
+    max-height: 100vh;
+    background-color: rgba(black, 0.8);
+    transition: $middleTransitionHover;
+    overflow-y: scroll;
+    padding: 0 $spaceS
+  }
+
+  // sizes
+
+  &__lg {
+    max-width: $md-row;
+  }
+
+  &__button {
+    margin-top: $spaceL;
+  }
+
+  @include respond($breakpoint: sm) {
+    padding: $spaceM $spaceM;
+  }
+}

@@ -1,16 +1,16 @@
-@import "@assets/styles/variables.scss";
+@import "@styles/variables.scss";
 
 .Contacts {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 0 0 0 $spaceM;
+  padding: 0 0 0 $spaceL;
   width: 100vw;
   color: white;
 
   &__title {
-    margin-bottom: $spaceM;
+    margin-bottom: $spaceL;
   }
 
   &__formTitle {
@@ -29,11 +29,12 @@
   }
 
   &__content {
-    max-width: $spaceM * 8;
+    max-width: $spaceL * 8;
+    padding-bottom: $spaceS * 4;
   }
 
   &__form {
-    margin-bottom: $spaceM;
+    padding-top: $spaceS;
   }
 
   &__imageWrapper {
@@ -47,6 +48,32 @@
 
     img {
       height: 100%;
+    }
+
+
+    @include respond($breakpoint: sm) {
+      opacity: 0.1 !important;
+    }
+  }
+
+
+  @include respond($breakpoint: md) {
+    padding-left: 0;
+
+    &__title {
+      margin: $spaceL 0 $spaceS;
+    }
+    &__formTitle {
+      margin: $spaceS 0 $spaceM;
+      font-size: 16px;
+    }
+    &__description {
+      display: none;
+    }
+
+    &__content {
+      max-width: 100%;
+      padding-right: $spaceM;
     }
   }
 }

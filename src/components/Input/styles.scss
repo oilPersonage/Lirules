@@ -1,4 +1,4 @@
-@import '@assets/styles/variables.scss';
+@import '@styles/variables.scss';
 
 .Input {
   position: relative;
@@ -34,6 +34,14 @@
       top: -10px;
       transform: translateY(0%);
     }
+
+    @include respond($breakpoint: sm) {
+      .Input__label {
+        font-size: 10px;
+        top: -14px;
+        color: $white;
+      }
+    }
   }
 
   &__label {
@@ -56,6 +64,20 @@
       height: $spaceS * 3;
       align-items: flex-end;
     }
+
+    @include respond($breakpoint: sm) {
+      .Input__field {
+        height: $spaceM;
+        font-size: 16px;
+      }
+      .Input__label {
+        font-size: 14px;
+        top: $base * 2;
+      }
+      .Input__required {
+        top: -12px;
+      }
+    }
   }
 
   &__field {
@@ -64,15 +86,17 @@
     z-index: 2;
     background: transparent;
     border: none;
-    height: $spaceS * 2;
+    height: $spaceM;
     width: 100%;
     outline: none;
     opacity: 0.7;
+    border-radius: 0;
     color: inherit;
     transition: $fastTransitionHover;
     font: 20px Montserrat;
     font-weight: 100;
     border-bottom: 1px solid rgba($white, 0.3);
+    padding: 0;
 
     &:focus, &:visited {
       border: none;

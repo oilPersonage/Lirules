@@ -1,5 +1,3 @@
-import { RefObject } from 'react';
-
 import styles from './styles.scss';
 
 export function Row({ children }: { children?: JSX.Element | JSX.Element[] }) {

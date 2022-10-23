@@ -1,0 +1,65 @@
+@import "@styles/variables.scss";
+
+.SocialIcons {
+  &__socialWrapper {
+    position: fixed;
+    top: auto;
+    z-index: 11;
+    left: auto;
+    bottom: $spaceM;
+    right: $spaceL;
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    margin-right: auto;
+  }
+
+  &__socialIcon, &__accountButton {
+    display: flex;
+    font-size: 36px;
+    fill: $white;
+    transition: $middleTransitionHover;
+    cursor: pointer;
+  }
+
+  &__phone {
+    color: $white;
+    opacity: 0.7;
+    transition: $middleTransitionHover;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    span {
+      color: $accent;
+      font-weight: 400;
+    }
+  }
+
+  &__accountButton {
+    margin-right: 0;
+  }
+
+  &__socialIcon {
+    margin-left: $spaceS;
+    font-size: 26px;
+
+    svg {
+      opacity: 0.7;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  @include respond($breakpoint: md) {
+    padding-right: $spaceM;
+
+    &__socialWrapper {
+      bottom: $spaceM;
+      right: $spaceM;
+    }
+  }
+}

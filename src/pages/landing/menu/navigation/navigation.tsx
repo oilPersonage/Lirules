@@ -1,32 +1,47 @@
 import { useCallback, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 
+import { useToggle } from '@hooks/useToggle';
+import Logotype from '@icons/logotype.svg';
 import cn from 'classnames';
-import { motion } from 'framer-motion';
-
-import Logotype from '@assets/icons/logotype.svg';
+import { AnimatePresence, motion } from 'framer-motion';
 
 import { landingActions, landingSelectors } from '@reducers/landing';
 
 import { isNotNil } from '@utils/typeguard';
 
-import { navigationItem, navigationList } from '@pages/landing/header/framerMotionConfig';
+import { navigationList } from '@pages/landing/header/framerMotionConfig';
 
 import styles from './styles.scss';
 import { INavigation } from './types';
 
-const MENU_LIST = ['Обо мне', 'Описание курса', 'Тарифы', 'Кейсы', 'Контакты'].reverse();
+const MENU_LIST: { text: string; title: string }[] = [
+  { title: 'Обо мне', text: 'Информация обо мне для вас' },
+  { title: 'Описание курса', text: 'Краткое описание прохождения курса' },
+  {
+    title: 'Тарифы',
+    text: 'Информация о ценности данного курса',
+  },
+  { title: 'Кейсы', text: 'Работы моих учеников и отзывы' },
+  { title: 'Контакты', text: 'Контактная информация' },
+].reverse();
 
 export function Navigation({ isStartAnimation }: INavigation) {
+  const { isOpen, toggle } = useToggle(false);
   const dispatch = useDispatch();
   const { activeNav, setSpeed } = useSelector(landingSelectors.landing);
 
   const onClick = useCallback(
-    (index) => {
-      dispatch(landingActions.setActiveNav(index));
-      if (isNotNil(setSpeed)) {
-        setSpeed((index - activeNav) / 2.5, index < activeNav);
+    ({ index, isHideMenu }: { index?: number; isHideMenu?: boolean }) => {
+      if (isHideMenu) {
+        window.isAnimateScroll = !window.isAnimateScroll;
+        toggle();
+      }
+      if (isNotNil(index)) {
+        dispatch(landingActions.setActiveNav(index));
+        if (isNotNil(setSpeed)) {
+          setSpeed((index - activeNav) / 2.5, index < activeNav);
+        }
       }
     },
     [dispatch, setSpeed, activeNav]
@@ -40,37 +55,70 @@ export function Navigation({ isStartAnimation }: INavigation) {
     return MENU_LIST.map((menu, index) => {
       const isActive = MENU_LIST.length - activeNav === index;
       return (
-        <motion.li
+        <li
           key={index}
           className={cn(styles.Navigation__item, {
             [styles.Navigation__item_active]: isActive,
           })}
-          onMouseOver={onSetIsHover}
-          onMouseOut={onSetIsHover}
-          variants={navigationItem}
-          onClick={() => onClick(MENU_LIST.length - index)}
+          onClick={() => onClick({ index: MENU_LIST.length - index, isHideMenu: true })}
         >
-          <p>{menu}</p>
-        </motion.li>
+          <div className={styles.Navigation__itemContent}>
+            <p>{menu.title}</p>
+            <span>{menu.text}</span>
+          </div>
+        </li>
       );
     });
-  }, [onSetIsHover, activeNav, onClick]);
+  }, [activeNav, onClick]);
 
   return (
-    <>
-      <motion.div className={styles.Navigation__logotype} onClick={() => onClick(0)}>
+    <div className={styles.Navigation}>
+      <motion.div className={styles.Navigation__logotype} onClick={() => onClick({ index: 0 })}>
         <a href="#" onMouseOver={onSetIsHover} onMouseOut={onSetIsHover}>
           <Logotype />
         </a>
       </motion.div>
-      <motion.ul
-        className={styles.Navigation}
-        initial="hidden"
-        animate={isStartAnimation && 'show'}
-        variants={navigationList}
+
+      <AnimatePresence initial={false}>
+        {isOpen && (
+          <>
+            <motion.div
+              className={cn(styles.Navigation__overlay)}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => onClick({ isHideMenu: true })}
+            />
+            <motion.ul
+              className={cn(styles.Navigation__list, { [styles.Navigation__list_open]: isOpen })}
+              initial={{ opacity: 0, x: '100%' }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: '100%' }}
+              transition={{ type: 'spring', mass: 0.4 }}
+              variants={navigationList}
+            >
+              {navigationItems}
+            </motion.ul>
+          </>
+        )}
+      </AnimatePresence>
+
+      <div
+        className={styles.Navigation__hamburgerWrapper}
+        onMouseOver={onSetIsHover}
+        onMouseOut={onSetIsHover}
+        onClick={() => onClick({ isHideMenu: true })}
       >
-        {navigationItems}
-      </motion.ul>
-    </>
+        <div
+          className={cn(styles.Navigation__hamburger, {
+            [styles.Navigation__hamburger_active]: isOpen,
+          })}
+        >
+          <span />
+          <span />
+          <span />
+        </div>
+      </div>
+    </div>
   );
 }

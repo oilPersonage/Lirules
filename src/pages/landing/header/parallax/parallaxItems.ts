@@ -1,13 +1,12 @@
+import bg from '@images/landing/bg.png';
+import lensB from '@images/landing/lens-b.png';
+import lensM from '@images/landing/lens-m.png';
+import lensVB from '@images/landing/lens-wb.png';
+import lirules from '@images/landing/lirules.png';
+import mobileHeader2 from '@images/landing/mobileHeader2.png';
+import phone from '@images/landing/phone.png';
+import balloons from '@images/landing/sphere.png';
 import cn from 'classnames';
-
-import bg from '@assets/images/landing/bg.png';
-import lensB from '@assets/images/landing/lens-b.png';
-import lensM from '@assets/images/landing/lens-m.png';
-import lensS from '@assets/images/landing/lens-s.png';
-import lensVB from '@assets/images/landing/lens-wb.png';
-import lirules from '@assets/images/landing/lirules.png';
-import phone from '@assets/images/landing/phone.png';
-import balloons from '@assets/images/landing/sphere.png';
 
 import styles from './styles.scss';
 
@@ -17,14 +16,19 @@ export interface IParallaxItem {
   className: string;
   text?: boolean;
   video?: string;
+  mobileImg?: string;
 }
 
 export const parallaxItems: IParallaxItem[] = [
-  { aspect: 50, img: bg, className: styles.Parallax__imgWrapper },
+  {
+    aspect: 50,
+    img: bg,
+    className: cn(styles.Parallax__imgWrapper, styles.Parallax__imgWrapper_bg),
+  },
   {
     aspect: 35,
     img: balloons,
-    className: styles.Parallax__imgWrapper,
+    className: cn(styles.Parallax__imgWrapper, styles.Parallax__imgWrapper_balloons),
   },
   {
     aspect: 100,
@@ -50,6 +54,7 @@ export const parallaxItems: IParallaxItem[] = [
     aspect: 25,
     img: lirules,
     className: cn(styles.Parallax__imgWrapper, styles.Parallax__imgWrapper_lirules),
+    mobileImg: mobileHeader2,
   },
   {
     aspect: 10,

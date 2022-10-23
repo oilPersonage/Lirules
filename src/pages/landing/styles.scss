@@ -1,4 +1,4 @@
-@import "@assets/styles/variables.scss";
+@import "@styles/variables.scss";
 
 .Landing {
   position: relative;
@@ -12,17 +12,26 @@
     max-height: 100vh;
     min-width: 100vw;
     display: flex;
+    margin-bottom: 0;
+
+
+    @include respond($breakpoint: md) {
+      margin-bottom: 0;
+      padding-bottom: $spaceL * 2;
+    }
   }
 
   //remove after test
   &__test {
     min-height: 100vh;
+    max-height: 100vh;
     min-width: 100vw;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
     font-family: "Alfa Slab One";
+    padding-bottom: $spaceL * 2;
 
 
     &:nth-child(2n) {
@@ -31,6 +40,12 @@
 
     &:nth-child(2n + 1) {
       background: #8895AC;
+    }
+  }
+
+  @include respond($breakpoint: md) {
+    &__page, &__test {
+      padding-bottom: $spaceL * 2 + $spaceM;
     }
   }
 }

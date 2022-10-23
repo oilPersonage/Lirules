@@ -1,10 +1,10 @@
-@import '@assets/styles/variables.scss';
+@import '@styles/variables.scss';
 
 .Dots {
   position: fixed;
   z-index: 8;
   left: auto;
-  right: $spaceS * 2;
+  right: $spaceM;
   padding: 0 $base;
   border-radius: $spaceS;
   top: 50%;
@@ -26,5 +26,9 @@
       box-shadow: 0 0 0 3px rgba($accent, 0.3);
       background: $accent;
     }
+  }
+
+  @include respond($breakpoint: sm) {
+    right: $base * 2;
   }
 }

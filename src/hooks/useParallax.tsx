@@ -15,6 +15,7 @@ interface IUseParallax {
 
 export function useParallax({ landingMouseRef }: IUseParallax) {
   const [pos, setPos] = useState([0, 0]);
+  const [isMobile, setIsMobile] = useState(false);
   const [mousePos, setMousePos] = useState([0, 0]);
   const aspectMousePosition = useRef({ x: 0, y: 0 });
 
@@ -28,7 +29,7 @@ export function useParallax({ landingMouseRef }: IUseParallax) {
       setMousePos([(-(coord.x - 1) / 2) * width * 2 - 30, (-(coord.y - 1) / 2) * height * 2 - 30]);
       setPos([coord.x, coord.y]);
     },
-    isAnimate: window.isAnimate,
+    isAnimate: window.isAnimateParallax && !isMobile,
   });
 
   const mouseMove = useCallback((event) => {
@@ -43,6 +44,7 @@ export function useParallax({ landingMouseRef }: IUseParallax) {
   }, []);
 
   useEffect(() => {
+    setIsMobile(window.matchMedia('(max-width: 1024px)').matches);
     if (isNotNil(landingMouseRef)) {
       landingMouseRef.addEventListener('mousemove', mouseMove);
     }

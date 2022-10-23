@@ -1,18 +1,79 @@
-@import "@assets/styles/variables.scss";
+@import "@styles/variables.scss";
 
 .Tariffs {
   position: relative;
   display: flex;
   flex: 1;
 
-  &__button {
+  &__priceWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-family: Montserrat, sans-serif;
+    font-weight: 400;
+    color: black;
+    line-height: 1;
+    margin-left: 8px;
+    transition: $middleTransitionHover 0.15s;
+
+    svg path {
+      fill: black;
+    }
+
+    span {
+      position: relative;
+      z-index: 2;
+    }
+  }
+
+  &__buttonContent {
+    display: flex;
+    align-items: center;
+  }
+
+  &__price {
+    position: relative;
+    z-index: 3;
+    opacity: 1;
+    color: $black;
+    font-weight: 600;
+
+    span {
+      font-size: 12px;
+      font-weight: 400;
+    }
+  }
+
+  &__buttonWrapper {
     position: absolute;
+    z-index: 3;
     top: auto;
     left: 50%;
-    bottom: $spaceM * 3;
+    bottom: $spaceL * 3;
     transform: translateX(-50%) translateY(30px);
     opacity: 0;
     transition: $middleTransitionHover;
+  }
+
+  &__dollar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 22px;
+    width: 22px;
+
+    svg {
+      height: 100%;
+    }
+  }
+
+
+  &__button {
+    position: relative;
+    box-shadow: 0 3px 15px rgba(black, 0.3);
+    z-index: 3;
   }
 
   &__item {
@@ -21,6 +82,7 @@
     flex: 1;
     overflow: hidden;
     transition: $middleTransitionHover;
+    max-width: 33.33vw;
 
     &:nth-child(2) {
       .Tariffs {
@@ -47,11 +109,11 @@
       }
     }
 
-    &:hover {
+    &:hover, &_mobile {
 
       .Tariffs {
 
-        &__button {
+        &__buttonWrapper {
           transform: translateX(-50%) translateY(0);
           opacity: 1;
         }
@@ -74,11 +136,23 @@
           transform: translateX(-24px) translateY(4px);
           color: $accent;
           clip-path: polygon(24px 0, 100% 0, 100% 100%, 0% 100%);
+          @include respond($breakpoint: sm) {
+            clip-path: none;
+            transform: none;
+            padding-left: 0;
+            padding: 0;
+          }
         }
 
         &__titleWhite {
           transform: translateY(-4px);
           clip-path: polygon(0 0, 100% 0, 55px 100%, 0% 100%);
+          @include respond($breakpoint: sm) {
+            clip-path: none;
+            transform: none;
+            min-width: 0;
+            padding: 0;
+          }
         }
 
         &__imageEffect {
@@ -113,6 +187,10 @@
     height: 100%;
     filter: saturate(0);
     transition: $middleTransitionHover;
+
+    @include respond($breakpoint: sm) {
+      display: none;
+    }
 
     &:after {
       content: "";
@@ -158,7 +236,7 @@
     z-index: 2;
     display: flex;
     flex-direction: column;
-    padding: $spaceM * 3 $spaceM 0;
+    padding: $spaceL * 3 $spaceL 0;
   }
 
   &__title {
@@ -195,6 +273,111 @@
 
     &_position2 {
       transform: translateX(71%);
+    }
+  }
+
+  &__listItem {
+    margin-top: 8px;
+    display: flex;
+    align-items: flex-start;
+
+    &_disabled {
+      opacity: 0.5;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    span {
+      color: $accent;
+    }
+  }
+
+  &__rhombus {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px;
+    width: 6px;
+    min-width: 6px;
+    margin-top: 6px;
+    margin-right: 8px;
+    transform: rotate(45deg);
+    opacity: 0.5;
+
+    span {
+      display: flex;
+      height: 2px;
+      width: 2px;
+      background: $accent;
+    }
+  }
+
+
+  @include respond($breakpoint: sm) {
+    flex-direction: column;
+    padding: $spaceM * 3 $spaceL 0 $spaceM;
+    margin: 0;
+
+
+    .Tariffs__item_mobile {
+      &:hover {
+        .Tariffs {
+          &__button {
+            transform: none !important;
+          }
+
+          &__list {
+            opacity: 1;
+            transform: none;
+          }
+        }
+      }
+    }
+    &__item {
+      max-width: 100%;
+      max-height: 100%;
+      margin: 0;
+      border-radius: 5px;
+
+      p {
+        font-size: 12px;
+      }
+
+      .Tariffs__list {
+        opacity: 1;
+        font-size: 12px;
+        padding-left: $spaceS;
+        transform: translateX(0);
+      }
+
+      &_mobile {
+        .Tariffs__button {
+          position: static;
+          transform: none;
+          margin: $spaceS auto 0;
+          display: flex;
+          justify-content: center;
+        }
+      }
+    }
+
+    &__title {
+      font-size: 16px;
+      left: 0 !important;
+      margin: 0;
+
+      p {
+        font-size: inherit;
+      }
+    }
+
+    &__textWrapper {
+      padding: 0;
+    }
+
+    &__listItem {
+      font-size: 12px;
     }
   }
 }

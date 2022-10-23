@@ -1,11 +1,11 @@
-@import "@assets/styles/variables.scss";
+@import "@styles/variables.scss";
 
 .About {
   display: flex;
   flex-direction: column;
   align-items: center;
   flex: 1;
-  padding-bottom: $spaceM * 2;
+  padding-bottom: $spaceL * 2;
 
   > * {
     color: $white;
@@ -15,7 +15,7 @@
     font-weight: 100;
     font-size: 16px;
     line-height: 1.4;
-    max-width: $spaceM * 12;
+    max-width: $spaceL * 12;
     text-align: center;
   }
 
@@ -42,7 +42,33 @@
   }
 
   &__partnerTitle {
-    margin-bottom: $spaceS * 2;
+    margin-bottom: $spaceM;
     font-weight: 700;
+  }
+
+
+  @include respond($breakpoint: sm) {
+    align-items: flex-start;
+    padding: 0 $spaceM;
+
+    &__partnerList {
+      flex-direction: column;
+    }
+    &__description {
+      text-align: left;
+      margin-top: 0;
+      font-size: 12px;
+    }
+    &__partnerTitle {
+      margin-bottom: $spaceS;
+      font-size: 12px;
+    }
+    &__partnerItem {
+      margin: 0;
+      font-size: 12px;
+    }
+    &__partnerWrapper {
+      align-items: flex-start;
+    }
   }
 }

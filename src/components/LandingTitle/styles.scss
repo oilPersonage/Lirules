@@ -1,13 +1,17 @@
-@import "@assets/styles/variables.scss";
+@import "@styles/variables.scss";
 
 .LandingTitle {
   display: flex;
   font-size: 36px;
   color: $white;
   text-transform: uppercase;
-  margin: $spaceM * 2 0 $spaceS * 2;
+  margin: $spaceL * 2 0 $spaceM;
 
   span {
     color: $accent;
+  }
+
+  @include respond($breakpoint: sm) {
+    margin: $spaceL 0 $spaceS;
   }
 }

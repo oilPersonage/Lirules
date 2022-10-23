@@ -8,4 +8,4 @@
 Для вставки children routes необходимо использовать компонент <b>Outlet</b>
 
 Оптимизация requestAnimationFrame в useParallax осуществляется через глобальную переменную
-window.isAnimate
+window.isAnimateParallax

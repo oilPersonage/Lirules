@@ -15,18 +15,7 @@ const menuItem = {
 };
 
 const navigationList = {
-  hidden: { opacity: 1 },
-  show: {
-    opacity: 1,
-    transition: {
-      type: 'spring',
-      staggerChildren: 0.1,
-      delayChildren: 1,
-    },
-  },
-};
-const navigationItem = {
-  hidden: { x: 20, opacity: 0 },
+  hidden: { x: 50, opacity: 0 },
   show: { x: 0, opacity: 1 },
 };
 
@@ -52,7 +41,7 @@ const titleList = {
     transition: {
       type: 'spring',
       staggerChildren: 0.05,
-      delayChildren: 2.5,
+      delayChildren: 1.5,
     },
   },
 };
@@ -60,13 +49,4 @@ const titleItem = {
   ...dotsItem,
 };
 
-export {
-  dotsList,
-  dotsItem,
-  navigationList,
-  navigationItem,
-  menuList,
-  menuItem,
-  titleList,
-  titleItem,
-};
+export { dotsList, dotsItem, navigationList, menuList, menuItem, titleList, titleItem };

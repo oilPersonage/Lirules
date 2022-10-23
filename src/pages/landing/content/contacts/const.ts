@@ -9,7 +9,7 @@ export const CONTACT_INPUTS = {
   phone: '',
 };
 
-export const REGEXP_NAME = /[^\w\s]|[0-9]/gi;
+export const REGEXP_NAME = /[^а-яёА-ЯЁ]/g;
 export const REGEXP_PHONE = /[^\w\s]|[a-zа-я]|\s?/gi;
 export const PHONE_LENGTH = 11;
 

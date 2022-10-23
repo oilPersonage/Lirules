@@ -1,10 +1,10 @@
-import { useCallback, useRef } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import { useForm } from '@hooks/useForm';
 import { useAnimationFrame } from '@hooks/useRequestAnimationFrame';
-
-import ContactsImg from '@assets/images/landing/contacts.png';
+import ContactsImg from '@images/landing/contacts.png';
+import cn from 'classnames';
 
 import { Button } from '@components/Button';
 import { Row } from '@components/Grid/grid';
@@ -22,15 +22,26 @@ import {
   REGEXP_PHONE,
   REQUIRED_FIELDS,
 } from '@pages/landing/content/contacts/const';
+import { ContactsInfo } from '@pages/landing/content/contacts/ContactsInfo';
 
 import styles from './styles.scss';
 
 export function Contacts({ index }: { index: number }) {
+  const isMobile = window.innerWidth < 600;
+
   const imageRef = useRef<HTMLDivElement>(null);
   const formRef = useRef<HTMLDivElement>(null);
+
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const { activeNav } = useSelector(landingSelectors.landing);
 
   const onConfirm = useCallback((newState) => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoaded(true);
+    }, 2000);
+
     // console.log('onConfirm', { newState });
   }, []);
 
@@ -61,16 +72,18 @@ export function Contacts({ index }: { index: number }) {
 
   return (
     <div className={styles.Contacts}>
-      <div className={styles.Contacts__imageWrapper} ref={imageRef}>
-        <img src={ContactsImg} alt="Lirules на мотоцикле" />
-      </div>
+      {!isMobile && (
+        <div className={styles.Contacts__imageWrapper} ref={imageRef}>
+          <img src={ContactsImg} alt="Lirules на мотоцикле" />
+        </div>
+      )}
       <Row>
         <div ref={formRef} className={styles.Contacts__formRef}>
           <div className={styles.Contacts__content}>
             <LandingTitle className={styles.Contacts__title} title="Contact." colorText="us" />
+            <p className={styles.Contacts__formTitle}>Форма обратной связи</p>
+            <p className={styles.Contacts__description}>В течении дня с вами свяжутся</p>
             <div className={styles.Contacts__form}>
-              <p className={styles.Contacts__formTitle}>Форма обратной связи</p>
-              <p className={styles.Contacts__description}>В течении дня с вами свяжутся</p>
               <Input
                 theme="black"
                 name="name"
@@ -88,6 +101,7 @@ export function Contacts({ index }: { index: number }) {
                 inputSize="lg"
                 label="Surname"
                 name="surname"
+                regExp={REGEXP_NAME}
                 value={state?.surname}
                 onChange={onChangeHandler}
                 onBlur={onBlurHandler}
@@ -115,12 +129,13 @@ export function Contacts({ index }: { index: number }) {
                 required
               />
             </div>
+            <Button type="accent" onClick={onConfirmHandler} isLoading={isLoading}>
+              Отправить
+            </Button>
           </div>
-          <Button type="accent" onClick={onConfirmHandler}>
-            Отправить
-          </Button>
         </div>
       </Row>
+      <ContactsInfo />
     </div>
   );
 }

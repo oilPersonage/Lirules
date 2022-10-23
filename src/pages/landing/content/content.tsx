@@ -1,7 +1,8 @@
-import { RefObject, useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { useOnScrollLanding } from '@hooks/useOnScrollLanding';
+import throttle from 'lodash/throttle';
 
 import { landingActions } from '@reducers/landing';
 
@@ -13,22 +14,28 @@ import { Tariffs } from '@pages/landing/content/tariffs/tariffs';
 import { LandingHeader } from '@pages/landing/header';
 import styles from '@pages/landing/styles.scss';
 
-export const LANDING_PAGES = [Tariffs, About, Contacts];
+export const LANDING_PAGES = [About, Tariffs, Contacts];
 
 export default function LandingContent() {
   const dispatch = useDispatch();
   const containerRef = useRef(null);
-  const { setSpeed } = useOnScrollLanding(containerRef);
+  const { setSpeed, onScroll } = useOnScrollLanding(containerRef);
 
   useEffect(() => {
-    if (containerRef.current && isNotNil(setSpeed)) {
+    if (isNotNil(containerRef.current) && isNotNil(setSpeed)) {
       dispatch(landingActions.setSpeedFunction(setSpeed));
     }
   }, [dispatch, setSpeed, containerRef]);
 
   return (
     <div className={styles.Landing}>
-      <div className={styles.Landing__scrollWrapper} ref={containerRef}>
+      <div
+        className={styles.Landing__scrollWrapper}
+        ref={containerRef}
+        onScroll={onScroll}
+        onTouchStart={onScroll}
+        onTouchMove={throttle(onScroll, 10)}
+      >
         <LandingHeader />
         <div className={styles.Landing__test}>CAUSES</div>
         <div className={styles.Landing__test}>CAUSES</div>
