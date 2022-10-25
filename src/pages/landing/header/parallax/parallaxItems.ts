@@ -4,7 +4,7 @@ import lensM from '@images/landing/lens-m.png';
 import lensVB from '@images/landing/lens-wb.png';
 import lirules from '@images/landing/lirules.png';
 import mobileHeader2 from '@images/landing/mobileHeader2.png';
-import phone from '@images/landing/phone.png';
+import phone from '@images/landing/phone2.png';
 import balloons from '@images/landing/sphere.png';
 import cn from 'classnames';
 
@@ -66,9 +66,9 @@ export const parallaxItems: IParallaxItem[] = [
     text: true,
     className: cn(styles.Parallax__textWrapper, styles.Parallax__textWrapper_title),
   },
-  {
-    aspect: 10,
-    video: '150033726',
-    className: cn(styles.Parallax__imgWrapper, styles.Parallax__imgWrapper_video),
-  },
+  // {
+  //   aspect: 10,
+  //   video: '150033726',
+  //   className: cn(styles.Parallax__imgWrapper, styles.Parallax__imgWrapper_video),
+  // },
 ];

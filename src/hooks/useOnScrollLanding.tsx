@@ -1,4 +1,4 @@
-import { RefObject, TouchEventHandler, useCallback, useEffect, useRef } from 'react';
+import { RefObject, useCallback, useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { useAnimationFrame } from '@hooks/useRequestAnimationFrame';
@@ -66,8 +66,7 @@ export function useOnScrollLanding(containerRef: RefObject<HTMLElement>) {
     event.stopPropagation();
     let deltaY = event.deltaY;
     if (window.isAnimateScroll) {
-      // onTOUCH
-
+      // TOUCH
       if (event.type === 'touchstart' || event.type === 'touchmove') {
         const touch = event.touches[0] || event.changedTouches[0];
 
@@ -82,7 +81,7 @@ export function useOnScrollLanding(containerRef: RefObject<HTMLElement>) {
       const disabledScroll =
         (deltaY < 0 && rounded === 0) || (deltaY > 0 && rounded === LANDING_COUNT - 1);
 
-      const multiplySpeed = isMobile ? 0.0002 : 0.0005;
+      const multiplySpeed = isMobile ? 0.00003 : 0.0005;
       const nextSpeed = speed + deltaY * multiplySpeed;
       if (!disabledScroll && Math.abs(nextSpeed) < 0.3) {
         speed = nextSpeed;

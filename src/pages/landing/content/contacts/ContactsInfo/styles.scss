@@ -40,7 +40,7 @@
 
 
   @include respond($breakpoint: md) {
-    padding: $spaceM 0 $spaceL $spaceM;
+    padding: $spaceM 0 $spaceM $spaceM;
 
     &__box_location {
       display: none;

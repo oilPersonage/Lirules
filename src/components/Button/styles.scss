@@ -52,6 +52,10 @@
     border-bottom: 1px solid $white;
     border-radius: 0;
     width: auto;
+
+    .Button__dark {
+      color: black;
+    }
   }
 
   &__accent {

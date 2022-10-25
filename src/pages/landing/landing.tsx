@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { landingActions } from '@reducers/landing';
@@ -7,9 +7,17 @@ import LandingContent from '@pages/landing/content/content';
 import { Dots } from '@pages/landing/dots';
 import { Menu } from '@pages/landing/menu';
 
+import styles from './styles.scss';
+
 export default function Landing() {
   const dispatch = useDispatch();
   const landingMouseRef = useRef<HTMLHeadingElement>(null);
+
+  const documentHeight = useCallback(() => {
+    if (landingMouseRef.current) {
+      landingMouseRef.current.style.setProperty('max-height', `${window.innerHeight}px`);
+    }
+  }, [landingMouseRef]);
 
   useEffect(() => {
     if (landingMouseRef.current) {
@@ -17,8 +25,17 @@ export default function Landing() {
     }
   }, [dispatch, landingMouseRef]);
 
+  useEffect(() => {
+    window.addEventListener('resize', documentHeight);
+    documentHeight();
+
+    return () => {
+      window.removeEventListener('resize', documentHeight);
+    };
+  }, []);
+
   return (
-    <div ref={landingMouseRef}>
+    <div className={styles.Landing} ref={landingMouseRef} style={{ overflow: 'hidden' }}>
       <Dots />
       <Menu />
       <LandingContent />

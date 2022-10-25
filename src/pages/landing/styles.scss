@@ -45,7 +45,7 @@
 
   @include respond($breakpoint: md) {
     &__page, &__test {
-      padding-bottom: $spaceL * 2 + $spaceM;
+      padding-bottom: $spaceL * 3;
     }
   }
 }

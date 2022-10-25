@@ -22,9 +22,10 @@ interface IModal {
   isShowing: boolean;
   hide: () => void;
   size?: ModalSize;
+  controls?: boolean;
 }
 
-export const Modal = ({ isShowing, hide, children, size = 'sm' }: IModal) => {
+export const Modal = ({ isShowing, hide, children, size = 'sm', controls = false }: IModal) => {
   return createPortal(
     <AnimatePresence initial={false}>
       {isShowing && (
@@ -33,6 +34,7 @@ export const Modal = ({ isShowing, hide, children, size = 'sm' }: IModal) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
           key="modal"
           onClick={hide}
         >
@@ -40,7 +42,7 @@ export const Modal = ({ isShowing, hide, children, size = 'sm' }: IModal) => {
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 50, opacity: 0 }}
-            transition={{ type: 'spring' }}
+            transition={{ type: 'spring', duration: 0.3 }}
             className={cn(styles.Modal, classSizes[size])}
             aria-modal
             aria-hidden
@@ -51,11 +53,13 @@ export const Modal = ({ isShowing, hide, children, size = 'sm' }: IModal) => {
             }}
           >
             {children}
-            <div className={styles.Modal__button}>
-              <Button type="outline" onClick={hide} theme="dark">
-                Закрыть
-              </Button>
-            </div>
+            {controls && (
+              <div className={styles.Modal__button}>
+                <Button type="outline" onClick={hide} theme="dark">
+                  Закрыть
+                </Button>
+              </div>
+            )}
           </motion.div>
         </motion.div>
       )}

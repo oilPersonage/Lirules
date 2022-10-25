@@ -73,7 +73,7 @@ export function ContactsInfo() {
           </div>
         ))}
       </div>
-      <Modal isShowing={isShowing} hide={() => onToggleLink()} size="lg">
+      <Modal isShowing={isShowing} hide={() => onToggleLink()} size="lg" controls>
         {ModalContent}
       </Modal>
     </div>

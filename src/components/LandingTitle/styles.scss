@@ -12,6 +12,6 @@
   }
 
   @include respond($breakpoint: sm) {
-    margin: $spaceL 0 $spaceS;
+    margin: $spaceL 0 $base;
   }
 }
