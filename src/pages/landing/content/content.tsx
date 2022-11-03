@@ -9,12 +9,14 @@ import { landingActions } from '@reducers/landing';
 import { isNotNil } from '@utils/typeguard';
 
 import { About } from '@pages/landing/content/about';
+import { Cases } from '@pages/landing/content/cases';
 import { Contacts } from '@pages/landing/content/contacts';
+import { Course } from '@pages/landing/content/course';
 import { Tariffs } from '@pages/landing/content/tariffs/tariffs';
 import { LandingHeader } from '@pages/landing/header';
 import styles from '@pages/landing/styles.scss';
 
-export const LANDING_PAGES = [About, Tariffs, Contacts];
+export const LANDING_PAGES = [About, Course, Tariffs, Cases, Contacts];
 
 export default function LandingContent() {
   const dispatch = useDispatch();
@@ -37,11 +39,9 @@ export default function LandingContent() {
         onTouchMove={throttle(onScroll, 10)}
       >
         <LandingHeader />
-        <div className={styles.Landing__test}>CAUSES</div>
-        <div className={styles.Landing__test}>CAUSES</div>
         {LANDING_PAGES.map((Page, index) => (
           <div key={index} className={styles.Landing__page}>
-            <Page index={index + 3} />
+            <Page index={index} />
           </div>
         ))}
       </div>

@@ -19,7 +19,6 @@ export function ParallaxText({ isStartAnimation }: IParallaxText) {
   const dispatch = useDispatch();
 
   function onSetIsHover() {
-    console.log(123);
     dispatch(landingActions.setIsHover());
   }
 
@@ -59,12 +58,17 @@ export function ParallaxText({ isStartAnimation }: IParallaxText) {
         }}
         transition={{ delay: 2 }}
       >
-        Авторская платформа обучению видеосъеке на <span>телефон</span>
+        Авторская программа по обучению видеосъеке на <span>телефон</span>
       </motion.h2>
-
-      <Button animateConfig={animateConfig} onSetIsHover={onSetIsHover} type="accent">
-        Пройти курс
-      </Button>
+      <div
+        className={styles.Parallax__button}
+        onMouseEnter={onSetIsHover}
+        onMouseLeave={onSetIsHover}
+      >
+        <Button animateConfig={animateConfig} type="accent">
+          Пройти курс
+        </Button>
+      </div>
     </div>
   );
 }

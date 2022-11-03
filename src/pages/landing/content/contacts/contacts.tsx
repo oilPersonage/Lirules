@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import { useForm } from '@hooks/useForm';
@@ -51,17 +51,17 @@ export function Contacts({ index }: { index: number }) {
       if (isNotNil(formRef.current)) {
         formRef.current.style.cssText = `transform: translateX(${
           (window.scrollPosition - LANDING_COUNT) * 100
-        }px); opacity: ${window.scrollPosition + 2 - LANDING_COUNT}`;
+        }px); opacity: ${window.scrollPosition - LANDING_COUNT + 2}`;
       }
 
       // image
       if (isNotNil(imageRef.current)) {
         imageRef.current.style.cssText = `transform: translateX(${
           (window.scrollPosition - LANDING_COUNT) * -300
-        }px); opacity: ${(window.scrollPosition + 2 - LANDING_COUNT) / 2}`;
+        }px); opacity: ${(window.scrollPosition - LANDING_COUNT + 2) / 2}`;
       }
     },
-    isAnimate: activeNav === index || activeNav === index - 1,
+    isAnimate: activeNav - 1 === index || activeNav === index,
   });
 
   const { onChangeHandler, state, onBlurHandler, notification, onConfirmHandler } = useForm({
@@ -77,65 +77,69 @@ export function Contacts({ index }: { index: number }) {
           <img src={ContactsImg} alt="Lirules на мотоцикле" />
         </div>
       )}
-      <Row>
+      <Row column>
         <div ref={formRef} className={styles.Contacts__formRef}>
           <div className={styles.Contacts__content}>
             <LandingTitle className={styles.Contacts__title} title="Contact." colorText="us" />
-            <p className={styles.Contacts__formTitle}>Форма обратной связи</p>
-            <p className={styles.Contacts__description}>В течении дня с вами свяжутся</p>
-            <div className={styles.Contacts__form}>
-              <Input
-                theme="black"
-                name="name"
-                label="Name"
-                inputSize="lg"
-                value={state?.name}
-                regExp={REGEXP_NAME}
-                notification={notification?.name}
-                onChange={onChangeHandler}
-                onBlur={onBlurHandler}
-                required
-              />
-              <Input
-                theme="black"
-                inputSize="lg"
-                label="Surname"
-                name="surname"
-                regExp={REGEXP_NAME}
-                value={state?.surname}
-                onChange={onChangeHandler}
-                onBlur={onBlurHandler}
-              />
-              <Input
-                theme="black"
-                inputSize="lg"
-                label="Company"
-                name="company"
-                value={state?.company}
-                onChange={onChangeHandler}
-                onBlur={onBlurHandler}
-              />
-              <Input
-                theme="black"
-                inputSize="lg"
-                label="Phone"
-                value={state?.phone}
-                notification={notification?.phone}
-                regExp={REGEXP_PHONE}
-                name="phone"
-                onChange={onChangeHandler}
-                onBlur={onBlurHandler}
-                isPhone
-                required
-              />
+            <div className={styles.Contacts__wrapper}>
+              <p className={styles.Contacts__formTitle}>Форма обратной связи</p>
+              <p className={styles.Contacts__description}>В течении дня с вами свяжутся</p>
+              <div className={styles.Contacts__form}>
+                <Input
+                  theme="black"
+                  name="name"
+                  label="Name"
+                  inputSize="lg"
+                  value={state?.name}
+                  regExp={REGEXP_NAME}
+                  notification={notification?.name}
+                  onChange={onChangeHandler}
+                  onBlur={onBlurHandler}
+                  required
+                />
+                <Input
+                  theme="black"
+                  inputSize="lg"
+                  label="Surname"
+                  name="surname"
+                  regExp={REGEXP_NAME}
+                  value={state?.surname}
+                  onChange={onChangeHandler}
+                  onBlur={onBlurHandler}
+                />
+                <Input
+                  theme="black"
+                  inputSize="lg"
+                  label="Company"
+                  name="company"
+                  value={state?.company}
+                  onChange={onChangeHandler}
+                  onBlur={onBlurHandler}
+                />
+                <Input
+                  theme="black"
+                  inputSize="lg"
+                  label="Phone"
+                  value={state?.phone}
+                  notification={notification?.phone}
+                  regExp={REGEXP_PHONE}
+                  name="phone"
+                  onChange={onChangeHandler}
+                  onBlur={onBlurHandler}
+                  isPhone
+                  required
+                />
+              </div>
             </div>
-            <Button type="accent" onClick={onConfirmHandler} isLoading={isLoading}>
-              Отправить
-            </Button>
+            <div className={styles.Contacts__button}>
+              <Button type="accent" onClick={onConfirmHandler} isLoading={isLoading}>
+                Отправить
+              </Button>
+            </div>
           </div>
         </div>
       </Row>
-      <ContactsInfo />
+      {/*<ContactsInfo />*/}
     </div>
   );
 }

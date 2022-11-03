@@ -1,6 +1,9 @@
 import arm from '@images/landing/arm.jpg';
+import armMobile from '@images/landing/armMobile.jpg';
 import lida from '@images/landing/lida.jpg';
+import lidaMobile from '@images/landing/lidaMobile.jpg';
 import lira from '@images/landing/lira.jpg';
+import liraMobile from '@images/landing/liraMobile.jpg';
 
 type list = {
   text: string;
@@ -15,7 +18,9 @@ export interface ITariffList {
   list: list[];
   top: boolean;
   img: string;
+  mobileImg: string;
   price: number;
+  text: string;
 }
 
 export enum TariffType {
@@ -39,7 +44,9 @@ export const TARIFF_LIST: ITariffList[] = [
     ],
     top: true,
     img: lira,
+    mobileImg: liraMobile,
     price: 180,
+    text: `https://wa.me/+79260388842?text=Добрый день Лидия. Хочу приобрести тариф «ЛЮБОПЫТНЫЙ»`,
   },
   {
     id: TariffType.MIDDLE,
@@ -60,7 +67,9 @@ export const TARIFF_LIST: ITariffList[] = [
     ],
     top: true,
     img: lida,
+    mobileImg: lidaMobile,
     price: 220,
+    text: `https://wa.me/+79260388842?text=Добрый день Лидия. Хочу приобрести тариф «PROДВИНУТЫЙ»`,
   },
   {
     id: TariffType.HARD,
@@ -75,6 +84,8 @@ export const TARIFF_LIST: ITariffList[] = [
     ],
     top: true,
     img: arm,
+    mobileImg: armMobile,
     price: 250,
+    text: `https://wa.me/+79260388842?text=Добрый день Лидия. Хочу приобрести тариф «ЗАРУЧКУ»`,
   },
 ];

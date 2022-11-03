@@ -11,10 +11,10 @@ import { ParallaxText } from './parallaxText';
 import styles from './styles.scss';
 
 export function Parallax() {
+  const dispatch = useDispatch();
   const isMobile = window.innerWidth < 600;
 
   const { isStartAnimation, isHover, landingMouseRef } = useSelector(landingSelectors.landing);
-  const dispatch = useDispatch();
   const { pos, mousePos } = useParallax({ landingMouseRef });
   const transformCursor = `translate(${mousePos[0]}px, ${mousePos[1]}px)`;
 

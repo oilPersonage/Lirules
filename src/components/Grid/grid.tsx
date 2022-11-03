@@ -1,5 +1,13 @@
+import cn from 'classnames';
+
 import styles from './styles.scss';
 
-export function Row({ children }: { children?: JSX.Element | JSX.Element[] }) {
-  return <div className={styles.Row}>{children}</div>;
+export function Row({
+  children,
+  column,
+}: {
+  children?: JSX.Element | JSX.Element[];
+  column?: boolean;
+}) {
+  return <div className={cn(styles.Row, styles.Row_column)}>{children}</div>;
 }

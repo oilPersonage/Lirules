@@ -161,8 +161,8 @@
     cursor: pointer;
 
     @include respond($breakpoint: md) {
-      height: $spaceS * 4 + $base * 2;
-      padding: $spaceM - $base $spaceM $base * 4;
+      height: 62px;
+      padding: 26px 24px 16px;
       right: 0;
     }
   }

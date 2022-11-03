@@ -1,6 +1,3 @@
-import { useMemo, useState } from 'react';
-
-import { useToggle } from '@hooks/useToggle';
 import Dollar from '@icons/dollar.svg';
 import cn from 'classnames';
 
@@ -61,8 +58,13 @@ export function Tariffs() {
             </ul>
           </div>
           <div className={styles.Tariffs__buttonWrapper}>
-            <div className={styles.Tariffs__button}>
-              <Button onClick={() => console.log({ id: tariff.id })} size="lg" type="accent">
+            <a
+              href={tariff.text}
+              target="_blank"
+              className={styles.Tariffs__button}
+              rel="noreferrer"
+            >
+              <Button size="lg" type="accent">
                 <div className={styles.Tariffs__buttonContent}>
                   Приобрести
                   <div className={styles.Tariffs__priceWrapper}>
@@ -76,7 +78,7 @@ export function Tariffs() {
                   </div>
                 </div>
               </Button>
-            </div>
+            </a>
           </div>
         </div>
       ))}

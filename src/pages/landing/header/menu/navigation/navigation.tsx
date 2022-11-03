@@ -13,7 +13,6 @@ import { isNotNil } from '@utils/typeguard';
 import { navigationList } from '@pages/landing/header/framerMotionConfig';
 
 import styles from './styles.scss';
-import { INavigation } from './types';
 
 const MENU_LIST: { text: string; title: string }[] = [
   { title: 'Обо мне', text: 'Информация обо мне для вас' },
@@ -26,11 +25,10 @@ const MENU_LIST: { text: string; title: string }[] = [
   { title: 'Контакты', text: 'Контактная информация' },
 ].reverse();
 
-export function Navigation({ isStartAnimation }: INavigation) {
+export function Navigation() {
   const { isOpen, toggle } = useToggle(false);
   const dispatch = useDispatch();
   const { activeNav, setSpeed } = useSelector(landingSelectors.landing);
-
   const onClick = useCallback(
     ({ index, isHideMenu }: { index?: number; isHideMenu?: boolean }) => {
       if (isHideMenu) {
@@ -74,7 +72,7 @@ export function Navigation({ isStartAnimation }: INavigation) {
   return (
     <div className={styles.Navigation}>
       <motion.div className={styles.Navigation__logotype} onClick={() => onClick({ index: 0 })}>
-        <a href="#" onMouseOver={onSetIsHover} onMouseOut={onSetIsHover}>
+        <a href="#" onMouseEnter={onSetIsHover} onMouseLeave={onSetIsHover}>
           <Logotype />
         </a>
       </motion.div>
@@ -105,8 +103,8 @@ export function Navigation({ isStartAnimation }: INavigation) {
 
       <div
         className={styles.Navigation__hamburgerWrapper}
-        onMouseOver={onSetIsHover}
-        onMouseOut={onSetIsHover}
+        onMouseEnter={onSetIsHover}
+        onMouseLeave={onSetIsHover}
         onClick={() => onClick({ isHideMenu: true })}
       >
         <div

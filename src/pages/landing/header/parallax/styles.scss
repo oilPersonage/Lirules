@@ -255,6 +255,12 @@
 
   }
 
+  &__button {
+    @include respond($breakpoint: sm) {
+      width: 100%;
+    }
+  }
+
   &__cursorDot {
     opacity: 0.2;
     border-radius: 50%;

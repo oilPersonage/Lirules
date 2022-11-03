@@ -84,16 +84,6 @@
     transition: $middleTransitionHover;
     max-width: 33.33vw;
 
-    &_mobile {
-      &_open {
-        min-height: min-content;
-
-        &:after {
-          display: none;
-        }
-      }
-    }
-
     &:nth-child(2) {
       .Tariffs {
         &__title {
@@ -119,7 +109,7 @@
       }
     }
 
-    &:hover, &_mobile {
+    &:hover {
 
       .Tariffs {
 
@@ -319,21 +309,6 @@
     padding: $spaceM * 3 $spaceL 0 $spaceM;
     margin: 0;
 
-    .Tariffs__item_mobile {
-
-      &:hover {
-        .Tariffs {
-          &__button {
-            transform: none !important;
-          }
-
-          &__list {
-            opacity: 1;
-            transform: none;
-          }
-        }
-      }
-    }
     &__buttonWrapper {
       position: relative;
       z-index: 4;
@@ -359,18 +334,6 @@
         padding-left: $spaceS;
         transform: translateX(0);
       }
-
-      &_mobile {
-        .Tariffs__button {
-          position: static;
-          transform: none;
-          margin: $spaceS auto 0;
-          display: flex;
-          justify-content: center;
-        }
-      }
     }
-
-
   }
 }

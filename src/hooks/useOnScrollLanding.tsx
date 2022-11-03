@@ -29,32 +29,34 @@ export function useOnScrollLanding(containerRef: RefObject<HTMLElement>) {
     speed = index;
   }
 
-  useAnimationFrame({
-    callback: () => {
-      if (window.isAnimateScroll) {
-        position += speed;
-        speed *= 0.6;
-        const diff = rounded - position;
-        rounded = Math.round(position);
-        position += diff * 0.055;
-        window.scrollPosition = position;
+  const scrollAnimate = useCallback(() => {
+    if (window.isAnimateScroll) {
+      position += speed;
+      speed *= 0.6;
+      const diff = rounded - position;
+      rounded = Math.round(position);
+      position += diff * 0.055;
+      window.scrollPosition = position;
 
-        // устанавливаем активное меню только при изменении rounded
-        if (isNotNil(containerRef.current)) {
-          if (activeN.current !== rounded) {
-            activeN.current = rounded;
-            window.isAnimateParallax = activeN.current === 0;
-            dispatch(landingActions.setActiveNav(rounded));
-          }
-
-          const skewY = -(position % 1) * Math.abs(diff) * 15 * (isPrevPage ? 1 : -1);
-
-          containerRef.current.style.transform = `translateY(${
-            -position * screenHeight
-          }px) skewY(${skewY}deg)`;
+      // устанавливаем активное меню только при изменении rounded
+      if (isNotNil(containerRef.current)) {
+        if (activeN.current !== rounded) {
+          activeN.current = rounded;
+          window.isAnimateParallax = activeN.current === 0;
+          dispatch(landingActions.setActiveNav(rounded));
         }
+
+        const skewY = -(position % 1) * Math.abs(diff) * 15 * (isPrevPage ? 1 : -1);
+
+        containerRef.current.style.transform = `translateY(${
+          -position * screenHeight
+        }px) skewY(${skewY}deg)`;
       }
-    },
+    }
+  }, []);
+
+  useAnimationFrame({
+    callback: scrollAnimate,
     isAnimate: true, // for start animation - не передал сюда isAnmationScroll - потому что компонент не перерисовывается и useFrameAnimation не будет принимать акуальное значение
   });
 

@@ -8,6 +8,7 @@
   padding: 0 0 0 $spaceL;
   width: 100vw;
   color: white;
+  flex: 1;
 
   &__title {
     margin-bottom: $spaceL;
@@ -35,6 +36,11 @@
 
   &__form {
     padding-top: $spaceS;
+    margin-top: auto;
+  }
+
+  &__button {
+    margin-top: $spaceL;
   }
 
   &__imageWrapper {
@@ -60,11 +66,43 @@
   @include respond($breakpoint: md) {
     padding-left: 0;
 
+    &__content {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding-bottom: 0;
+    }
+
+    &__form {
+      margin-top: 0;
+    }
+
+    &__formRef, &__content {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      height: 100%;
+      width: 100%;
+    }
+
+    &__button {
+      display: flex;
+      align-items: flex-end;
+      flex: 1;
+    }
+
+    &__wrapper {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+    }
+
     &__title {
       margin: $spaceL 0 $base;
     }
     &__formTitle {
       margin: $base 0 $spaceM;
+      margin-top: $base * 10;
       font-weight: 100;
       font-size: 16px;
     }

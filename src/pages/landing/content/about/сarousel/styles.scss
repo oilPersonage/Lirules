@@ -1,0 +1,270 @@
+@import "@styles/variables.scss";
+
+
+.Carousel {
+  position: relative;
+  display: flex;
+  flex: 1;
+  margin: $spaceM 0;
+  padding-top: $spaceM;
+  $p: &;
+
+  &__wrapper {
+    display: flex;
+    gap: $spaceL;
+    transition: $slowTransitionHover;
+  }
+
+  &__item {
+    position: relative;
+    display: flex;
+    transition: $slowTransitionHover;
+    min-width: calc($row - $spaceL * 2 - $spaceL);
+    opacity: 1;
+
+    #{$p}__itemTitle {
+      font-size: 180px;
+    }
+
+    &_nextActive, &_prevActive {
+      min-width: calc(($row - $spaceL * 2 - $spaceL) / 2);
+      max-width: calc(($row - $spaceL * 2 - $spaceL) / 2);
+      opacity: 0.3;
+
+      #{$p}__itemTitle {
+        font-size: 120px;
+      }
+    }
+
+    &_nextActive {
+      #{$p}__itemTitle {
+        background-position: 70% 50%;
+      }
+
+      #{$p}__itemDesc {
+        opacity: 0;
+        transform: translateX(100px);
+      }
+    }
+
+    &_prevActive {
+      #{$p}__itemTitle {
+        background-position: 30% 50%;
+      }
+
+      #{$p}__itemDesc {
+        opacity: 0;
+        transform: translateX(-200px);
+      }
+    }
+  }
+
+  &__img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    z-index: 2;
+  }
+
+  &__itemTitle {
+    font-size: 200px;
+    font-family: Alfa Slab One;
+    font-weight: bold;
+    background-image: url("/assets/images/landing/arm.jpg");
+    background-position: 50% 50%;
+    background-size: 150%;
+    background-repeat: repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: $slowTransitionHover;
+    margin-top: -6px;
+
+    p {
+      line-height: 1;
+      margin: 0;
+
+      &:nth-child(2) {
+        margin-top: -34px;
+      }
+    }
+  }
+
+  &__itemDesc {
+    font-size: 46px;
+    font-family: Montserrat;
+    text-align: right;
+    width: 100%;
+    font-weight: bold;
+    line-height: 1;
+    margin: -$spaceM 0 0;
+    transition: $slowTransitionHover;
+    color: $accent;
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  &__arrows {
+    position: absolute;
+    z-index: 4;
+    right: 0;
+    bottom: 0;
+    cursor: pointer;
+
+    svg {
+      width: $spaceL;
+      height: $spaceL;
+      opacity: 0.6;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+
+    #{$p}__arrowDisable {
+      opacity: 0.2;
+
+      &:hover {
+        opacity: 0.2;
+      }
+    }
+
+  }
+
+  &__arrowRight {
+    transform: scaleX(-1);
+  }
+
+  &__dots {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  &__dot {
+    width: $spaceM;
+    height: 2px;
+    background: white;
+    opacity: 0.2;
+
+    &_active {
+      position: absolute;
+      left: 0;
+      top: 0;
+      opacity: 1;
+      background: $accent;
+      transition: $slowTransitionHover
+    }
+  }
+
+  &__itemImg {
+    display: none;
+  }
+
+  @include respond($breakpoint: sm) {
+    padding-top: $spaceS;
+    &__wrapper {
+      transition: $middleTransitionHover;
+    }
+
+    &__itemImg {
+      display: flex;
+    }
+    &__item {
+      min-width: calc(100vw - $spaceM * 2);
+      max-width: calc(100vw - $spaceM * 2);
+      transition: $middleTransitionHover;
+
+      #{$p}__itemImg {
+        bottom: -$spaceL;
+        transform: translateX(40px);
+        position: absolute;
+        right: -$spaceM;
+        flex: 1;
+        width: 70%;
+        transition: $slowTransitionHover;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+        }
+      }
+
+      &_prevActive {
+        #{$p}__itemDesc {
+          transform: translateX(-30px);
+        }
+
+        #{$p}__itemImg {
+          transform: translateX(0px);
+        }
+      }
+
+      &_nextActive {
+        #{$p}__itemDesc {
+          transform: translateX(30px);
+        }
+
+        #{$p}__itemImg {
+          transform: translateX(80px);
+        }
+      }
+
+      &:last-child {
+        #{$p}__itemTitle {
+          font-size: 60px;
+        }
+      }
+
+      &:after {
+        transition: $middleTransitionHover;
+      }
+
+      #{$p}__itemDesc {
+        font-size: 24px;
+        margin-top: -$base;
+        text-align: left;
+        transition: $middleTransitionHover 0.3s;
+      }
+
+      #{$p}__itemTitle {
+        margin-top: 0;
+        font-size: 72px;
+        opacity: 0.5;
+
+        p {
+          &:nth-child(2) {
+            margin-top: -10px;
+          }
+        }
+      }
+    }
+
+    &__arrows {
+      left: 0;
+      right: auto;
+
+      svg {
+        width: $spaceM * 1.5;
+        height: $spaceM * 1.5;
+      }
+    }
+    &__dot {
+      transition: $middleTransitionHover;
+    }
+  }
+}

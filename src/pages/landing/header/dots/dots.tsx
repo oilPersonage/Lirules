@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 import { landingSelectors } from '@reducers/landing';
 
 import { LANDING_COUNT } from '@pages/landing/const';
-import { DotsArray } from '@pages/landing/dots/types';
+import { DotsArray } from '@pages/landing/header/dots/types';
 import { dotsItem, dotsList } from '@pages/landing/header/framerMotionConfig';
 
 import styles from './styles.scss';

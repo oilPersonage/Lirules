@@ -9,7 +9,6 @@ export function getTouchMove(e, isStart) {
     const touchObj = e.changedTouches[0],
       dist = parseInt(touchObj.clientY) - startY;
     startY = parseInt(touchObj.clientY);
-    console.log(dist);
     e.preventDefault();
   }
 }
