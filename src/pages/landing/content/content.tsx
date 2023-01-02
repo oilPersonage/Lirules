@@ -36,7 +36,7 @@ export default function LandingContent() {
         ref={containerRef}
         onScroll={onScroll}
         onTouchStart={onScroll}
-        onTouchMove={throttle(onScroll, 10)}
+        onTouchMove={onScroll}
       >
         <LandingHeader />
         {LANDING_PAGES.map((Page, index) => (

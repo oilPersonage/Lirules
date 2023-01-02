@@ -1,8 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 
+import { useMobileDetect } from '@hooks/useMobileDetect';
 import Arrow from '@icons/arrow.svg';
-import ModelMini from '@images/landing/contacts-mini.png';
-import Img from '@images/landing/contacts.png';
+import Blogger from '@images/landing/blogger.png';
+import Model from '@images/landing/model.png';
+import Photograph from '@images/landing/photograph.png';
+import VideoMaker from '@images/landing/video.png';
 import cn from 'classnames';
 
 import { onTouchDetect } from '@pages/landing/content/about/сarousel/touchEvent';
@@ -11,15 +14,29 @@ import styles from './styles.scss';
 
 interface IItems {
   title: string[];
-  desc?: string;
+  desc?: string[];
+  className?: string;
   img: string;
 }
 
 const ITEMS: IItems[] = [
-  { title: ['VIDEO', 'MAKER'], desc: '5 лет', img: ModelMini },
-  { title: ['PHOTO', 'GRAPH'], desc: '8 лет', img: ModelMini },
-  { title: ['MODEL'], desc: '8 лет', img: ModelMini },
-  { title: ['TRAVEL', 'BLOGGER'], img: ModelMini },
+  {
+    title: ['VIDEO', 'MAKER'],
+    desc: ['5 лет', 'Более 150 учеников', 'Разные страны'],
+    img: VideoMaker,
+  },
+  {
+    title: ['PHOTO', 'GRAPH'],
+    desc: ['8 лет', 'Ретушь', 'Цветокоррекция'],
+    img: Photograph,
+    className: styles.Carousel__photograph,
+  },
+  { title: ['MODEL'], desc: ['8 лет', 'Москва', 'Топовые фотосессии'], img: Model },
+  {
+    title: ['TRAVEL', 'BLOGGER'],
+    img: Blogger,
+    desc: ['Крым', 'Все уголочки Турции', 'Москва', 'Кавказ', 'Грузия'],
+  },
 ];
 
 export function Carousel() {
@@ -32,7 +49,7 @@ export function Carousel() {
   const [isAnimate, setIsAnimate] = useState(false);
   const [deffSliderWidth, setDeffSliderWidth] = useState(0);
   const [carouselHeight, setCarouselHeight] = useState<undefined | number>(undefined);
-  const isMobile = window.innerWidth < 600;
+  const isMobile = useMobileDetect();
 
   // set fix height for all items and carousel
   useEffect(() => {
@@ -55,7 +72,6 @@ export function Carousel() {
     const touch = refTouch.current.onTouch(e);
 
     if (touch.dist > 50 && !isAnimate && touch.isMoveToX) {
-      e.preventDefault();
       setIsAnimate(true);
       setActiveSlide((v) =>
         v + touch.direction < 0 || v + touch.direction === ITEMS.length ? v : v + touch.direction
@@ -98,8 +114,12 @@ export function Carousel() {
                   <p key={index}>{t}</p>
                 ))}
               </div>
-              <p className={styles.Carousel__itemDesc}>{item.desc}</p>
-              <div className={styles.Carousel__itemImg}>
+              <p className={styles.Carousel__itemDesc}>
+                {item.desc?.map((el) => (
+                  <span key={el}>{el}</span>
+                ))}
+              </p>
+              <div className={cn(styles.Carousel__itemImg, item.className)}>
                 <img src={item.img} alt="" loading="lazy" />
               </div>
             </div>

@@ -35,7 +35,7 @@
     height: 100vh;
     overflow: hidden;
     transform: translateX(0);
-    transition: 1s ease-out;
+    transition: 1s linear;
 
     > img {
       width: 100vw;
@@ -47,7 +47,7 @@
 
 
   &__prevImg {
-    transition: 1s ease-out;
+    transition: 1s linear;
 
     #{$p}__imgDefault {
       transform: translateX(-100%)
@@ -55,7 +55,7 @@
   }
 
   &__nextImg {
-    transition: 1s ease-out;
+    transition: 1s linear;
 
     #{$p}__imgDefault {
       transform: translateX(100%)

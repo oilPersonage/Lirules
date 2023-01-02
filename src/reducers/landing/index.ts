@@ -21,9 +21,6 @@ export const landingSlice = createSlice({
         activeNav: action.payload,
       };
     },
-    setAnimate: (state, action) => {
-      return { ...state, animate: action.payload };
-    },
     startAnimation: (state) => {
       return {
         ...state,

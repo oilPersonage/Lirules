@@ -20,7 +20,6 @@ let isPrevPage = false;
 let touchStart = 0;
 
 export function useOnScrollLanding(containerRef: RefObject<HTMLElement>) {
-  const isMobile = window.innerWidth < 600;
   const dispatch = useDispatch();
   const activeN = useRef(0);
 
@@ -30,7 +29,8 @@ export function useOnScrollLanding(containerRef: RefObject<HTMLElement>) {
   }
 
   const scrollAnimate = useCallback(() => {
-    if (window.isAnimateScroll) {
+    if (window.isAnimateScroll && Math.abs(position + speed - rounded) > 0.001) {
+      console.log(Math.abs(position + speed - rounded));
       position += speed;
       speed *= 0.6;
       const diff = rounded - position;
@@ -46,18 +46,17 @@ export function useOnScrollLanding(containerRef: RefObject<HTMLElement>) {
           dispatch(landingActions.setActiveNav(rounded));
         }
 
-        const skewY = -(position % 1) * Math.abs(diff) * 15 * (isPrevPage ? 1 : -1);
+        // const skewY = -(position % 1) * Math.abs(diff) * 15 * (isPrevPage ? 1 : -1);
 
-        containerRef.current.style.transform = `translateY(${
-          -position * screenHeight
-        }px) skewY(${skewY}deg)`;
+        // containerRef.current.style.transform = `translateY(${-position}px) skewY(${skewY}deg)`;
+        containerRef.current.style.transform = `translateY(${-position * screenHeight}px)`;
       }
     }
   }, []);
 
   useAnimationFrame({
     callback: scrollAnimate,
-    isAnimate: true, // for start animation - не передал сюда isAnmationScroll - потому что компонент не перерисовывается и useFrameAnimation не будет принимать акуальное значение
+    isAnimate: true, // for start animation - не передал сюда isAnimationScroll - потому что компонент не перерисовывается и useFrameAnimation не будет принимать акуальное значение
   });
 
   useEffect(() => {
@@ -65,8 +64,8 @@ export function useOnScrollLanding(containerRef: RefObject<HTMLElement>) {
   }, []);
 
   const onScroll = useCallback((event) => {
-    event.stopPropagation();
-    let deltaY = event.deltaY;
+    let deltaY = event.deltaY || 0;
+
     if (window.isAnimateScroll) {
       // TOUCH
       if (event.type === 'touchstart' || event.type === 'touchmove') {
@@ -75,17 +74,17 @@ export function useOnScrollLanding(containerRef: RefObject<HTMLElement>) {
         if (event.type === 'touchstart') {
           touchStart = touch.pageY;
         }
-        deltaY = -(touch.pageY - touchStart) * 15;
+        deltaY = -(touch.pageY - touchStart);
       }
 
       isPrevPage = deltaY < 0;
 
+      // first block and end block
       const disabledScroll =
         (deltaY < 0 && rounded === 0) || (deltaY > 0 && rounded === LANDING_COUNT - 1);
 
-      const multiplySpeed = isMobile ? 0.00003 : 0.0005;
-      const nextSpeed = speed + deltaY * multiplySpeed;
-      if (!disabledScroll && Math.abs(nextSpeed) < 0.3) {
+      const nextSpeed = speed + deltaY * 0.0008;
+      if (!disabledScroll) {
         speed = nextSpeed;
       }
     }
@@ -93,13 +92,8 @@ export function useOnScrollLanding(containerRef: RefObject<HTMLElement>) {
 
   useEffect(() => {
     // disable macOs default scroll browser
-    containerRef.current?.addEventListener(
-      'touchmove',
-      (e) => {
-        e.preventDefault();
-      },
-      false
-    );
+    containerRef.current?.addEventListener('touchmove', (e) => e.preventDefault(), false);
+
     window.addEventListener('wheel', onScroll);
     return () => {
       window.addEventListener('wheel', onScroll);

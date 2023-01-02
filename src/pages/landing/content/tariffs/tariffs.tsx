@@ -1,3 +1,4 @@
+import { useMobileDetect } from '@hooks/useMobileDetect';
 import Dollar from '@icons/dollar.svg';
 import cn from 'classnames';
 
@@ -9,7 +10,7 @@ import { TARIFF_LIST } from './const';
 import styles from './styles.scss';
 
 export function Tariffs() {
-  const isMobile = window.innerWidth < 600;
+  const isMobile = useMobileDetect();
 
   return isMobile ? (
     <MobileTariffs />

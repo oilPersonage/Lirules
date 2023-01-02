@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import { useForm } from '@hooks/useForm';
+import { useMobileDetect } from '@hooks/useMobileDetect';
 import { useAnimationFrame } from '@hooks/useRequestAnimationFrame';
 import ContactsImg from '@images/landing/contacts.png';
 import cn from 'classnames';
@@ -27,7 +28,7 @@ import { ContactsInfo } from '@pages/landing/content/contacts/ContactsInfo';
 import styles from './styles.scss';
 
 export function Contacts({ index }: { index: number }) {
-  const isMobile = window.innerWidth < 600;
+  const isMobile = useMobileDetect();
 
   const imageRef = useRef<HTMLDivElement>(null);
   const formRef = useRef<HTMLDivElement>(null);

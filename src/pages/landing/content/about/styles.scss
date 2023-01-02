@@ -78,6 +78,12 @@
     }
   }
 
+  &__carousel {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
 
   @include respond($breakpoint: sm) {
     align-items: flex-start;

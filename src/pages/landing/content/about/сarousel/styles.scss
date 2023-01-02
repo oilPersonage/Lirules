@@ -103,17 +103,21 @@
   }
 
   &__itemDesc {
-    font-size: 46px;
+    font-size: 24px;
     font-family: Montserrat;
     text-align: right;
     width: 100%;
-    font-weight: bold;
+    font-weight: 400;
     line-height: 1;
-    margin: -$spaceM 0 0;
+    margin: -$spaceS 0 0;
     transition: $slowTransitionHover;
-    color: $accent;
+    color: $white;
     opacity: 1;
     transform: translateX(0);
+
+    span {
+      margin-left: $spaceM;
+    }
   }
 
   &__arrows {
@@ -176,6 +180,7 @@
 
   @include respond($breakpoint: sm) {
     padding-top: $spaceS;
+    margin-bottom: 0;
     &__wrapper {
       transition: $middleTransitionHover;
     }
@@ -183,16 +188,21 @@
     &__itemImg {
       display: flex;
     }
+    &__itemDesc {
+      span {
+        font-size: 12px;
+      }
+    }
     &__item {
       min-width: calc(100vw - $spaceM * 2);
       max-width: calc(100vw - $spaceM * 2);
       transition: $middleTransitionHover;
 
       #{$p}__itemImg {
-        bottom: -$spaceL;
+        bottom: 0;
         transform: translateX(40px);
         position: absolute;
-        right: -$spaceM;
+        right: $spaceM;
         flex: 1;
         width: 70%;
         transition: $slowTransitionHover;
@@ -202,6 +212,10 @@
           height: 100%;
           object-fit: contain;
         }
+      }
+
+      #{$p}__photograph {
+        width: 55%;
       }
 
       &_prevActive {
@@ -235,10 +249,31 @@
       }
 
       #{$p}__itemDesc {
-        font-size: 24px;
-        margin-top: -$base;
+        display: flex;
+        flex-direction: column;
+        font-size: 14px;
+        margin-top: $spaceS;
         text-align: left;
         transition: $middleTransitionHover 0.3s;
+
+        span {
+          margin-left: 0;
+          margin-bottom: $base;
+          position: relative;
+          padding-left: $base * 2;
+
+          &:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 2px;
+            height: 2px;
+            background: $white;
+            opacity: 0.5;
+          }
+        }
       }
 
       #{$p}__itemTitle {
@@ -255,12 +290,13 @@
     }
 
     &__arrows {
-      left: 0;
+      left: -$spaceS;
       right: auto;
 
       svg {
         width: $spaceM * 1.5;
         height: $spaceM * 1.5;
+        padding: $base * 2;
       }
     }
     &__dot {

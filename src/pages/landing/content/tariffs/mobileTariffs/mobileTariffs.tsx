@@ -52,6 +52,7 @@ export function MobileTariffs() {
       <div className={styles.Mobile__imageWrapper}>
         {TARIFF_LIST.map((tariff, index) => (
           <div
+            key={tariff.id}
             className={cn(styles.Mobile__relative, {
               [styles.Mobile__nextImg]: index > activeSlide,
               [styles.Mobile__prevImg]: index < activeSlide,
