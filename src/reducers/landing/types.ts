@@ -4,4 +4,5 @@ export type LandingState = {
   isStartAnimation: boolean;
   setSpeed?: (number, boolean) => void;
   landingMouseRef?: HTMLElement;
+  cursorRef?: HTMLElement;
 };

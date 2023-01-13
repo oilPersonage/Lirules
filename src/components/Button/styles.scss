@@ -3,11 +3,12 @@
 
 .Button {
   position: relative;
+  z-index: 10;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: $spaceS;
+  padding: $sm;
   font-family: Montserrat;
   transition: $middleTransitionHover;
   border: none;
@@ -18,9 +19,9 @@
 
   // sizes
   &__lg {
-    width: $spaceL * 5;
-    padding: $spaceS $spaceM;
-    height: $spaceL;
+    width: $lg * 5;
+    padding: $sm $md;
+    height: $lg;
     border-radius: 5px;
     font-weight: 700;
     font-size: 18px;
@@ -35,7 +36,7 @@
   }
 
   &__sm {
-    width: $spaceL * 2;
+    width: $lg * 2;
     padding: $base * 2;
     font-size: 10px;
     font-weight: bold;
@@ -49,7 +50,7 @@
     padding: 2px;
     background: none;
     color: $white;
-    border-bottom: 1px solid $white;
+    //border-bottom: 1px solid $white;
     border-radius: 0;
     width: auto;
 

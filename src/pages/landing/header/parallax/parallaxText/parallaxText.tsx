@@ -1,26 +1,18 @@
-import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import { motion } from 'framer-motion';
 
 import { Button } from '@components/Button';
 
-import { landingActions } from '@reducers/landing';
+import { landingSelectors } from '@reducers/landing';
 
 import { titleItem, titleList } from '@pages/landing/header/framerMotionConfig';
 import styles from '@pages/landing/header/parallax/styles.scss';
 
 const TITLE = 'Lirules';
 
-interface IParallaxText {
-  isStartAnimation: boolean;
-}
-
-export function ParallaxText({ isStartAnimation }: IParallaxText) {
-  const dispatch = useDispatch();
-
-  function onSetIsHover() {
-    dispatch(landingActions.setIsHover());
-  }
+export function ParallaxText() {
+  const { isStartAnimation } = useSelector(landingSelectors.landing);
 
   const animateConfig = {
     initial: { y: 20, opacity: 0 },
@@ -60,11 +52,7 @@ export function ParallaxText({ isStartAnimation }: IParallaxText) {
       >
         Авторская программа по обучению видеосъеке на <span>телефон</span>
       </motion.h2>
-      <div
-        className={styles.Parallax__button}
-        onMouseEnter={onSetIsHover}
-        onMouseLeave={onSetIsHover}
-      >
+      <div className={styles.Parallax__button}>
         <Button animateConfig={animateConfig} type="accent">
           Пройти курс
         </Button>

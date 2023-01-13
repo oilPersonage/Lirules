@@ -5,13 +5,13 @@
   bottom: 0;
   right: 0;
   width: 100vw;
-  padding: $spaceS $spaceL;
+  padding: $sm $lg;
   display: flex;
   font-size: 12px;
   opacity: 0.7;
 
   &__box {
-    margin-right: $spaceL;
+    margin-right: $lg;
 
     &_location {
       display: flex;
@@ -35,12 +35,12 @@
 
   &__Icon {
     margin-top: 2px;
-    margin-right: $spaceS;
+    margin-right: $sm;
   }
 
 
   @include respond($breakpoint: md) {
-    padding: $spaceM 0 $spaceM $spaceM;
+    padding: $md 0 $md $md;
 
     &__box_location {
       display: none;

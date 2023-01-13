@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useEffect, useLayoutEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 
 import cn from 'classnames';
@@ -13,16 +13,16 @@ import { dotsItem, dotsList } from '@pages/landing/header/framerMotionConfig';
 import styles from './styles.scss';
 
 export function Dots() {
-  const { activeNav, isStartAnimation } = useSelector(landingSelectors.landing);
+  const { isStartAnimation } = useSelector(landingSelectors.landing);
 
   const renderDots = useMemo(() => {
     const dotsArray: DotsArray[] = [];
     for (let i = 0; i < LANDING_COUNT; i++) {
-      dotsArray.push({ active: activeNav === i });
+      dotsArray.push({ active: window.activeNav === i });
     }
 
     return dotsArray;
-  }, [activeNav]);
+  }, []);
 
   return (
     <motion.div
@@ -33,7 +33,11 @@ export function Dots() {
     >
       {renderDots.map((dot, index) => (
         <motion.div key={index} variants={dotsItem}>
-          <div className={cn(styles.Dots__dot, { [styles.Dots__dot_active]: dot.active })} />
+          <div
+            className={cn(styles.Dots__dot, {
+              [styles.Dots__dot_active]: window.activeNav === index,
+            })}
+          />
         </motion.div>
       ))}
     </motion.div>

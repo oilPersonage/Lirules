@@ -5,5 +5,6 @@ declare global {
     isAnimateParallax: boolean;
     scrollPosition: number;
     isAnimateScroll: boolean;
+    activeNav: number;
   }
 }

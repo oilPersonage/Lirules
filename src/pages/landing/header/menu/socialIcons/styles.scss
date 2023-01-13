@@ -4,10 +4,10 @@
   &__socialWrapper {
     position: fixed;
     top: auto;
-    z-index: 11;
+    z-index: 14;
     left: auto;
-    bottom: $spaceM;
-    right: $spaceL;
+    bottom: $md;
+    right: $lg;
     display: flex;
     align-items: center;
     flex-direction: row-reverse;
@@ -42,7 +42,7 @@
   }
 
   &__socialIcon {
-    margin-left: $spaceS;
+    margin-left: $sm;
     font-size: 26px;
 
     svg {
@@ -55,11 +55,11 @@
   }
 
   @include respond($breakpoint: md) {
-    padding-right: $spaceM;
+    padding-right: $md;
 
     &__socialWrapper {
-      bottom: $spaceM;
-      right: $spaceM;
+      bottom: $md;
+      right: $md;
     }
   }
 }

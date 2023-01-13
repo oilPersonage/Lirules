@@ -2,6 +2,7 @@ import { lazy } from 'react';
 
 const LandingRoute = lazy(() => import('@pages/landing/landing'));
 const NotFoundRoute = lazy(() => import('@pages/notFound/notFound'));
+
 // const DocsRoute = lazy(() => import('@pages/landing/documents/documents'));
 // const LandingContent = lazy(() => import('@pages/landing/content/content'));
 

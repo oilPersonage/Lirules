@@ -6,6 +6,30 @@
   max-width: 100vw;
   overflow: hidden;
 
+  @include respond($breakpoint: md) {
+    max-height: 100%;
+    overflow: auto;
+    overflow-x: hidden;
+  }
+
+  &__content {
+    position: relative;
+  }
+
+  &__scrollWrapper {
+    position: relative;
+    z-index: 12;
+  }
+
+  &__background {
+    position: absolute;
+    z-index: 8;
+    background: $black;
+    width: 100vw;
+    height: 100vh * 6;
+    top: 100vh;
+    left: 0;
+  }
 
   &__page {
     position: relative;
@@ -19,7 +43,8 @@
 
     @include respond($breakpoint: md) {
       margin-bottom: 0;
-      padding-bottom: $spaceL * 2;
+      max-height: 100%;
+      overflow-x: hidden;
     }
   }
 
@@ -33,7 +58,7 @@
     justify-content: center;
     color: white;
     font-family: "Alfa Slab One";
-    padding-bottom: $spaceL * 2;
+    padding-bottom: $lg * 2;
 
 
     &:nth-child(2n) {
@@ -47,7 +72,41 @@
 
   @include respond($breakpoint: md) {
     &__page, &__test {
-      padding-bottom: $spaceL * 3;
+      padding-bottom: 0;
+    }
+  }
+
+
+  &__textWrapper {
+    position: absolute;
+    z-index: 11;
+    top: $lg * 4;
+    right: $lg * 2;
+    max-width: 1000px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    &_title {
+      left: auto;
+      right: 180px;
+      top: 30%;
+    }
+
+
+    @include respond($breakpoint: sm) {
+      position: relative;
+      max-width: 100%;
+      padding: 0 $md;
+      height: 100vh;
+      align-items: center;
+      top: auto;
+      margin-bottom: $lg * 3;
+
+      &_title {
+        right: 0;
+      }
     }
   }
 }

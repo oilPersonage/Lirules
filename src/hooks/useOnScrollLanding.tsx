@@ -1,9 +1,7 @@
 import { RefObject, useCallback, useEffect, useRef } from 'react';
-import { useDispatch } from 'react-redux';
 
+import { useMobileDetect } from '@hooks/useMobileDetect';
 import { useAnimationFrame } from '@hooks/useRequestAnimationFrame';
-
-import { landingActions } from '@reducers/landing';
 
 import { isNotNil } from '@utils/typeguard';
 
@@ -12,16 +10,20 @@ import { LANDING_COUNT } from '@pages/landing/const';
 window.scrollPosition = 0;
 window.isAnimateScroll = true;
 window.isAnimateParallax = true;
+window.activeNav = 0;
 let speed = 0;
 let position = 0;
 let rounded = 0;
 let screenHeight;
+let screenWidth;
 let isPrevPage = false;
-let touchStart = 0;
 
-export function useOnScrollLanding(containerRef: RefObject<HTMLElement>) {
-  const dispatch = useDispatch();
-  const activeN = useRef(0);
+export function useOnScrollLanding(
+  containerRef: RefObject<HTMLElement>,
+  containerBGRef: RefObject<HTMLElement>,
+  containerTextRef: RefObject<HTMLElement>
+) {
+  const isMobile = useMobileDetect();
 
   function setSpeed(index, isPrev) {
     isPrevPage = isPrev;
@@ -30,7 +32,6 @@ export function useOnScrollLanding(containerRef: RefObject<HTMLElement>) {
 
   const scrollAnimate = useCallback(() => {
     if (window.isAnimateScroll && Math.abs(position + speed - rounded) > 0.001) {
-      console.log(Math.abs(position + speed - rounded));
       position += speed;
       speed *= 0.6;
       const diff = rounded - position;
@@ -39,44 +40,39 @@ export function useOnScrollLanding(containerRef: RefObject<HTMLElement>) {
       window.scrollPosition = position;
 
       // устанавливаем активное меню только при изменении rounded
-      if (isNotNil(containerRef.current)) {
-        if (activeN.current !== rounded) {
-          activeN.current = rounded;
-          window.isAnimateParallax = activeN.current === 0;
-          dispatch(landingActions.setActiveNav(rounded));
+      if (isNotNil(containerRef.current) && containerBGRef.current && containerTextRef.current) {
+        if (window.activeNav !== rounded) {
+          window.activeNav = rounded;
+          // window.isAnimateParallax = window.activeNav === 0;
         }
 
-        // const skewY = -(position % 1) * Math.abs(diff) * 15 * (isPrevPage ? 1 : -1);
-
-        // containerRef.current.style.transform = `translateY(${-position}px) skewY(${skewY}deg)`;
-        containerRef.current.style.transform = `translateY(${-position * screenHeight}px)`;
+        containerRef.current.style.transform = `translateY(${-position * screenHeight}px) skewY(${
+          speed * 50
+        }deg)`;
+        containerBGRef.current.style.transform = `translateY(${-position * screenHeight}px) skewY(${
+          speed * 50
+        }deg)`;
+        containerTextRef.current.style.transform = `translateY(${
+          -position * screenHeight
+        }px) skewY(${speed * 50}deg)`;
       }
     }
   }, []);
 
   useAnimationFrame({
     callback: scrollAnimate,
-    isAnimate: true, // for start animation - не передал сюда isAnimationScroll - потому что компонент не перерисовывается и useFrameAnimation не будет принимать акуальное значение
+    isAnimate: !isMobile, // for start animation - не передал сюда isAnimationScroll - потому что компонент не перерисовывается и useFrameAnimation не будет принимать акуальное значение
   });
 
   useEffect(() => {
     screenHeight = document.body.clientHeight;
+    screenWidth = document.body.clientWidth;
   }, []);
 
   const onScroll = useCallback((event) => {
-    let deltaY = event.deltaY || 0;
+    const deltaY = event.deltaY || 0;
 
     if (window.isAnimateScroll) {
-      // TOUCH
-      if (event.type === 'touchstart' || event.type === 'touchmove') {
-        const touch = event.touches[0] || event.changedTouches[0];
-
-        if (event.type === 'touchstart') {
-          touchStart = touch.pageY;
-        }
-        deltaY = -(touch.pageY - touchStart);
-      }
-
       isPrevPage = deltaY < 0;
 
       // first block and end block
@@ -92,7 +88,9 @@ export function useOnScrollLanding(containerRef: RefObject<HTMLElement>) {
 
   useEffect(() => {
     // disable macOs default scroll browser
-    containerRef.current?.addEventListener('touchmove', (e) => e.preventDefault(), false);
+    if (!isMobile) {
+      containerRef.current?.addEventListener('touchmove', (e) => e.preventDefault(), false);
+    }
 
     window.addEventListener('wheel', onScroll);
     return () => {

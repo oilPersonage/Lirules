@@ -3,6 +3,8 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+const ReactRefreshTypeScript = require('react-refresh-typescript');
 
 const { APP_DEFAULT_PORT } = require('./app_settings');
 
@@ -19,7 +21,8 @@ module.exports = async (env = {}, argv) => {
       filename: isDev ? '[name].js' : '[name].[contenthash].js',
       path: path.resolve(__dirname, 'build'),
     },
-    devtool: 'inline-source-map',
+    devtool: 'eval-source-map',
+    mode: isDev ? 'development' : 'production',
     devServer: {
       port: APP_DEFAULT_PORT,
       hot: true,
@@ -30,14 +33,19 @@ module.exports = async (env = {}, argv) => {
     module: {
       rules: [
         {
-          test: /\.(ts|tsx)$/,
-          use: 'ts-loader',
+          test: /\.[jt]sx?$/,
           exclude: /node_modules/,
-        },
-        {
-          test: /\.js$/,
-          include: path.resolve(__dirname, 'src'),
-          loader: 'babel-loader',
+          use: [
+            {
+              loader: require.resolve('ts-loader'),
+              options: {
+                getCustomTransformers: () => ({
+                  before: [isDev && ReactRefreshTypeScript()].filter(Boolean),
+                }),
+                transpileOnly: isDev,
+              },
+            },
+          ],
         },
         {
           test: /\.s[ac]ss$/i,
@@ -72,7 +80,7 @@ module.exports = async (env = {}, argv) => {
           loader: 'html-loader',
         },
         {
-          test: /\.(png|jpg|jpeg|gif)$/i,
+          test: /\.(png|jpg|jpeg|gif|webp)$/i,
           type: 'asset/resource',
         },
         {
@@ -105,8 +113,8 @@ module.exports = async (env = {}, argv) => {
           },
         },
       }),
-      new webpack.HotModuleReplacementPlugin(),
-    ],
+      isDev && new ReactRefreshWebpackPlugin(),
+    ].filter(Boolean),
     resolve: {
       alias: {
         '@mocks': path.resolve(__dirname, 'src/__mocks__'),

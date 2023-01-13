@@ -6,7 +6,7 @@ import { landingActions } from '@reducers/landing';
 export default function NotFound() {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(landingActions.startAnimation());
+    dispatch(landingActions.startAnimation(null));
   }, []);
   return <div>Страница не найдена!</div>;
 }

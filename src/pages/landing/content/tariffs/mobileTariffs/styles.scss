@@ -65,7 +65,7 @@
   &__titleWrapper {
     position: relative;
     z-index: 2;
-    padding: 0 $spaceM;
+    padding: 0 $md;
   }
 
   &__carousel {
@@ -79,12 +79,12 @@
     flex-direction: column;
     justify-content: space-between;
     min-width: 100vw;
-    padding: $spaceM $spaceM * 2 $spaceM $spaceM;
+    padding: $md $md * 2 $md $md;
     flex: 1;
   }
 
   &__list {
-    margin: $spaceM 0;
+    margin: $md 0;
   }
 
   &__listItem {
@@ -170,7 +170,7 @@
   }
 
   &__lock {
-    margin: 7px 6px 0 $spaceS;
+    margin: 7px 6px 0 $sm;
   }
 
   &__rhombus {
@@ -214,10 +214,14 @@
     color: $black;
     background: $accent;
     z-index: 3;
-    margin: 0 $spaceM;
+    margin: 0 $md;
     height: 60px;
     border-radius: 5px;
     font-weight: bold;
+
+    @include respond(md) {
+      margin-bottom: $lg * 2;
+    }
   }
 
   &__titleAccent {

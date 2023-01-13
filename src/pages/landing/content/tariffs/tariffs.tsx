@@ -4,18 +4,21 @@ import cn from 'classnames';
 
 import { Button } from '@components/Button';
 
+import { ILandingPage } from '@pages/landing/content/content';
 import { MobileTariffs } from '@pages/landing/content/tariffs/mobileTariffs/mobileTariffs';
 
 import { TARIFF_LIST } from './const';
 import styles from './styles.scss';
 
-export function Tariffs() {
+export function Tariffs({ index, id }: ILandingPage) {
   const isMobile = useMobileDetect();
 
   return isMobile ? (
-    <MobileTariffs />
+    <div id={id}>
+      <MobileTariffs />
+    </div>
   ) : (
-    <div className={styles.Tariffs}>
+    <div className={styles.Tariffs} id={id}>
       {TARIFF_LIST.map((tariff) => (
         <div key={tariff.id} className={styles.Tariffs__item}>
           <div className={styles.Tariffs__imageWrapper}>

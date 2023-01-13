@@ -2,10 +2,10 @@ import { useEffect, useRef, useState } from 'react';
 
 import { useMobileDetect } from '@hooks/useMobileDetect';
 import Arrow from '@icons/arrow.svg';
-import Blogger from '@images/landing/blogger.png';
-import Model from '@images/landing/model.png';
-import Photograph from '@images/landing/photograph.png';
-import VideoMaker from '@images/landing/video.png';
+import Blogger from '@images/landing/blogger.webp';
+import Model from '@images/landing/model.webp';
+import Photograph from '@images/landing/photograph.webp';
+import VideoMaker from '@images/landing/video.webp';
 import cn from 'classnames';
 
 import { onTouchDetect } from '@pages/landing/content/about/сarousel/touchEvent';

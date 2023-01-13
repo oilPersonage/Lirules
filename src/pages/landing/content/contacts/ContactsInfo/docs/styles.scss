@@ -24,14 +24,14 @@
       font-size: 14px;
 
       &:first-child {
-        margin-bottom: $spaceS;
+        margin-bottom: $sm;
       }
     }
   }
 
   &__terminals {
     li {
-      margin: 0 0 $spaceS;
+      margin: 0 0 $sm;
       font-size: 14px;
     }
   }
@@ -51,24 +51,24 @@
 }
 
 .RenderDoc {
-  margin-bottom: $spaceL;
+  margin-bottom: $lg;
 
   p {
     font-size: 14px;
   }
 
   li {
-    margin: $spaceS 0;
+    margin: $sm 0;
     font-size: 14px;
 
     ul {
-      margin: $spaceS $spaceS 0;
+      margin: $sm $sm 0;
 
       li {
         font-size: 14px;
 
         ul {
-          margin: $spaceS $spaceS;
+          margin: $sm $sm;
         }
       }
     }

@@ -12,19 +12,12 @@ import { ParallaxText } from './parallaxText';
 import styles from './styles.scss';
 
 export function Parallax() {
-  const cursorRef = useRef(null);
-  const [elRefs, setElRefs] = useState([]);
+  const elRefs = useRef([]);
 
   const dispatch = useDispatch();
   const isMobile = useMobileDetect();
 
-  useEffect(() => {
-    // add or remove refs
-    setElRefs((elRefs) => parallaxItems.map((_, i) => elRefs[i] || createRef()));
-  }, []);
-
-  const { isStartAnimation, isHover, landingMouseRef } = useSelector(landingSelectors.landing);
-
+  const { landingMouseRef, cursorRef } = useSelector(landingSelectors.landing);
   useParallax({ landingMouseRef, refs: elRefs, cursorRef });
 
   function setStartAnimation() {
@@ -34,7 +27,7 @@ export function Parallax() {
     setTimeout(() => {
       overflow?.classList.add('hide');
     }, 1000);
-    dispatch(landingActions.startAnimation());
+    dispatch(landingActions.startAnimation(null));
   }
 
   useEffect(() => {
@@ -43,21 +36,13 @@ export function Parallax() {
 
   return (
     <div className={styles.Parallax__images}>
-      <div className={styles.Parallax__cursor} ref={cursorRef}>
-        <span
-          className={cn(styles.Parallax__cursorDot, {
-            [styles.Parallax__cursorDot_active]: isHover,
-          })}
-        />
-      </div>
-
       {parallaxItems.map((item, index) => (
-        <div key={index} className={item.className}>
+        // @ts-ignore
+        <div key={index} ref={(ref) => (elRefs.current[index] = ref)} className={item.className}>
           {!isMobile && item.img && <img src={item.img} className={styles.Parallax__img} alt="" />}
           {isMobile && item.mobileImg && (
             <img src={item.mobileImg} className={styles.Parallax__img} alt="" />
           )}
-          {item.text && <ParallaxText isStartAnimation={isStartAnimation} />}
         </div>
       ))}
     </div>

@@ -8,6 +8,7 @@ const initialState: LandingState = {
   activeNav: 0,
   isHover: false,
   landingMouseRef: undefined,
+  cursorRef: undefined,
 };
 
 export const landingSlice = createSlice({
@@ -27,16 +28,18 @@ export const landingSlice = createSlice({
         isStartAnimation: true,
       };
     },
-    setIsHover: (state) => {
-      return {
-        ...state,
-        isHover: !state.isHover,
-      };
-    },
+    // @ts-ignore
     setLandingMouseRefRef: (state, action: PayloadAction<HTMLElement>) => {
       return {
         ...state,
         landingMouseRef: action.payload,
+      };
+    },
+    // @ts-ignore
+    setCursorRef: (state, action: PayloadAction<HTMLElement>) => {
+      return {
+        ...state,
+        cursorRef: action.payload,
       };
     },
     setSpeedFunction: (state, action: PayloadAction<(number, boolean) => void>) => {

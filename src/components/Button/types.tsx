@@ -11,7 +11,6 @@ export interface IButton {
   isLoading?: boolean;
   className?: string;
   isLoaded?: boolean;
-  onSetIsHover?: () => void;
   animateConfig?: any;
   theme?: 'dark' | 'light';
 }

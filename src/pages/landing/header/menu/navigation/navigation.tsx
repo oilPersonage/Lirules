@@ -1,6 +1,7 @@
 import { useCallback, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+import { useMobileDetect } from '@hooks/useMobileDetect';
 import { useToggle } from '@hooks/useToggle';
 import Logotype from '@icons/logotype.svg';
 import cn from 'classnames';
@@ -10,55 +11,49 @@ import { landingActions, landingSelectors } from '@reducers/landing';
 
 import { isNotNil } from '@utils/typeguard';
 
+import { LANDING_PAGES } from '@pages/landing/content/content';
 import { navigationList } from '@pages/landing/header/framerMotionConfig';
+import { IOnClick } from '@pages/landing/header/menu/navigation/types';
 
 import styles from './styles.scss';
 
-const MENU_LIST: { text: string; title: string }[] = [
-  { title: 'Обо мне', text: 'Информация обо мне для вас' },
-  { title: 'Описание курса', text: 'Краткое описание прохождения курса' },
-  {
-    title: 'Тарифы',
-    text: 'Информация о ценности данного курса',
-  },
-  { title: 'Кейсы', text: 'Работы моих учеников и отзывы' },
-  { title: 'Контакты', text: 'Контактная информация' },
-].reverse();
-
 export function Navigation() {
+  const isMobile = useMobileDetect();
   const { isOpen, toggle } = useToggle(false);
   const dispatch = useDispatch();
-  const { activeNav, setSpeed } = useSelector(landingSelectors.landing);
+  const { setSpeed } = useSelector(landingSelectors.landing);
+
   const onClick = useCallback(
-    ({ index, isHideMenu }: { index?: number; isHideMenu?: boolean }) => {
+    ({ index, isHideMenu, id }: IOnClick) => {
       if (isHideMenu) {
-        window.isAnimateScroll = !window.isAnimateScroll;
+        if (!isMobile) {
+          window.isAnimateScroll = !window.isAnimateScroll;
+        }
         toggle();
       }
       if (isNotNil(index)) {
         dispatch(landingActions.setActiveNav(index));
-        if (isNotNil(setSpeed)) {
-          setSpeed((index - activeNav) / 2.5, index < activeNav);
+        if (isNotNil(setSpeed) && !isMobile) {
+          setSpeed((index - window.activeNav) / 2.5, index < window.activeNav);
+        } else if (isMobile && id) {
+          document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
         }
       }
     },
-    [dispatch, setSpeed, activeNav]
+    [dispatch, setSpeed, window.activeNav, isMobile]
   );
 
-  function onSetIsHover() {
-    dispatch(landingActions.setIsHover());
-  }
-
   const navigationItems = useMemo(() => {
-    return MENU_LIST.map((menu, index) => {
-      const isActive = MENU_LIST.length - activeNav === index;
+    const navList = [...LANDING_PAGES].reverse();
+    return navList.map((menu, index) => {
+      const isActive = navList.length - window.activeNav === index;
       return (
         <li
           key={index}
           className={cn(styles.Navigation__item, {
             [styles.Navigation__item_active]: isActive,
           })}
-          onClick={() => onClick({ index: MENU_LIST.length - index, isHideMenu: true })}
+          onClick={() => onClick({ index: navList.length - index, isHideMenu: true, id: menu.id })}
         >
           <div className={styles.Navigation__itemContent}>
             <p>{menu.title}</p>
@@ -67,14 +62,17 @@ export function Navigation() {
         </li>
       );
     });
-  }, [activeNav, onClick]);
+  }, [window.activeNav, onClick]);
 
   return (
     <div className={styles.Navigation}>
-      <motion.div className={styles.Navigation__logotype} onClick={() => onClick({ index: 0 })}>
-        <a href="#" onMouseEnter={onSetIsHover} onMouseLeave={onSetIsHover}>
+      <motion.div
+        className={styles.Navigation__logotype}
+        onClick={() => onClick({ index: 0, id: 'header' })}
+      >
+        <div>
           <Logotype />
-        </a>
+        </div>
       </motion.div>
 
       <AnimatePresence initial={false}>
@@ -103,8 +101,6 @@ export function Navigation() {
 
       <div
         className={styles.Navigation__hamburgerWrapper}
-        onMouseEnter={onSetIsHover}
-        onMouseLeave={onSetIsHover}
         onClick={() => onClick({ isHideMenu: true })}
       >
         <div

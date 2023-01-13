@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   min-height: 100%;
-  padding-bottom: $spaceL * 2;
+  padding-bottom: $lg * 2;
   flex: 1;
 
   > * {
@@ -15,7 +15,7 @@
     font-weight: 100;
     font-size: 16px;
     line-height: 1.4;
-    max-width: $spaceL * 12;
+    max-width: $lg * 12;
 
     span {
       color: $accent;
@@ -28,13 +28,13 @@
 
 
   &__peopleList {
-    margin-bottom: $spaceS;
+    margin-bottom: $sm;
   }
 
   &__partnerList, &__peopleList {
     display: flex;
-    margin-left: -$spaceS;
-    margin-right: -$spaceS;
+    margin-left: -$sm;
+    margin-right: -$sm;
   }
 
   &__partnerWrapper {
@@ -43,7 +43,7 @@
   }
 
   &__peopleItem {
-    margin: 0 $spaceS;
+    margin: 0 $sm;
     font-size: 12px;
 
     p {
@@ -53,7 +53,8 @@
 
   &__partnerItem {
     position: relative;
-    margin: 0 $spaceS;
+    z-index: 20;
+    margin: 0 $sm;
     font-size: 12px;
 
     a {
@@ -98,12 +99,11 @@
     &__partnerCategory {
       font-size: 12px;
       font-weight: 400;
-      margin: $spaceS 0 $base * 2;
+      margin: $sm 0 $base * 2;
     }
 
     &__description {
       text-align: left;
-      margin-top: 0;
       font-size: 12px;
     }
     &__partnerTitle {
@@ -111,7 +111,7 @@
       font-size: 12px;
     }
     &__partnerItem, &__peopleItem {
-      margin: 0 $spaceS $base 0;
+      margin: 0 $sm $base 0;
       font-size: 12px;
 
       a {

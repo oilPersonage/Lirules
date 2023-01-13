@@ -5,13 +5,13 @@
   position: relative;
   display: flex;
   flex: 1;
-  margin: $spaceM 0;
-  padding-top: $spaceM;
+  margin: $md 0;
+  padding-top: $md;
   $p: &;
 
   &__wrapper {
     display: flex;
-    gap: $spaceL;
+    gap: $lg;
     transition: $slowTransitionHover;
   }
 
@@ -19,7 +19,7 @@
     position: relative;
     display: flex;
     transition: $slowTransitionHover;
-    min-width: calc($row - $spaceL * 2 - $spaceL);
+    min-width: calc($row - $lg * 2 - $lg);
     opacity: 1;
 
     #{$p}__itemTitle {
@@ -27,8 +27,8 @@
     }
 
     &_nextActive, &_prevActive {
-      min-width: calc(($row - $spaceL * 2 - $spaceL) / 2);
-      max-width: calc(($row - $spaceL * 2 - $spaceL) / 2);
+      min-width: calc(($row - $lg * 2 - $lg) / 2);
+      max-width: calc(($row - $lg * 2 - $lg) / 2);
       opacity: 0.3;
 
       #{$p}__itemTitle {
@@ -109,14 +109,14 @@
     width: 100%;
     font-weight: 400;
     line-height: 1;
-    margin: -$spaceS 0 0;
+    margin: -$sm 0 0;
     transition: $slowTransitionHover;
     color: $white;
     opacity: 1;
     transform: translateX(0);
 
     span {
-      margin-left: $spaceM;
+      margin-left: $md;
     }
   }
 
@@ -128,8 +128,8 @@
     cursor: pointer;
 
     svg {
-      width: $spaceL;
-      height: $spaceL;
+      width: $lg;
+      height: $lg;
       opacity: 0.6;
 
       &:hover {
@@ -159,7 +159,7 @@
   }
 
   &__dot {
-    width: $spaceM;
+    width: $md;
     height: 2px;
     background: white;
     opacity: 0.2;
@@ -179,7 +179,7 @@
   }
 
   @include respond($breakpoint: sm) {
-    padding-top: $spaceS;
+    padding-top: $sm;
     margin-bottom: 0;
     &__wrapper {
       transition: $middleTransitionHover;
@@ -194,15 +194,15 @@
       }
     }
     &__item {
-      min-width: calc(100vw - $spaceM * 2);
-      max-width: calc(100vw - $spaceM * 2);
+      min-width: calc(100vw - $md * 2);
+      max-width: calc(100vw - $md * 2);
       transition: $middleTransitionHover;
 
       #{$p}__itemImg {
         bottom: 0;
         transform: translateX(40px);
         position: absolute;
-        right: $spaceM;
+        right: $md;
         flex: 1;
         width: 70%;
         transition: $slowTransitionHover;
@@ -252,7 +252,7 @@
         display: flex;
         flex-direction: column;
         font-size: 14px;
-        margin-top: $spaceS;
+        margin-top: $sm;
         text-align: left;
         transition: $middleTransitionHover 0.3s;
 
@@ -290,12 +290,12 @@
     }
 
     &__arrows {
-      left: -$spaceS;
+      left: -$sm;
       right: auto;
 
       svg {
-        width: $spaceM * 1.5;
-        height: $spaceM * 1.5;
+        width: $md * 1.5;
+        height: $md * 1.5;
         padding: $base * 2;
       }
     }

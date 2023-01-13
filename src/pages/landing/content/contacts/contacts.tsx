@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { useForm } from '@hooks/useForm';
 import { useMobileDetect } from '@hooks/useMobileDetect';
 import { useAnimationFrame } from '@hooks/useRequestAnimationFrame';
-import ContactsImg from '@images/landing/contacts.png';
+import ContactsImg from '@images/landing/contacts.webp';
 import cn from 'classnames';
 
 import { Button } from '@components/Button';
@@ -24,10 +24,11 @@ import {
   REQUIRED_FIELDS,
 } from '@pages/landing/content/contacts/const';
 import { ContactsInfo } from '@pages/landing/content/contacts/ContactsInfo';
+import { ILandingPage } from '@pages/landing/content/content';
 
 import styles from './styles.scss';
 
-export function Contacts({ index }: { index: number }) {
+export function Contacts({ index, id }: ILandingPage) {
   const isMobile = useMobileDetect();
 
   const imageRef = useRef<HTMLDivElement>(null);
@@ -35,7 +36,6 @@ export function Contacts({ index }: { index: number }) {
 
   const [isLoaded, setIsLoaded] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const { activeNav } = useSelector(landingSelectors.landing);
 
   const onConfirm = useCallback((newState) => {
     setIsLoading(true);
@@ -62,7 +62,7 @@ export function Contacts({ index }: { index: number }) {
         }px); opacity: ${(window.scrollPosition - LANDING_COUNT + 2) / 2}`;
       }
     },
-    isAnimate: activeNav - 1 === index || activeNav === index,
+    isAnimate: window.activeNav - 1 === index || window.activeNav === index,
   });
 
   const { onChangeHandler, state, onBlurHandler, notification, onConfirmHandler } = useForm({
@@ -72,7 +72,7 @@ export function Contacts({ index }: { index: number }) {
   });
 
   return (
-    <div className={styles.Contacts}>
+    <div className={styles.Contacts} id={id}>
       {!isMobile && (
         <div className={styles.Contacts__imageWrapper} ref={imageRef}>
           <img src={ContactsImg} alt="Lirules на мотоцикле" />

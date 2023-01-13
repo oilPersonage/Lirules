@@ -21,10 +21,6 @@ export const SocialIcons = memo(() => {
   const { isStartAnimation } = useSelector(landingSelectors.landing);
   const dispatch = useDispatch();
 
-  function onSetIsHover() {
-    dispatch(landingActions.setIsHover());
-  }
-
   return (
     <motion.div
       className={styles.SocialIcons__socialWrapper}
@@ -37,8 +33,6 @@ export const SocialIcons = memo(() => {
           <a
             href={link.link}
             target="_blank"
-            onMouseEnter={onSetIsHover}
-            onMouseLeave={onSetIsHover}
             className={styles.SocialIcons__socialIcon}
             rel="noreferrer"
           >

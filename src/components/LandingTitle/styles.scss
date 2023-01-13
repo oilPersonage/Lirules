@@ -5,13 +5,15 @@
   font-size: 36px;
   color: $white;
   text-transform: uppercase;
-  margin: $spaceL * 2 0 $spaceM;
+  margin: $lg * 2 0 $md;
 
   span {
     color: $accent;
+    white-space: pre;
   }
 
   @include respond($breakpoint: sm) {
-    margin: $spaceL 0 $base;
+    margin: $lg 0 $base;
+    font-size: 24px;
   }
 }

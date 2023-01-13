@@ -18,14 +18,22 @@ const classSizes: Record<ModalSize, string> = {
 };
 
 interface IModal {
-  children?: ReactElement | ReactElement[];
+  children?: ReactElement | ReactElement[] | null;
   isShowing: boolean;
   hide: () => void;
   size?: ModalSize;
   controls?: boolean;
+  dark?: boolean;
 }
 
-export const Modal = ({ isShowing, hide, children, size = 'sm', controls = false }: IModal) => {
+export const Modal = ({
+  isShowing,
+  hide,
+  dark,
+  children,
+  size = 'sm',
+  controls = false,
+}: IModal) => {
   return createPortal(
     <AnimatePresence initial={false}>
       {isShowing && (
@@ -43,7 +51,7 @@ export const Modal = ({ isShowing, hide, children, size = 'sm', controls = false
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 50, opacity: 0 }}
             transition={{ type: 'spring', duration: 0.3 }}
-            className={cn(styles.Modal, classSizes[size])}
+            className={cn(styles.Modal, classSizes[size], { [styles.Modal_dark]: dark })}
             aria-modal
             aria-hidden
             tabIndex={-1}

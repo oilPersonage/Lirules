@@ -10,6 +10,7 @@ import { LandingTitle } from '@components/LandingTitle';
 import { landingSelectors } from '@reducers/landing';
 
 import { Carousel } from '@pages/landing/content/about/сarousel';
+import { ILandingPage } from '@pages/landing/content/content';
 
 import styles from './styles.scss';
 
@@ -25,7 +26,7 @@ const PARTNER_LIST = [
   { title: 'The Garden', link: 'https://www.instagram.com/thegarden.glamping/' },
 ];
 
-export function About({ index }) {
+export function About({ index, id }: ILandingPage) {
   const isMobile = useMobileDetect();
   const activeNav = useSelector(landingSelectors.landing).activeNav;
   const carouselRef = useRef<HTMLDivElement>(null);
@@ -52,8 +53,8 @@ export function About({ index }) {
   });
 
   return (
-    <div className={styles.About}>
-      <Row>
+    <div className={styles.About} id={id}>
+      <Row column>
         <div ref={headingRef}>
           <LandingTitle title="ABOUT." colorText="ME" />
           <h3 className={styles.About__description}>

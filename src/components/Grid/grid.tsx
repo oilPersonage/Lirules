@@ -9,5 +9,5 @@ export function Row({
   children?: JSX.Element | JSX.Element[];
   column?: boolean;
 }) {
-  return <div className={cn(styles.Row, styles.Row_column)}>{children}</div>;
+  return <div className={cn(styles.Row, { [styles.Row_column]: column })}>{children}</div>;
 }

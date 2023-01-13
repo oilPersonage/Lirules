@@ -5,13 +5,13 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 0 0 0 $spaceL;
+  padding: 0 0 0 $lg;
   width: 100vw;
   color: white;
   flex: 1;
 
   &__title {
-    margin-bottom: $spaceL;
+    margin-bottom: $lg;
   }
 
   &__formTitle {
@@ -21,26 +21,29 @@
   }
 
   &__description {
-    margin: 0 0 $spaceS * 3
+    margin: 0 0 $sm * 3
   }
 
   &__formRef {
     position: relative;
     left: 100px;
+    @include respond(md) {
+      left: 0;
+    }
   }
 
   &__content {
-    max-width: $spaceL * 8;
-    padding-bottom: $spaceS * 4;
+    max-width: $lg * 8;
+    padding-bottom: $sm * 4;
   }
 
   &__form {
-    padding-top: $spaceS;
+    padding-top: $sm;
     margin-top: auto;
   }
 
   &__button {
-    margin-top: $spaceL;
+    margin-top: $lg;
   }
 
   &__imageWrapper {
@@ -80,15 +83,12 @@
     &__formRef, &__content {
       display: flex;
       flex-direction: column;
-      flex: 1;
       height: 100%;
       width: 100%;
     }
 
     &__button {
       display: flex;
-      align-items: flex-end;
-      flex: 1;
     }
 
     &__wrapper {
@@ -98,10 +98,10 @@
     }
 
     &__title {
-      margin: $spaceL 0 $base;
+      margin: $lg 0 $base;
     }
     &__formTitle {
-      margin: $base 0 $spaceM;
+      margin: $base 0 $md;
       margin-top: $base * 10;
       font-weight: 100;
       font-size: 16px;
@@ -112,7 +112,7 @@
 
     &__content {
       max-width: 100%;
-      padding-right: $spaceM;
+      padding-right: $md;
     }
   }
 }

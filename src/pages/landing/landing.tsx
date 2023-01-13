@@ -1,19 +1,24 @@
 import { useCallback, useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 
+import { useMobileDetect } from '@hooks/useMobileDetect';
+
 import { landingActions } from '@reducers/landing';
 
 import LandingContent from '@pages/landing/content/content';
+import { Cursor } from '@pages/landing/header/cursor';
 import { Dots } from '@pages/landing/header/dots';
 import { Menu } from '@pages/landing/header/menu';
 
 import styles from './styles.scss';
 
 export default function Landing() {
+  const isMobile = useMobileDetect();
   const dispatch = useDispatch();
   const landingMouseRef = useRef<HTMLHeadingElement>(null);
+
   const documentHeight = useCallback(() => {
-    if (landingMouseRef.current) {
+    if (landingMouseRef.current && !isMobile) {
       landingMouseRef.current.style.setProperty('max-height', `${window.innerHeight}px`);
     }
   }, [landingMouseRef]);
@@ -34,8 +39,8 @@ export default function Landing() {
   }, [documentHeight]);
 
   return (
-    <div className={styles.Landing} ref={landingMouseRef} style={{ overflow: 'hidden' }}>
-      <Dots />
+    <div className={styles.Landing} ref={landingMouseRef}>
+      {/*<Dots />*/}
       <Menu />
       <LandingContent />
       {/*<Outlet /> // for router children*/}

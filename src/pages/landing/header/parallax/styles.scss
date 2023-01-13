@@ -143,39 +143,6 @@
     }
   }
 
-  &__textWrapper {
-    position: absolute;
-    z-index: 8;
-    top: 0;
-    right: 0;
-    max-width: 1000px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-
-    &_title {
-      left: auto;
-      right: 180px;
-      top: 30%;
-    }
-
-
-    @include respond($breakpoint: sm) {
-      position: relative;
-      max-width: 100%;
-      padding: 0 $spaceM;
-      height: 100vh;
-      align-items: center;
-      top: auto;
-      margin-bottom: $spaceL * 3;
-
-      &_title {
-        right: 0;
-      }
-    }
-  }
-
   &__img {
     width: 100%;
     height: 100%;
@@ -226,7 +193,7 @@
     color: $white;
     text-transform: uppercase;
     font-size: 36px;
-    margin-bottom: $spaceS * 8;
+    margin-bottom: $sm * 8;
 
     span {
       color: $accent
@@ -236,19 +203,19 @@
     @include respond($breakpoint: sm) {
       font-size: 16px;
       text-align: center;
-      margin-bottom: $spaceM * 2;
+      margin-bottom: $md * 2;
       text-transform: none;
       font-weight: 100;
     }
   }
 
   &__cursor {
-    position: absolute;
-    z-index: 8;
+    position: fixed;
+    z-index: 9;
     top: 0;
     left: 0;
-    width: $spaceL;
-    height: $spaceL;
+    width: $lg;
+    height: $lg;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -262,12 +229,13 @@
   }
 
   &__cursorDot {
+    position: fixed;
     opacity: 0.2;
     border-radius: 50%;
     border: 1px solid $white;
-    background: $white;
-    width: $spaceS;
-    height: $spaceS;
+    //background: $white;
+    width: $lg;
+    height: $lg;
     transition: $middleTransitionHover;
 
     @include respond($breakpoint: md) {
@@ -277,8 +245,8 @@
 
     &_active {
       opacity: 0.3;
-      width: $spaceL;
-      height: $spaceL;
+      width: $lg;
+      height: $lg;
       border: 1px solid $white;
       background: rgba($white, 0);
     }

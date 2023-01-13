@@ -1,0 +1,116 @@
+@import "@styles/variables.scss";
+
+.Course {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+  &__wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 0 $lg;
+    flex: 1;
+    margin: $lg 0;
+
+    h4, p {
+      margin-top: 0;
+    }
+  }
+
+  &__item {
+    position: relative;
+    display: flex;
+    color: $white;
+    padding: $md;
+    align-items: stretch;
+
+
+    span {
+      top: $md;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba($white, 0.1);
+      cursor: pointer;
+      font-weight: 100;
+      margin-top: $sm;
+      padding: $base $md;
+      width: max-content;
+      font-size: 12px;
+    }
+  }
+
+  &__modalText {
+    color: $white;
+    margin-bottom: $sm;
+  }
+
+  &__number {
+    position: absolute;
+    top: -$md;
+    left: 0;
+    margin-right: $md;
+    font-size: 77px;
+    font-weight: bold;
+    opacity: 0.2;
+  }
+
+  &__descr {
+    max-height: 0;
+    overflow: hidden;
+
+    &_open {
+      max-height: 300px;
+    }
+  }
+
+  @include respond(sm) {
+    &__heading {
+      font-size: 18px;
+    }
+    &__list {
+      display: flex;
+      flex-direction: column;
+
+      li {
+        position: relative;
+        font-size: 14px;
+        margin-bottom: $base;
+
+        &:after {
+          content: '';
+          position: absolute;
+          top: $base * 2;
+          left: -$md;
+          width: $base * 2;
+          height: 1px;
+          background: rgba($white, 0.3);
+        }
+      }
+    }
+    &__wrapper {
+      grid-template-columns: 1fr;
+      padding: 0;
+
+      h4 {
+        &:first-letter {
+          color: $accent;
+        }
+
+        span {
+          display: none;
+        }
+      }
+    }
+    &__item {
+      padding-top: 0;
+      flex-direction: column;
+      margin-left: $md;
+    }
+    &__number {
+      left: 0;
+      top: -2px;
+      font-size: 18px;
+    }
+  }
+}
