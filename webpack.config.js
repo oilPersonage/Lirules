@@ -1,21 +1,14 @@
-const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
-const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
-const ReactRefreshTypeScript = require('react-refresh-typescript');
 
 const { APP_DEFAULT_PORT } = require('./app_settings');
 
 module.exports = async (env = {}, argv) => {
   const isDev = argv.mode !== 'production';
   return {
-    entry: [
-      `webpack-dev-server/client?http://localhost:${APP_DEFAULT_PORT}`,
-      'webpack/hot/dev-server',
-      './src/Root.tsx',
-    ],
+    entry: './src/Root.tsx',
     output: {
       publicPath: isDev ? '/' : undefined,
       filename: isDev ? '[name].js' : '[name].[contenthash].js',
@@ -37,12 +30,6 @@ module.exports = async (env = {}, argv) => {
           use: [
             {
               loader: require.resolve('ts-loader'),
-              options: {
-                getCustomTransformers: () => ({
-                  before: [isDev && ReactRefreshTypeScript()].filter(Boolean),
-                }),
-                transpileOnly: isDev,
-              },
             },
           ],
         },
@@ -112,8 +99,7 @@ module.exports = async (env = {}, argv) => {
           },
         },
       }),
-      isDev && new ReactRefreshWebpackPlugin(),
-    ].filter(Boolean),
+    ],
     resolve: {
       alias: {
         '@mocks': path.resolve(__dirname, 'src/__mocks__'),
