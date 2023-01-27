@@ -113,7 +113,7 @@ module.exports = async (env = {}, argv) => {
           },
         },
       }),
-      isDev && new ReactRefreshWebpackPlugin(),
+      // isDev && new ReactRefreshWebpackPlugin(),
     ].filter(Boolean),
     resolve: {
       alias: {
