@@ -9,6 +9,8 @@ import { LandingTitle } from '@components/LandingTitle';
 
 import { landingSelectors } from '@reducers/landing';
 
+import { onChangeCursorDot } from '@utils/onChangeCursorDot';
+
 import { Carousel } from '@pages/landing/content/about/сarousel';
 import { ILandingPage } from '@pages/landing/content/content';
 
@@ -72,7 +74,12 @@ export function About({ index, id }: ILandingPage) {
           <div className={styles.About__partnerWrapper}>
             <ul className={styles.About__partnerList}>
               {PARTNER_LIST.map((partner, index) => (
-                <li className={styles.About__partnerItem} key={index}>
+                <li
+                  className={styles.About__partnerItem}
+                  key={index}
+                  onMouseEnter={onChangeCursorDot}
+                  onMouseLeave={onChangeCursorDot}
+                >
                   <a href={partner.link} target="_blank" rel="noreferrer">
                     {partner.title}
                   </a>

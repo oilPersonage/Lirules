@@ -1,0 +1,126 @@
+@import "@styles/variables.scss";
+
+.Cases {
+  &__content {
+    color: $white;
+    margin-right: $lg;
+    padding-right: $lg * 2;
+
+    p {
+      line-height: 1.6;
+    }
+
+    &Name {
+      font-size: 24px;
+      font-weight: bold;
+      color: $accent;
+    }
+  }
+
+  &__headingWrapper {
+    display: flex;
+    margin-right: $md * 2;
+  }
+
+  &__heading {
+    min-width: $lg * 6;
+  }
+
+  &__list {
+    color: $white;
+    margin-top: $lg;
+  }
+
+  &__img {
+    min-width: 100px;
+    height: 100px;
+    max-height: 140px;
+    margin-right: $md * 2;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-left: 0;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(0);
+      transition: $middleTransitionHover;
+    }
+  }
+
+  &__item {
+    display: flex;
+    margin-bottom: $md;
+    position: relative;
+    transition: $middleTransitionHover;
+    opacity: 0.5;
+
+    p {
+      margin-top: 0;
+    }
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  &__title {
+    font-size: 14px;
+    margin-bottom: 0;
+    opacity: 0.6;
+  }
+
+  &__star {
+    margin-top: 0;
+  }
+
+  &__name {
+    font-size: 20px;
+
+    span {
+      font-size: 16px;
+      margin-left: $md;
+      color: $accent;
+    }
+  }
+
+  @include respond(sm) {
+    margin-bottom: $lg;
+    &__item {
+      flex-direction: column;
+      opacity: 1;
+      margin-bottom: $md * 2;
+    }
+    &__heading {
+      min-width: 0;
+      margin-bottom: $md;
+    }
+    &__title {
+      opacity: 1;
+    }
+    &__name {
+      margin-bottom: $sm;
+      font-size: 14px;
+      font-weight: bold;
+
+      span {
+        display: block;
+        font-size: 12px;
+        margin-left: 0;
+      }
+    }
+    &__img {
+      grid-area: img;
+      min-height: 40px;
+      min-width: 40px;
+      max-height: 40px;
+      max-width: 40px;
+      margin-right: $md;
+    }
+    &__text {
+      grid-area: text;
+      font-size: 14px;
+    }
+  }
+}

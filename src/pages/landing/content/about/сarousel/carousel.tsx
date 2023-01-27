@@ -8,6 +8,8 @@ import Photograph from '@images/landing/photograph.webp';
 import VideoMaker from '@images/landing/video.webp';
 import cn from 'classnames';
 
+import { onChangeCursorDot } from '@utils/onChangeCursorDot';
+
 import { onTouchDetect } from '@pages/landing/content/about/сarousel/touchEvent';
 
 import styles from './styles.scss';
@@ -130,11 +132,15 @@ export function Carousel() {
         <Arrow
           onClick={() => activeSlide !== 0 && setSlide(-1)}
           className={cn({ [styles.Carousel__arrowDisable]: activeSlide === 0 })}
+          onMouseEnter={onChangeCursorDot}
+          onMouseLeave={onChangeCursorDot}
         />
         <Arrow
           className={cn(styles.Carousel__arrowRight, {
             [styles.Carousel__arrowDisable]: activeSlide === ITEMS.length - 1,
           })}
+          onMouseEnter={onChangeCursorDot}
+          onMouseLeave={onChangeCursorDot}
           onClick={() => activeSlide !== ITEMS.length - 1 && setSlide(1)}
         />
       </div>

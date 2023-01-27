@@ -6,8 +6,6 @@ import { useMobileDetect } from '@hooks/useMobileDetect';
 import { landingActions } from '@reducers/landing';
 
 import LandingContent from '@pages/landing/content/content';
-import { Cursor } from '@pages/landing/header/cursor';
-import { Dots } from '@pages/landing/header/dots';
 import { Menu } from '@pages/landing/header/menu';
 
 import styles from './styles.scss';

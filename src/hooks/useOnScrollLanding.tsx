@@ -1,16 +1,17 @@
-import { RefObject, useCallback, useEffect, useRef } from 'react';
+import { RefObject, useCallback, useEffect } from 'react';
 
 import { useMobileDetect } from '@hooks/useMobileDetect';
 import { useAnimationFrame } from '@hooks/useRequestAnimationFrame';
 
 import { isNotNil } from '@utils/typeguard';
 
-import { LANDING_COUNT } from '@pages/landing/const';
+import { LANDING_PAGES } from '@pages/landing/content/content';
 
 window.scrollPosition = 0;
 window.isAnimateScroll = true;
 window.isAnimateParallax = true;
 window.activeNav = 0;
+window.animatedLandingBlock = null;
 let speed = 0;
 let position = 0;
 let rounded = 0;
@@ -19,9 +20,9 @@ let screenWidth;
 let isPrevPage = false;
 
 export function useOnScrollLanding(
-  containerRef: RefObject<HTMLElement>,
-  containerBGRef: RefObject<HTMLElement>,
-  containerTextRef: RefObject<HTMLElement>
+  containerRef: RefObject<HTMLElement>, // scroll container
+  containerBGRef: RefObject<HTMLElement>, // bg div
+  containerTextRef: RefObject<HTMLElement> // text div
 ) {
   const isMobile = useMobileDetect();
 
@@ -36,8 +37,6 @@ export function useOnScrollLanding(
       speed *= 0.6;
       const diff = rounded - position;
       rounded = Math.round(position);
-      position += diff * 0.055;
-      window.scrollPosition = position;
 
       // устанавливаем активное меню только при изменении rounded
       if (isNotNil(containerRef.current) && containerBGRef.current && containerTextRef.current) {
@@ -45,6 +44,9 @@ export function useOnScrollLanding(
           window.activeNav = rounded;
           // window.isAnimateParallax = window.activeNav === 0;
         }
+
+        position += diff * 0.055;
+        window.scrollPosition = position;
 
         containerRef.current.style.transform = `translateY(${-position * screenHeight}px) skewY(${
           speed * 50
@@ -77,10 +79,10 @@ export function useOnScrollLanding(
 
       // first block and end block
       const disabledScroll =
-        (deltaY < 0 && rounded === 0) || (deltaY > 0 && rounded === LANDING_COUNT - 1);
+        (deltaY < 0 && rounded === 0) || (deltaY > 0 && rounded === LANDING_PAGES.length);
 
       const nextSpeed = speed + deltaY * 0.0008;
-      if (!disabledScroll) {
+      if (!disabledScroll && !window.animatedLandingBlock) {
         speed = nextSpeed;
       }
     }

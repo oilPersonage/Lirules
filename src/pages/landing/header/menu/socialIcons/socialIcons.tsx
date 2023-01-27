@@ -8,6 +8,8 @@ import { motion } from 'framer-motion';
 
 import { landingActions, landingSelectors } from '@reducers/landing';
 
+import { onChangeCursorDot } from '@utils/onChangeCursorDot';
+
 import { menuItem, menuList } from '@pages/landing/header/framerMotionConfig';
 
 import styles from './styles.scss';
@@ -19,7 +21,6 @@ const LINKS = [
 
 export const SocialIcons = memo(() => {
   const { isStartAnimation } = useSelector(landingSelectors.landing);
-  const dispatch = useDispatch();
 
   return (
     <motion.div
@@ -31,6 +32,8 @@ export const SocialIcons = memo(() => {
       {LINKS.map((link) => (
         <motion.div key={link.link} variants={menuItem}>
           <a
+            onMouseEnter={onChangeCursorDot}
+            onMouseLeave={onChangeCursorDot}
             href={link.link}
             target="_blank"
             className={styles.SocialIcons__socialIcon}

@@ -214,12 +214,11 @@
     z-index: 9;
     top: 0;
     left: 0;
-    width: $lg;
-    height: $lg;
+    width: $sm;
+    height: $sm;
     display: flex;
     align-items: center;
     justify-content: center;
-
   }
 
   &__button {
@@ -233,9 +232,9 @@
     opacity: 0.2;
     border-radius: 50%;
     border: 1px solid $white;
-    //background: $white;
-    width: $lg;
-    height: $lg;
+    background: $white;
+    width: $sm;
+    height: $sm;
     transition: $middleTransitionHover;
 
     @include respond($breakpoint: md) {
@@ -243,12 +242,12 @@
     }
 
 
-    &_active {
-      opacity: 0.3;
-      width: $lg;
-      height: $lg;
-      border: 1px solid $white;
-      background: rgba($white, 0);
-    }
+    //&_active {
+    //  opacity: 0.3;
+    //  width: $lg;
+    //  height: $lg;
+    //  border: 1px solid $white;
+    //  background: rgba($white, 0);
+    //}
   }
 }

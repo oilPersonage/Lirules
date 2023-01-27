@@ -4,16 +4,74 @@
   display: flex;
   flex-direction: column;
   flex: 1;
+  max-height: 100vh;
+
+  &__relative {
+    position: relative;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+
+    &:after, &:before {
+      content: '';
+      position: absolute;
+      z-index: 2;
+      left: 0;
+      width: 100vw;
+      height: $lg;
+    }
+
+    &:before {
+      top: 0;
+    }
+
+    &:after {
+      bottom: 0;
+      background: linear-gradient(to top, $black, transparent);
+    }
+
+    &:before {
+      background: linear-gradient(to bottom, $black, transparent);
+    }
+  }
+
+  &__row {
+    max-width: $row + $lg * 3;
+    width: 100%;
+    position: relative;
+    flex: 1;
+    max-height: calc(100vh - 188px);
+    margin: 0 auto;
+    overflow-y: auto;
+    overflow-x: visible;
+
+    &::-webkit-scrollbar {
+      width: 0px;
+    }
+  }
 
   &__wrapper {
+    width: 100%;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    padding: 0 $lg;
+    grid-template-columns: 1fr;
+    padding: $lg 88px;
+    margin: 0 -$md;
     flex: 1;
-    margin: $lg 0;
+
+    h4 {
+      font-size: 36px;
+      margin-bottom: $md;
+    }
 
     h4, p {
       margin-top: 0;
+
+      span {
+        background: $accent;
+        color: $black;
+        font-weight: bold;
+        transition: $fastTransitionHover;
+      }
     }
   }
 
@@ -21,8 +79,10 @@
     position: relative;
     display: flex;
     color: $white;
-    padding: $md;
+    padding: 0 $md;
     align-items: stretch;
+    min-width: 100%;
+    margin-bottom: $lg * 2;
 
 
     span {
@@ -31,13 +91,16 @@
       align-items: center;
       justify-content: center;
       border: 1px solid rgba($white, 0.1);
-      cursor: pointer;
       font-weight: 100;
       margin-top: $sm;
       padding: $base $md;
       width: max-content;
       font-size: 12px;
     }
+  }
+
+  &__descList {
+    line-height: 1.6;
   }
 
   &__modalText {
@@ -47,8 +110,8 @@
 
   &__number {
     position: absolute;
-    top: -$md;
-    left: 0;
+    top: -$sm;
+    left: -$lg;
     margin-right: $md;
     font-size: 77px;
     font-weight: bold;
@@ -65,8 +128,15 @@
   }
 
   @include respond(sm) {
+    max-height: 100%;
+    margin-bottom: $lg;
     &__heading {
       font-size: 18px;
+    }
+    &__relative {
+      &:before, &:after {
+        content: none;
+      }
     }
     &__list {
       display: flex;
@@ -88,11 +158,21 @@
         }
       }
     }
+    &__descList {
+      font-size: 14px;
+    }
+    &__row {
+      max-height: 100%;
+    }
     &__wrapper {
       grid-template-columns: 1fr;
-      padding: 0;
+      padding: $md $md;
+      margin: 0;
 
       h4 {
+        font-size: 16px;
+        margin-bottom: $sm;
+
         &:first-letter {
           color: $accent;
         }
@@ -105,11 +185,12 @@
     &__item {
       padding-top: 0;
       flex-direction: column;
-      margin-left: $md;
+      margin-left: 0;
+      margin-bottom: $md;
     }
     &__number {
-      left: 0;
-      top: -2px;
+      left: 0px;
+      top: 0px;
       font-size: 18px;
     }
   }

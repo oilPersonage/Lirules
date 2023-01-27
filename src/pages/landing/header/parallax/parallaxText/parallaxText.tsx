@@ -6,6 +6,8 @@ import { Button } from '@components/Button';
 
 import { landingSelectors } from '@reducers/landing';
 
+import { onChangeCursorDot } from '@utils/onChangeCursorDot';
+
 import { titleItem, titleList } from '@pages/landing/header/framerMotionConfig';
 import styles from '@pages/landing/header/parallax/styles.scss';
 
@@ -52,7 +54,11 @@ export function ParallaxText() {
       >
         Авторская программа по обучению видеосъеке на <span>телефон</span>
       </motion.h2>
-      <div className={styles.Parallax__button}>
+      <div
+        className={styles.Parallax__button}
+        onMouseEnter={onChangeCursorDot}
+        onMouseLeave={onChangeCursorDot}
+      >
         <Button animateConfig={animateConfig} type="accent">
           Пройти курс
         </Button>

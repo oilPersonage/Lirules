@@ -16,7 +16,7 @@ export function Cursor() {
   }, [ref]);
 
   return (
-    <div className={styles.Parallax__cursor} ref={ref}>
+    <div className={styles.Parallax__cursor} ref={ref} id="parallaxCursor">
       <span className={styles.Parallax__cursorDot} />
     </div>
   );

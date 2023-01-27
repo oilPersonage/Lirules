@@ -7,6 +7,8 @@ import { isNotNil } from '@utils/typeguard';
 
 import { parallaxItems } from '@pages/landing/header/parallax/parallaxItems';
 
+const CURSOR_WIDTH = 12 / 2;
+
 const coord = {
   x: 0,
   y: 0,
@@ -39,11 +41,18 @@ export function useParallax({ landingMouseRef, refs, cursorRef }: IUseParallax) 
     mouseCoord.x += (aspectMousePosition.current.x - mouseCoord.x) * 0.15;
     mouseCoord.y += (aspectMousePosition.current.y - mouseCoord.y) * 0.15;
 
-    const mousePosX = (-(mouseCoord.x - 1) / 2) * width * 2 - 30;
-    const mousePosY = (-(mouseCoord.y - 1) / 2) * height * 2 - 30;
+    const mousePosX = (-(mouseCoord.x - 1) / 2) * width * 2 - CURSOR_WIDTH;
+    const mousePosY = (-(mouseCoord.y - 1) / 2) * height * 2 - CURSOR_WIDTH;
 
     if (cursorRef) {
       cursorRef.style.transform = `translate(${mousePosX}px, ${mousePosY}px)`;
+
+      // Animate cursor dot
+      if (window.isHover && !cursorRef.classList.contains('active')) {
+        cursorRef.classList.add('active');
+      } else if (cursorRef.classList.contains('active') && !window.isHover) {
+        cursorRef.classList.remove('active');
+      }
     }
 
     function setTransformParallaxItem(item: HTMLElement, index: number) {

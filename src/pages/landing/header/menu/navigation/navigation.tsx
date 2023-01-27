@@ -9,6 +9,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 
 import { landingActions, landingSelectors } from '@reducers/landing';
 
+import { onChangeCursorDot } from '@utils/onChangeCursorDot';
 import { isNotNil } from '@utils/typeguard';
 
 import { LANDING_PAGES } from '@pages/landing/content/content';
@@ -16,6 +17,8 @@ import { navigationList } from '@pages/landing/header/framerMotionConfig';
 import { IOnClick } from '@pages/landing/header/menu/navigation/types';
 
 import styles from './styles.scss';
+
+const SCROLL_SPEED = 2;
 
 export function Navigation() {
   const isMobile = useMobileDetect();
@@ -34,7 +37,7 @@ export function Navigation() {
       if (isNotNil(index)) {
         dispatch(landingActions.setActiveNav(index));
         if (isNotNil(setSpeed) && !isMobile) {
-          setSpeed((index - window.activeNav) / 2.5, index < window.activeNav);
+          setSpeed((index - window.activeNav) / SCROLL_SPEED, index < window.activeNav);
         } else if (isMobile && id) {
           document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
         }
@@ -70,7 +73,7 @@ export function Navigation() {
         className={styles.Navigation__logotype}
         onClick={() => onClick({ index: 0, id: 'header' })}
       >
-        <div>
+        <div onMouseEnter={onChangeCursorDot} onMouseLeave={onChangeCursorDot}>
           <Logotype />
         </div>
       </motion.div>
@@ -101,6 +104,8 @@ export function Navigation() {
 
       <div
         className={styles.Navigation__hamburgerWrapper}
+        onMouseEnter={onChangeCursorDot}
+        onMouseLeave={onChangeCursorDot}
         onClick={() => onClick({ isHideMenu: true })}
       >
         <div

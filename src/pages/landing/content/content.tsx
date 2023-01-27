@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import { useOnScrollLanding } from '@hooks/useOnScrollLanding';
 
@@ -37,7 +37,7 @@ export const LANDING_PAGES = [
     text: 'Информация о ценности данного курса',
   },
   { component: Cases, id: 'cases', title: 'Кейсы', text: 'Работы моих учеников и отзывы' },
-  { component: Contacts, id: 'contacts', title: 'Контакты', text: 'Контактная информация' },
+  // { component: Contacts, id: 'contacts', title: 'Контакты', text: 'Контактная информация' },
 ];
 
 export interface ILandingPage {
