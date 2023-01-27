@@ -83,7 +83,7 @@
     font-size: 200px;
     font-family: Alfa Slab One;
     font-weight: bold;
-    background-image: url("/assets/images/landing/arm.jpg");
+    background-image: url("/assets/images/landing/arm.webp");
     background-position: 50% 50%;
     background-size: 150%;
     background-repeat: repeat;
@@ -181,6 +181,7 @@
   @include respond($breakpoint: sm) {
     padding-top: $sm;
     margin-bottom: 0;
+
     &__wrapper {
       transition: $middleTransitionHover;
     }
@@ -189,6 +190,9 @@
       display: flex;
     }
     &__itemDesc {
+      position: relative;
+      z-index: 3;
+
       span {
         font-size: 12px;
       }

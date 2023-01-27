@@ -19,9 +19,11 @@ export function Course({ index, id }: ILandingPage) {
         if (!window.animatedLandingBlock) {
           window.animatedLandingBlock = ref.current;
         }
+
         const el = ref?.current?.getBoundingClientRect();
         if (
-          ((el && Math.round(Math.abs(el.top)) >= Math.floor(el.height - window.innerHeight)) ||
+          ((el &&
+            Math.round(Math.abs(el.top)) >= Math.floor(el.height - window.innerHeight - 30)) ||
             (titleRef.current && el && el.top >= titleRef.current.clientHeight - 30)) &&
           window.animatedLandingBlock
         ) {
@@ -29,7 +31,7 @@ export function Course({ index, id }: ILandingPage) {
         }
       });
     }
-  }, [titleRef.current]);
+  }, []);
 
   return (
     <div className={styles.Course} id={id}>

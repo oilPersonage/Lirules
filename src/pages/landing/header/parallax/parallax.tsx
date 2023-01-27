@@ -14,20 +14,20 @@ export function Parallax() {
   const dispatch = useDispatch();
   const elRefs = useRef([]);
   const [imagesCount, setImagesLoaded] = useState(0);
-  const parallaxItemsImagesLength = parallaxItems.filter((el) => el.img).length;
 
   const isMobile = useMobileDetect();
 
   const { landingMouseRef, cursorRef } = useSelector(landingSelectors.landing);
+
   useParallax({ landingMouseRef, refs: elRefs, cursorRef });
+
+  const parallaxItemsImagesLength = isMobile
+    ? parallaxItems.filter((el) => el.mobileImg).length
+    : parallaxItems.filter((el) => el.img).length;
 
   const setStartAnimation = useCallback(() => {
     if (parallaxItemsImagesLength > imagesCount) {
-      console.log(22);
-      setImagesLoaded((v) => {
-        console.log({ v });
-        return v + 1;
-      });
+      setImagesLoaded((v) => v + 1);
     }
   }, [imagesCount]);
 

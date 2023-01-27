@@ -1,9 +1,9 @@
 import { ReactElement } from 'react';
 
-import image1 from '@assets/images/landing/1.jpg';
-import image2 from '@assets/images/landing/2.jpg';
-import image3 from '@assets/images/landing/3.jpg';
-import image4 from '@assets/images/landing/4.jpg';
+import image1 from '@assets/images/landing/case1.jpg';
+import image2 from '@assets/images/landing/case2.jpg';
+import image3 from '@assets/images/landing/case3.jpg';
+import image4 from '@assets/images/landing/case4.jpg';
 
 export interface IReviews {
   id: number;

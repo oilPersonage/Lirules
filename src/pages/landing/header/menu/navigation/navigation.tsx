@@ -18,7 +18,7 @@ import { IOnClick } from '@pages/landing/header/menu/navigation/types';
 
 import styles from './styles.scss';
 
-const SCROLL_SPEED = 2;
+const SCROLL_SPEED = 2.5;
 
 export function Navigation() {
   const isMobile = useMobileDetect();

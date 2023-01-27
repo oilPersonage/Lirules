@@ -1,9 +1,9 @@
-import arm from '@images/landing/arm.jpg';
-import armMobile from '@images/landing/armMobile.jpg';
-import lida from '@images/landing/lida.jpg';
-import lidaMobile from '@images/landing/lidaMobile.jpg';
-import lira from '@images/landing/lira.jpg';
-import liraMobile from '@images/landing/liraMobile.jpg';
+import arm from '@images/landing/arm.webp';
+import armMobile from '@images/landing/armMobile.webp';
+import lida from '@images/landing/lida.webp';
+import lidaMobile from '@images/landing/lidaMobile.webp';
+import lira from '@images/landing/lira.webp';
+import liraMobile from '@images/landing/liraMobile.webp';
 
 type list = {
   text: string;

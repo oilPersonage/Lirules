@@ -54,12 +54,12 @@ export function Carousel() {
   const isMobile = useMobileDetect();
 
   // set fix height for all items and carousel
-  useEffect(() => {
-    if (ref.current) {
-      setCarouselHeight(ref.current.clientHeight);
-    }
-  }, [ref, firstItemRef]);
-
+  // useEffect(() => {
+  //   if (ref.current) {
+  //     // setCarouselHeight(ref.current.clientHeight);
+  //   }
+  // }, [ref, firstItemRef]);
+  //
   useEffect(() => {
     if (firstItemRef.current && ITEMS.length > 0) {
       setDeffSliderWidth(firstItemRef.current.clientWidth);

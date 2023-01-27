@@ -66,7 +66,7 @@ module.exports = async (env = {}, argv) => {
           loader: 'html-loader',
         },
         {
-          test: /\.(png|jpg|jpeg|gif|webp)$/i,
+          test: /\.(png|.webp|jpeg|jpg|gif|webp)$/i,
           type: 'asset/resource',
         },
         {
