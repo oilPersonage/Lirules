@@ -21,8 +21,7 @@ module.exports = async (env = {}, argv) => {
       filename: isDev ? '[name].js' : '[name].[contenthash].js',
       path: path.resolve(__dirname, 'build'),
     },
-    devtool: 'eval-source-map',
-    mode: isDev ? 'development' : 'production',
+    devtool: isDev ? 'eval-source-map' : false,
     devServer: {
       port: APP_DEFAULT_PORT,
       hot: true,
@@ -113,7 +112,7 @@ module.exports = async (env = {}, argv) => {
           },
         },
       }),
-      // isDev && new ReactRefreshWebpackPlugin(),
+      isDev && new ReactRefreshWebpackPlugin(),
     ].filter(Boolean),
     resolve: {
       alias: {

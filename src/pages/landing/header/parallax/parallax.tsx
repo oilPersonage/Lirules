@@ -8,7 +8,6 @@ import cn from 'classnames';
 import { landingActions, landingSelectors } from '@reducers/landing';
 
 import { parallaxItems } from './parallaxItems';
-import { ParallaxText } from './parallaxText';
 import styles from './styles.scss';
 
 export function Parallax() {
@@ -27,7 +26,7 @@ export function Parallax() {
     setTimeout(() => {
       overflow?.classList.add('hide');
     }, 1000);
-    dispatch(landingActions.startAnimation(null));
+    dispatch(landingActions.startAnimation());
   }
 
   useEffect(() => {
