@@ -4,7 +4,7 @@ import { RootState } from '@src/reducers';
 import { LandingState } from './types';
 
 const initialState: LandingState = {
-  isStartAnimation: true,
+  isStartAnimation: false,
   activeNav: 0,
   isHover: false,
   landingMouseRef: undefined,

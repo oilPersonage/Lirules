@@ -1,4 +1,3 @@
-import { Cursor } from '@pages/landing/header/cursor';
 import { Parallax } from '@pages/landing/header/parallax';
 
 import styles from './styles.scss';
