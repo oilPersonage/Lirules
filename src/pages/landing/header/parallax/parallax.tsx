@@ -1,9 +1,8 @@
-import { createRef, useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { useMobileDetect } from '@hooks/useMobileDetect';
 import { useParallax } from '@hooks/useParallax';
-import cn from 'classnames';
 
 import { landingActions, landingSelectors } from '@reducers/landing';
 
@@ -12,7 +11,7 @@ import styles from './styles.scss';
 
 export function Parallax() {
   const dispatch = useDispatch();
-  const elRefs = useRef([]);
+  const elRefs = useRef<HTMLDivElement[]>([]);
   const [imagesCount, setImagesLoaded] = useState(0);
 
   const isMobile = useMobileDetect();
@@ -32,7 +31,6 @@ export function Parallax() {
   }, [imagesCount]);
 
   useEffect(() => {
-    console.log(imagesCount, parallaxItems);
     if (imagesCount >= parallaxItemsImagesLength) {
       const overflow = document.getElementById('overflow');
       overflow?.classList.add('remove');
@@ -46,27 +44,36 @@ export function Parallax() {
 
   return (
     <div className={styles.Parallax__images}>
-      {parallaxItems.map((item, index) => (
-        // @ts-ignore
-        <div key={index} ref={(ref) => (elRefs.current[index] = ref)} className={item.className}>
-          {!isMobile && item.img && (
+      {parallaxItems.map((item, index) =>
+        !isMobile && item.img ? (
+          <div
+            key={index}
+            ref={(ref) => (ref ? (elRefs.current[index] = ref) : null)}
+            className={item.className}
+          >
             <img
               src={item.img}
               className={styles.Parallax__img}
               alt=""
               onLoad={setStartAnimation}
             />
-          )}
-          {isMobile && item.mobileImg && (
-            <img
-              src={item.mobileImg}
-              className={styles.Parallax__img}
-              alt=""
-              onLoad={setStartAnimation}
-            />
-          )}
-        </div>
-      ))}
+          </div>
+        ) : (
+          isMobile &&
+          item.mobileImg && (
+            <div key={index} className={item.className}>
+              {item.mobileImg && (
+                <img
+                  src={item.mobileImg}
+                  className={styles.Parallax__img}
+                  alt=""
+                  onLoad={setStartAnimation}
+                />
+              )}
+            </div>
+          )
+        )
+      )}
     </div>
   );
 }
