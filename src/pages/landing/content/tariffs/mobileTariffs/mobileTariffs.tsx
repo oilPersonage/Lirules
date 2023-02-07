@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 
 import Dollar from '@icons/dollar.svg';
 import Lock from '@icons/lock.svg';
+import mobileImg from '@images/landing/mobileTariffs.jpg';
 import cn from 'classnames';
 
 import { LandingTitle } from '@components/LandingTitle';
@@ -12,6 +13,12 @@ import { TARIFF_LIST } from '@pages/landing/content/tariffs/const';
 import styles from './styles.scss';
 
 const PRICE_HEIGHT = 24;
+
+const classImages = {
+  0: styles.Mobile__img0,
+  1: styles.Mobile__img1,
+  2: styles.Mobile__img2,
+};
 
 export function MobileTariffs() {
   const [activeSlide, setActiveSlide] = useState(0);
@@ -50,31 +57,32 @@ export function MobileTariffs() {
         <LandingTitle title="Tariff" colorText="s" />
       </div>
       <div className={styles.Mobile__imageWrapper}>
-        {TARIFF_LIST.map((tariff, index) => (
-          <div
-            key={tariff.id}
-            className={cn(styles.Mobile__relative, {
-              [styles.Mobile__nextImg]: index > activeSlide,
-              [styles.Mobile__prevImg]: index < activeSlide,
-            })}
-          >
-            <div className={styles.Mobile__imgDefault}>
-              <img
-                className={styles.Mobile__imageBase}
-                src={tariff.mobileImg}
-                loading="lazy"
-                alt="Любопытный"
-              />
-            </div>
+        <img src={mobileImg} alt="" loading="lazy" className={cn(classImages[activeSlide])} />
+        {/*{TARIFF_LIST.map((tariff, index) => (*/}
+        {/*  <div*/}
+        {/*    key={tariff.id}*/}
+        {/*    className={cn(styles.Mobile__relative, {*/}
+        {/*      [styles.Mobile__nextImg]: index > activeSlide,*/}
+        {/*      [styles.Mobile__prevImg]: index < activeSlide,*/}
+        {/*    })}*/}
+        {/*  >*/}
+        {/*    <div className={styles.Mobile__imgDefault}>*/}
+        {/*      <img*/}
+        {/*        className={styles.Mobile__imageBase}*/}
+        {/*        src={tariff.mobileImg}*/}
+        {/*        loading="lazy"*/}
+        {/*        alt="Любопытный"*/}
+        {/*      />*/}
+        {/*    </div>*/}
 
-            {/*<div className={styles.Mobile__imageEffect}>*/}
-            {/*  <img src={tariff.img} loading="lazy" alt="Любопытный" />*/}
-            {/*</div>*/}
-            {/*<div className={styles.Mobile__imageEffect2}>*/}
-            {/*  <img src={tariff.img} loading="lazy" alt="Любопытный" />*/}
-            {/*</div>*/}
-          </div>
-        ))}
+        {/*    /!*<div className={styles.Mobile__imageEffect}>*!/*/}
+        {/*    /!*  <img src={tariff.img} loading="lazy" alt="Любопытный" />*!/*/}
+        {/*    /!*</div>*!/*/}
+        {/*    /!*<div className={styles.Mobile__imageEffect2}>*!/*/}
+        {/*    /!*  <img src={tariff.img} loading="lazy" alt="Любопытный" />*!/*/}
+        {/*    /!*</div>*!/*/}
+        {/*  </div>*/}
+        {/*))}*/}
       </div>
       <div className={styles.Mobile} onTouchStart={onTouch} onTouchMove={onTouch}>
         <div className={styles.Mobile__carousel} ref={carouselRef}>

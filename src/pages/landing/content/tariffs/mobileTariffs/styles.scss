@@ -19,8 +19,25 @@
     left: 0;
     top: 0;
     width: 100vw;
-    height: 100vh;
+    height: 100%;
+    overflow: hidden;
     opacity: 0.2;
+
+    img {
+      width: 300vw;
+      height: 100%;
+      transition: $slowTransitionHover;
+    }
+  }
+
+  &__img {
+    &1 {
+      transform: translateX(-100vw);
+    }
+
+    &2 {
+      transform: translateX(-200vw);
+    }
   }
 
   &__relative {
