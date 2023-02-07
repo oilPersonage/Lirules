@@ -11,6 +11,7 @@ export interface IButton {
   isLoading?: boolean;
   className?: string;
   isLoaded?: boolean;
+  uppercase?: boolean;
   animateConfig?: any;
   theme?: 'dark' | 'light';
 }

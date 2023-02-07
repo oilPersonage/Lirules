@@ -29,10 +29,13 @@ export function Button({
   animateConfig,
   className,
   theme = 'dark',
+  uppercase,
 }: IButton) {
   function onClickHandler() {
     if (!isLoading && isNotNil(onClick)) onClick();
   }
+
+  console.log(uppercase, children);
 
   function getClassName() {
     return cn(
@@ -44,6 +47,7 @@ export function Button({
       {
         [styles.Button__isLoading]: isLoading,
         [styles.Button__isLoaded]: isLoaded,
+        [styles.Button__uppercase]: uppercase,
       }
     );
   }
@@ -63,6 +67,7 @@ export function Button({
       className={cn(styles.Button, classTypes[type], classSizes[size], {
         [styles.Button__isLoading]: isLoading,
         [styles.Button__isLoaded]: isLoaded,
+        [styles.Button__uppercase]: uppercase,
       })}
       onClick={onClickHandler}
     >

@@ -33,12 +33,10 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    
+
 
     @include respond(md) {
-      &__textWrapper {
-        align-items: center;
-      }
+      align-items: center;
     }
   }
 

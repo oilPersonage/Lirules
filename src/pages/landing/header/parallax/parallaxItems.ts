@@ -3,7 +3,7 @@ import lensB from '@images/landing/lens-b.webp';
 import lensM from '@images/landing/lens-m.webp';
 import lensVB from '@images/landing/lens-wb.webp';
 import lirules from '@images/landing/lirules.webp';
-import mobileHeader2 from '@images/landing/mobileHeader2.webp';
+import mobileHeader2 from '@images/landing/mobileHeader3.png';
 import phone from '@images/landing/phone2.webp';
 import balloons from '@images/landing/sphere.webp';
 import cn from 'classnames';

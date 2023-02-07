@@ -68,6 +68,10 @@
     }
   }
 
+  &__uppercase {
+    text-transform: uppercase;
+  }
+
   &__isLoaded {
     position: absolute;
     top: -100%;

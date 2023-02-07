@@ -38,9 +38,9 @@ export function ParallaxText() {
             {symbol}
           </motion.p>
         ))}
-        <motion.p variants={titleItem} className={styles.Parallax__date}>
-          06.07.2022
-        </motion.p>
+        {/*<motion.p variants={titleItem} className={styles.Parallax__date}>*/}
+        {/*  06.07.2022*/}
+        {/*</motion.p>*/}
       </motion.div>
 
       <motion.h2
@@ -59,7 +59,7 @@ export function ParallaxText() {
         onMouseEnter={onChangeCursorDot}
         onMouseLeave={onChangeCursorDot}
       >
-        <Button animateConfig={animateConfig} type="accent">
+        <Button animateConfig={animateConfig} uppercase type="accent">
           Пройти курс
         </Button>
       </div>
