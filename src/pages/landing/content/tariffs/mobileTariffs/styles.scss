@@ -8,7 +8,6 @@
   $p: &;
 
   &__wrapper {
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
     flex: 1;
@@ -236,9 +235,10 @@
     height: 60px;
     border-radius: 5px;
     font-weight: bold;
+    text-transform: uppercase;
 
     @include respond(md) {
-      margin-bottom: $lg * 2;
+      margin-bottom: $lg;
     }
   }
 
