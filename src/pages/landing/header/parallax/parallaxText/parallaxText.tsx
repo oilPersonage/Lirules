@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
 
+import { useMobileDetect } from '@hooks/useMobileDetect';
 import { motion } from 'framer-motion';
 
 import { Button } from '@components/Button';
@@ -9,11 +10,15 @@ import { landingSelectors } from '@reducers/landing';
 import { onChangeCursorDot } from '@utils/onChangeCursorDot';
 
 import { titleItem, titleList } from '@pages/landing/header/framerMotionConfig';
+import { SCROLL_SPEED } from '@pages/landing/header/menu/navigation/navigation';
 import styles from '@pages/landing/header/parallax/styles.scss';
 
 const TITLE = 'Lirules';
+const COURSE_INDEX = 2;
 
 export function ParallaxText() {
+  const isMobile = useMobileDetect();
+  const { setSpeed } = useSelector(landingSelectors.landing);
   const { isStartAnimation } = useSelector(landingSelectors.landing);
 
   const animateConfig = {
@@ -52,7 +57,7 @@ export function ParallaxText() {
         }}
         transition={{ delay: 2 }}
       >
-        Авторская программа по обучению видеосъеке на <span>телефон</span>
+        Авторская программа по обучению видеосъмеке на <span>телефон</span>
       </motion.h2>
       <div
         className={styles.Parallax__button}
@@ -61,6 +66,19 @@ export function ParallaxText() {
       >
         <Button animateConfig={animateConfig} uppercase type="accent">
           Пройти курс
+        </Button>
+        <Button
+          onClick={() =>
+            isMobile
+              ? document.getElementById('course')?.scrollIntoView({ behavior: 'smooth' })
+              : setSpeed
+              ? setSpeed((COURSE_INDEX - window.activeNav) / SCROLL_SPEED, true)
+              : null
+          }
+          animateConfig={animateConfig}
+          type="outline"
+        >
+          Чему вы научитесь?
         </Button>
       </div>
     </div>

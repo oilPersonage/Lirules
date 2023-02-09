@@ -5,7 +5,7 @@ import { useAnimationFrame } from '@hooks/useRequestAnimationFrame';
 
 import { isNotNil } from '@utils/typeguard';
 
-import { LANDING_PAGES } from '@pages/landing/content/content';
+import { LANDING_PAGES } from '@pages/landing/const';
 
 window.scrollPosition = 0;
 window.isAnimateScroll = true;

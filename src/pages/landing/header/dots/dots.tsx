@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useMemo } from 'react';
+import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 
 import cn from 'classnames';
@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 
 import { landingSelectors } from '@reducers/landing';
 
-import { LANDING_COUNT } from '@pages/landing/const';
+import { LANDING_PAGES } from '@pages/landing/const';
 import { DotsArray } from '@pages/landing/header/dots/types';
 import { dotsItem, dotsList } from '@pages/landing/header/framerMotionConfig';
 
@@ -17,7 +17,7 @@ export function Dots() {
 
   const renderDots = useMemo(() => {
     const dotsArray: DotsArray[] = [];
-    for (let i = 0; i < LANDING_COUNT; i++) {
+    for (let i = 0; i < LANDING_PAGES.length; i++) {
       dotsArray.push({ active: window.activeNav === i });
     }
 

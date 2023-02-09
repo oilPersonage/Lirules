@@ -35,8 +35,6 @@ export function Button({
     if (!isLoading && isNotNil(onClick)) onClick();
   }
 
-  console.log(uppercase, children);
-
   function getClassName() {
     return cn(
       className,

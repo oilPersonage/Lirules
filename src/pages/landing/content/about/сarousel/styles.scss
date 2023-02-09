@@ -21,6 +21,7 @@
     transition: $slowTransitionHover;
     min-width: calc($row - $lg * 2 - $lg);
     opacity: 1;
+    will-change: transform, opacity;
 
     #{$p}__itemTitle {
       font-size: 180px;

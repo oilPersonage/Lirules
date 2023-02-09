@@ -11,6 +11,10 @@
     color: $white;
   }
 
+  &__heading {
+    will-change: transform;
+  }
+
   &__description {
     font-weight: 100;
     font-size: 16px;
@@ -35,6 +39,10 @@
     display: flex;
     margin-left: -$sm;
     margin-right: -$sm;
+  }
+
+  &__partner {
+    will-change: transform;
   }
 
   &__partnerWrapper {
@@ -83,6 +91,7 @@
     display: flex;
     flex-direction: column;
     flex: 1;
+    will-change: transform;
   }
 
 

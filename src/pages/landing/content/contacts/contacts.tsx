@@ -12,18 +12,15 @@ import { Row } from '@components/Grid/grid';
 import { Input } from '@components/Input/Input';
 import { LandingTitle } from '@components/LandingTitle';
 
-import { landingSelectors } from '@reducers/landing';
-
 import { isNotNil } from '@utils/typeguard';
 
-import { LANDING_COUNT } from '@pages/landing/const';
+import { LANDING_PAGES } from '@pages/landing/const';
 import {
   CONTACT_INPUTS,
   REGEXP_NAME,
   REGEXP_PHONE,
   REQUIRED_FIELDS,
 } from '@pages/landing/content/contacts/const';
-import { ContactsInfo } from '@pages/landing/content/contacts/ContactsInfo';
 import { ILandingPage } from '@pages/landing/content/content';
 
 import styles from './styles.scss';
@@ -51,15 +48,15 @@ export function Contacts({ index, id }: ILandingPage) {
       // form
       if (isNotNil(formRef.current)) {
         formRef.current.style.cssText = `transform: translateX(${
-          (window.scrollPosition - LANDING_COUNT) * 100
-        }px); opacity: ${window.scrollPosition - LANDING_COUNT + 2}`;
+          (window.scrollPosition - LANDING_PAGES.length) * 100
+        }px); opacity: ${window.scrollPosition - LANDING_PAGES.length + 2}`;
       }
 
       // image
       if (isNotNil(imageRef.current)) {
         imageRef.current.style.cssText = `transform: translateX(${
-          (window.scrollPosition - LANDING_COUNT) * -300
-        }px); opacity: ${(window.scrollPosition - LANDING_COUNT + 2) / 2}`;
+          (window.scrollPosition - LANDING_PAGES.length) * -300
+        }px); opacity: ${(window.scrollPosition - LANDING_PAGES.length + 2) / 2}`;
       }
     },
     isAnimate: window.activeNav - 1 === index || window.activeNav === index,

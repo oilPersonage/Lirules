@@ -12,13 +12,13 @@ import { landingActions, landingSelectors } from '@reducers/landing';
 import { onChangeCursorDot } from '@utils/onChangeCursorDot';
 import { isNotNil } from '@utils/typeguard';
 
-import { LANDING_PAGES } from '@pages/landing/content/content';
+import { LANDING_PAGES } from '@pages/landing/const';
 import { navigationList } from '@pages/landing/header/framerMotionConfig';
 import { IOnClick } from '@pages/landing/header/menu/navigation/types';
 
 import styles from './styles.scss';
 
-const SCROLL_SPEED = 2.5;
+export const SCROLL_SPEED = 2.5;
 
 export function Navigation() {
   const isMobile = useMobileDetect();
@@ -29,9 +29,6 @@ export function Navigation() {
   const onClick = useCallback(
     ({ index, isHideMenu, id }: IOnClick) => {
       if (isHideMenu) {
-        if (!isMobile) {
-          window.isAnimateScroll = !window.isAnimateScroll;
-        }
         toggle();
       }
       if (isNotNil(index)) {

@@ -11,6 +11,7 @@
   }
 
   &__scrollWrapper {
+    will-change: transform;
     position: relative;
     z-index: 12;
   }
@@ -23,6 +24,7 @@
     height: 100vh * 6;
     top: 100vh;
     left: 0;
+    will-change: transform;
   }
 
   &__page {

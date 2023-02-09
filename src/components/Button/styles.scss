@@ -17,6 +17,16 @@
     pointer-events: none;
   }
 
+
+  &__accent {
+    background: $accent;
+    color: black;
+
+    &:hover {
+      box-shadow: 0 0 0 5px rgba($accent, 0.3);
+    }
+  }
+
   // sizes
   &__lg {
     width: $lg * 5;
@@ -52,19 +62,12 @@
     color: $white;
     //border-bottom: 1px solid $white;
     border-radius: 0;
+    font-weight: 100;
+    margin: 0 auto;
     width: auto;
 
     .Button__dark {
       color: black;
-    }
-  }
-
-  &__accent {
-    background: $accent;
-    color: black;
-
-    &:hover {
-      box-shadow: 0 0 0 5px rgba($accent, 0.3);
     }
   }
 

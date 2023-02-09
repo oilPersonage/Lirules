@@ -17,13 +17,13 @@ import { ILandingPage } from '@pages/landing/content/content';
 import styles from './styles.scss';
 
 const PARTNER_LIST = [
+  { title: 'Mriya Resort & Spa', link: 'https://www.instagram.com/mriya_resort/' },
   { title: 'Плаза 5 звезд', link: 'https://www.instagram.com/plazaspahotels/' },
   { title: 'Поляна сказок', link: 'https://www.instagram.com/polyana_skazok_eco/' },
-  { title: 'Дава @dava', link: 'https://www.secure.instagram.com/dombay_winter_hall/' },
+  { title: 'Дава М @dava', link: 'https://www.secure.instagram.com/dombay_winter_hall/' },
   { title: 'Кетрин форс', link: 'https://www.secure.instagram.com/dombay_winter_hall/' },
-  { title: 'Малева', link: 'https://www.secure.instagram.com/dombay_winter_hall/' },
+  { title: 'Малаева', link: 'https://www.secure.instagram.com/dombay_winter_hall/' },
   { title: 'Dombay Winter Hall', link: 'https://www.secure.instagram.com/dombay_winter_hall/' },
-  { title: 'Mriya Resort & Spa', link: 'https://www.instagram.com/mriya_resort/' },
   { title: 'Нарлен', link: 'https://www.instagram.com/narlen_hotel/' },
   { title: 'The Garden', link: 'https://www.instagram.com/thegarden.glamping/' },
 ];
@@ -57,7 +57,7 @@ export function About({ index, id }: ILandingPage) {
   return (
     <div className={styles.About} id={id}>
       <Row column>
-        <div ref={headingRef}>
+        <div ref={headingRef} className={styles.About__heading}>
           <LandingTitle title="ABOUT." colorText="ME" />
           <h3 className={styles.About__description}>
             Благодаря навыку съёмки, активно путешествую, зарабатываю на любимом деле и заявляю в
