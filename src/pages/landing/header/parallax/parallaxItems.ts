@@ -3,7 +3,7 @@ import lensB from '@images/landing/lens-b.webp';
 import lensM from '@images/landing/lens-m.webp';
 import lensVB from '@images/landing/lens-wb.webp';
 import lirules from '@images/landing/lirules.webp';
-import mobileHeader2 from '@images/landing/mobileHeader3.png';
+import mobileHeader2 from '@images/landing/mobileHeader3.webp';
 import phone from '@images/landing/phone.png';
 import balloons from '@images/landing/sphere.webp';
 import cn from 'classnames';
@@ -52,9 +52,13 @@ export const parallaxItems: IParallaxItem[] = [
   // },
   {
     aspect: 25,
-    img: lirules,
     className: cn(styles.Parallax__imgWrapper, styles.Parallax__imgWrapper_lirules),
     mobileImg: mobileHeader2,
+  },
+  {
+    aspect: 25,
+    className: cn(styles.Parallax__imgWrapper, styles.Parallax__imgWrapper_lirules),
+    img: lirules,
   },
   {
     aspect: 10,

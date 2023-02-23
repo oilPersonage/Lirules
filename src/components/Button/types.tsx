@@ -6,7 +6,7 @@ export type ButtonType = 'link' | 'accent' | 'outline';
 export interface IButton {
   size?: ButtonSize;
   type?: ButtonType;
-  children: ReactElement | string | ReactElement[];
+  children: React.ReactNode;
   onClick?: () => void;
   isLoading?: boolean;
   className?: string;

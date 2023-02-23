@@ -87,6 +87,7 @@
 
   &__carousel {
     display: flex;
+    flex-direction: column;
     transition: $middleTransitionHover;
     min-height: 100%;
   }
@@ -225,18 +226,7 @@
 
 
   &__button {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: $black;
-    background: $accent;
-    z-index: 3;
-    margin: 0 $md;
-    height: 60px;
-    border-radius: 5px;
-    font-weight: bold;
-    text-transform: uppercase;
+    margin-top: $md;
 
     @include respond(md) {
       margin-bottom: $lg;

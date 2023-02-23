@@ -37,6 +37,12 @@ export function Cases({ index, id }: ILandingPage) {
             </li>
           ))}
         </ul>
+        <address className={styles.Cases__author}>
+          Website created by{' '}
+          <a rel="author" href="https://instagram.com/oilpersonage">
+            oilPersonage
+          </a>
+        </address>
       </Row>
     </div>
   );

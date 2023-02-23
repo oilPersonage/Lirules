@@ -1,6 +1,10 @@
 @import "@styles/variables.scss";
 
 .Cases {
+  flex: 1;
+  flex-direction: column;
+  display: flex;
+
   &__content {
     color: $white;
     margin-right: $lg;
@@ -86,11 +90,14 @@
   }
 
   @include respond(sm) {
-    margin-bottom: $lg;
+
     &__item {
       flex-direction: column;
       opacity: 1;
       margin-bottom: $md * 2;
+    }
+    &__list {
+      margin-bottom: $md;
     }
     &__heading {
       min-width: 0;
@@ -121,6 +128,30 @@
     &__text {
       grid-area: text;
       font-size: 14px;
+    }
+  }
+
+  &__author {
+    margin-top: auto;
+    color: $white;
+    font-style: normal;
+    font-size: 12px;
+    text-align: center;
+    margin-bottom: $md;
+
+    a {
+      position: relative;
+
+      &:after {
+        position: absolute;
+        content: '';
+        bottom: 0px;
+        left: 0;
+        width: 30%;
+        height: 1px;
+        background: white;
+        transition: $middleTransitionHover;
+      }
     }
   }
 }

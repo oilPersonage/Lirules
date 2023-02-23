@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { useMobileDetect } from '@hooks/useMobileDetect';
@@ -20,18 +20,20 @@ export function Parallax() {
 
   useParallax({ landingMouseRef, refs: elRefs, cursorRef });
 
-  const parallaxItemsImagesLength = isMobile
-    ? parallaxItems.filter((el) => el.mobileImg).length
-    : parallaxItems.filter((el) => el.img).length;
+  const renderItems = useMemo(() => {
+    return isMobile
+      ? parallaxItems.filter((el) => el.mobileImg)
+      : parallaxItems.filter((el) => el.img);
+  }, [isMobile]);
 
   const setStartAnimation = useCallback(() => {
-    if (parallaxItemsImagesLength > imagesCount) {
+    if (renderItems.length > imagesCount) {
       setImagesLoaded((v) => v + 1);
     }
-  }, [imagesCount]);
+  }, [imagesCount, renderItems]);
 
   useEffect(() => {
-    if (imagesCount >= parallaxItemsImagesLength) {
+    if (imagesCount >= renderItems.length) {
       const overflow = document.getElementById('overflow');
       overflow?.classList.add('remove');
       dispatch(landingActions.startAnimation());
@@ -40,40 +42,24 @@ export function Parallax() {
         overflow?.classList.add('hide');
       }, 1000);
     }
-  }, [imagesCount, parallaxItemsImagesLength]);
+  }, [imagesCount, renderItems]);
 
   return (
     <div className={styles.Parallax__images}>
-      {parallaxItems.map((item, index) =>
-        !isMobile && item.img ? (
-          <div
-            key={index}
-            ref={(ref) => (ref ? (elRefs.current[index] = ref) : null)}
-            className={item.className}
-          >
-            <img
-              src={item.img}
-              className={styles.Parallax__img}
-              alt=""
-              onLoad={setStartAnimation}
-            />
-          </div>
-        ) : (
-          isMobile &&
-          item.mobileImg && (
-            <div key={index} className={item.className}>
-              {item.mobileImg && (
-                <img
-                  src={item.mobileImg}
-                  className={styles.Parallax__img}
-                  alt=""
-                  onLoad={setStartAnimation}
-                />
-              )}
-            </div>
-          )
-        )
-      )}
+      {renderItems.map((item, index) => (
+        <div
+          key={index}
+          ref={(ref) => (ref ? (elRefs.current[index] = ref) : null)}
+          className={item.className}
+        >
+          <img
+            src={item.img || item.mobileImg}
+            className={styles.Parallax__img}
+            alt=""
+            onLoad={setStartAnimation}
+          />
+        </div>
+      ))}
     </div>
   );
 }
