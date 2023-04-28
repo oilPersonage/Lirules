@@ -1,0 +1,29 @@
+@import '@styles/variables';
+
+.Overlay {
+  position: fixed;
+  z-index: 14;
+  top: 0;
+  left: 100vw;
+  display: flex;
+
+  &__one, &__two, &__three {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+  }
+
+  &__one {
+    background: lighten($black, 10);
+  }
+
+  &__two {
+    background: $black;
+  }
+
+  &__three {
+    background: lighten($black, 5);
+  }
+}

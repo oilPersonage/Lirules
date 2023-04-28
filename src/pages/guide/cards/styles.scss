@@ -1,0 +1,202 @@
+@import "@styles/variables.scss";
+
+.Cards {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100vw;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: center;
+
+  &__wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 3;
+    background: $black;
+  }
+
+  &__itemTitle {
+    font-weight: bold;
+    text-align: center;
+    color: $white;
+    font-size: 18px;
+    text-transform: uppercase;
+    transition: $middleTransitionHover;
+  }
+
+  &__itemDescription {
+    margin-top: 0;
+    font-size: 12px;
+  }
+
+  &__itemWrapper {
+    position: relative;
+    margin: 0 $base;
+    transition: $middleTransitionHover;
+    opacity: 0.6;
+    $p: &;
+
+    &_active {
+    }
+
+    &_selected {
+      .Cards__itemIcon {
+        opacity: 0;
+      }
+    }
+
+    &_green {
+      box-shadow: 0 0 0 1px rgba($green, 0.4), 0 0 15px 0px rgba($green, 0.7), 0 0 105px 10px rgba($gblue, 0.3);
+
+      .Cards__itemIcon {
+        path, circle, ellipse {
+          fill: $green;
+        }
+      }
+    }
+
+    &_orange {
+      box-shadow: 0 0 0 1px rgba($orange, 0.4), 0 0 15px 0px rgba($orange, 0.7), 0 0 105px 10px rgba($red, 0.3);
+
+      .Cards__itemIcon {
+        path, circle, ellipse {
+          fill: $orange;
+        }
+      }
+    }
+
+    &_yellow {
+      box-shadow: 0 0 0 1px rgba($accent, 0.4), 0 0 15px 0px rgba($accent, 0.7), 0 0 105px 10px rgba($red, 0.3);
+
+      .Cards__itemIcon {
+        path, circle, ellipse {
+          fill: $accent;
+        }
+      }
+    }
+
+    &:not(&_active) {
+      box-shadow: 0 0 0 1px rgba($accent, 0), 0 0 15px 0px rgba($accent, 0), 0 0 105px 10px rgba($red, 0);
+    }
+
+    &_active {
+      opacity: 1;
+      z-index: 3;
+      //border-radius: $base * 2 $base * 2 0 0;
+
+      &:not(#{$p}_progress) {
+
+        .Cards {
+          &__itemIcon {
+            top: -72px;
+            opacity: 1;
+          }
+        }
+      }
+    }
+
+    &_progress {
+      opacity: 0.1;
+      box-shadow: none;
+      //border-radius: $base * 2;
+      cursor: default;
+    }
+
+    &_selected {
+      opacity: 1;
+      border-radius: 0;
+      box-shadow: 0 0 0 0px rgba($green, 0), 0 0 0 0px rgba($green, 0) !important;
+
+      img {
+        height: 100vh;
+      }
+
+      .Cards {
+        &__itemContent {
+          opacity: 0;
+        }
+      }
+    }
+
+    &_notSelected {
+      opacity: 0.3;
+      margin: 0;
+      transition: 0.3s ease-out;
+
+      .Cards {
+
+        &__item {
+          width: 0;
+
+          &Icon {
+            width: 0;
+          }
+        }
+
+        &__itemTitle {
+          opacity: 0;
+        }
+      }
+    }
+  }
+
+  &__itemIcon {
+    position: absolute;
+    z-index: 1;
+    top: -$sm * 5;
+    height: $sm * 6;
+    opacity: 0;
+    width: $lg * 1.5;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: $middleTransitionHover;
+
+    svg {
+      height: $sm * 6;
+      width: 100%;
+    }
+  }
+
+  &__itemContent {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 $md;
+    text-align: center;
+
+    p {
+      color: white;
+    }
+  }
+
+  &__item {
+    position: relative;
+    z-index: 2;
+    height: 50vh;
+    width: 240px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    cursor: pointer;
+    transition: 0.3s ease-out;
+
+
+    img {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      height: 100vh;
+      width: auto;
+      transform: translate(-50%, -50%);
+      transition: $middleTransitionHover;
+    }
+  }
+}

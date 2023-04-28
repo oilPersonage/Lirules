@@ -1,0 +1,1 @@
+export { Thailand } from './thailand';

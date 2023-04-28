@@ -1,7 +1,6 @@
 import { Suspense } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
-import { HashRouter } from 'react-router-dom';
 
 import { store } from '@src/store';
 import { RenderRoutes } from '@src/Router';
@@ -15,9 +14,7 @@ const root = createRoot(container!); //  createRoot(container!) if you use TypeS
 root.render(
   <Provider store={store}>
     <Suspense fallback={<span>Loading...</span>}>
-      <HashRouter>
-        <RenderRoutes />
-      </HashRouter>
+      <RenderRoutes />
     </Suspense>
   </Provider>
 );

@@ -1,6 +1,8 @@
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import { useMobileDetect } from '@hooks/useMobileDetect';
+import { pathConfig } from '@src/configuration/localRoutes';
 import { motion } from 'framer-motion';
 
 import { Button } from '@components/Button';
@@ -17,6 +19,7 @@ const TITLE = 'Lirules';
 const COURSE_INDEX = 2;
 
 export function ParallaxText() {
+  const navigate = useNavigate();
   const isMobile = useMobileDetect();
   const { setSpeed } = useSelector(landingSelectors.landing);
   const { isStartAnimation } = useSelector(landingSelectors.landing);
@@ -64,7 +67,12 @@ export function ParallaxText() {
         onMouseEnter={onChangeCursorDot}
         onMouseLeave={onChangeCursorDot}
       >
-        <Button animateConfig={animateConfig} uppercase type="accent">
+        <Button
+          animateConfig={animateConfig}
+          uppercase
+          type="accent"
+          onClick={() => navigate(pathConfig.guide)}
+        >
           Пройти курс
         </Button>
         <Button

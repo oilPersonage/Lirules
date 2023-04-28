@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 export function useMobileDetect() {
-  const [mobile, setMobile] = useState(true); // for about page = true
+  const [mobile, setMobile] = useState(true); // for about pages = true
 
   useEffect(() => {
     setMobile(window.matchMedia('(max-width: 600px)').matches);

@@ -18,9 +18,10 @@ module.exports = async (env = {}, argv) => {
     devServer: {
       port: APP_DEFAULT_PORT,
       hot: true,
-      proxy: {
-        '/': 'http://localhost:3000/api/',
-      },
+      historyApiFallback: true,
+      //      proxy: {
+      //        '/api': 'http://localhost:3000/api/',
+      //      },
     },
     module: {
       rules: [
@@ -49,6 +50,7 @@ module.exports = async (env = {}, argv) => {
               options: {
                 modules: {
                   localIdentName: '[local]_[hash:base64:5]',
+                  // localIdentName: '[local]',
                 },
               },
             },

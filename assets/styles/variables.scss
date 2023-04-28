@@ -1,12 +1,17 @@
 $base: 4px;
-$sm: $base * 3;
-$md: $base * 6;
-$lg: $base * 15;
+$sm: $base * 3; // 12px
+$md: $base * 6; // 28px
+$lg: $base * 15; // 70px
 
 $white: white;
 $black: #0d0d0d;
 $accent: #F9FE00;
 $red: #a73131;
+$orange: #f9ac02;
+$gblue: #02f9a3;
+$green: #93D20B;
+$blue: #0067ff;
+$purple: #780bd2;
 
 $row: 1280px;
 $md-row: 1024px;

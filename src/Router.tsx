@@ -1,8 +1,7 @@
-import { useRoutes } from 'react-router-dom';
+import { RouterProvider } from 'react-router-dom';
 
-import { localRoutes } from '@src/configuration/localRoutes';
+import { routerConfig } from '@src/configuration/localRoutes';
 
 export function RenderRoutes() {
-  const routerList = useRoutes(localRoutes);
-  return routerList;
+  return <RouterProvider router={routerConfig} />;
 }

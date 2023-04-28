@@ -1,0 +1,57 @@
+@import "@styles/variables.scss";
+
+@keyframes Text {
+  0% {
+    transform: translate(-50%, -130%)
+  }
+  50% {
+    transform: translate(-50%, -135%)
+  }
+  100% {
+    transform: translate(-50%, -130%)
+  }
+}
+
+.Guide {
+  position: relative;
+  padding-top: 20vh;
+  height: 100vh;
+
+  &__logo {
+    position: fixed;
+    z-index: 15;
+    top: $md;
+    left: 50%;
+    width: $lg * 1.5;
+    height: $md;
+    transform: translateX(-50%);
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__heading {
+    position: relative;
+    z-index: 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $white;
+    top: -$md * 2;
+    font-size: 18px;
+    margin-bottom: 0;
+    transition: $middleTransitionHover;
+
+    &_hide {
+      opacity: 0;
+    }
+  }
+
+  &__page {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+  }
+}
