@@ -1,5 +1,5 @@
 import { lazy } from 'react';
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, HashRouter, Navigate, Route, Routes } from 'react-router-dom';
 
 import { pathConfig } from '@src/configuration/localRoutes';
 
@@ -12,7 +12,7 @@ const NotFoundRoute = lazy(() => import('@pages/notFound/notFound'));
 
 export function RenderRoutes() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path="/" element={<Navigate to={pathConfig.guide} replace />} />
         <Route path={pathConfig.landing} element={<LandingRoute />} />
@@ -27,7 +27,7 @@ export function RenderRoutes() {
         />
         <Route path="*" element={<NotFoundRoute />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 
   // <RouterProvider router={routerConfig} />;
