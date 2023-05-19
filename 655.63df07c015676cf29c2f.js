@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkLirules_front=self.webpackChunkLirules_front||[]).push([[655],{3655:(e,n,r)=>{r.r(n),r.d(n,{default:()=>i});var t=r(5893),u=r(7294),s=r(5998),f=r(6196);function i(){var e=(0,s.I0)();return(0,u.useEffect)((function(){e(f.UR.startAnimation)}),[e]),(0,t.jsx)("div",{children:"Страница не найдена!"})}}}]);
