@@ -27,7 +27,6 @@ export function Cards({ onSelect, selectedPage }) {
       <div className={styles.Cards}>
         {PAGES.map((page, index) => (
           <div key={index} className={getClassNames(page)}>
-            <div className={styles.Cards__itemIcon}>{page.icon}</div>
             <div
               ref={(ref) => (pagesRef.current[page.name] = ref)}
               onMouseOver={() => setActivePage(page.name)}

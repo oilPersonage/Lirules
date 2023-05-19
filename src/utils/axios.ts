@@ -1,24 +1,8 @@
+import axios, { AxiosInstance } from 'axios';
 
-import axios, { AxiosError, AxiosInstance } from 'axios';
-import {HttpStatusCode} from "@api/types";
-
-
-export type ApiProviderError = {
-  config: {
-    shouldDispatchErrorEvent: boolean;
-  };
-} & AxiosError;
-
-export type ApiProviderEventDescription = {
-  status: HttpStatusCode | undefined;
-  hasNetworkConnection: boolean;
-  code: string | undefined;
-};
-
-export type ApiProviderEvent = ApiProviderError & ApiProviderEventDescription;
-
-
-interface ICreateVtbApiInstance { webApi: AxiosInstance }
+interface ICreateVtbApiInstance {
+  webApi: AxiosInstance;
+}
 
 export function createVtbApiInstance(): ICreateVtbApiInstance {
   // regex удаляет текстовое название таймзоны, идущее после даты в скобках
@@ -45,6 +29,6 @@ export function createVtbApiInstance(): ICreateVtbApiInstance {
   };
 }
 
-const { webApi } = createVtbApiInstance()
+const { webApi } = createVtbApiInstance();
 
-export { webApi }
+export { webApi };

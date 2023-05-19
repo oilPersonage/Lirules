@@ -26,13 +26,23 @@
 
 .Navigation {
   position: relative;
-
   color: white;
+
+
+  &__startAnimation {
+    .Navigation {
+      &__goBack, &__count, &__nextCountry {
+        opacity: 1;
+      }
+    }
+  }
 
   &__goBack, &__count, &__nextCountry {
     position: fixed;
     cursor: pointer;
     z-index: 13;
+    opacity: 0;
+    transition: 0.3s ease-out;
   }
 
   &__goBack {

@@ -1,0 +1,64 @@
+@import "@styles/variables.scss";
+
+.Tabs {
+  display: flex;
+  margin-bottom: $lg;
+
+  &__tab {
+    padding: $sm $md;
+    cursor: pointer;
+    transition: $middleTransitionHover;
+    font-weight: bold;
+    font-size: 14px;
+    background: rgba($black, 0.05);
+
+    &_active {
+      background: rgba($black, 0.1);
+      color: $accent;
+
+      &:hover {
+        background: rgba($black, 0.1);
+        cursor: default;
+      }
+    }
+  }
+
+  &__content {
+    display: flex;
+
+    &Item {
+      min-width: 0;
+      max-width: 0;
+      opacity: 0;
+      transition: $middleTransitionHover;
+
+      &_active {
+        min-width: 100%;
+        max-width: 100%;
+        opacity: 1;
+      }
+    }
+  }
+
+  &_dark {
+    .Tabs {
+      &__tab {
+        background: rgba($white, 0.05);
+
+        &:hover {
+          background: rgba($white, 0.1);
+        }
+
+        &_active {
+          background: rgba($white, 0.1);
+          font-weight: bold;
+
+          &:hover {
+            background: rgba($white, 0.1);
+            cursor: default;
+          }
+        }
+      }
+    }
+  }
+}

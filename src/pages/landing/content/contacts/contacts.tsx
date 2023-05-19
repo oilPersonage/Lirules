@@ -84,7 +84,7 @@ export function Contacts({ index, id }: ILandingPage) {
               <p className={styles.Contacts__description}>В течении дня с вами свяжутся</p>
               <div className={styles.Contacts__form}>
                 <Input
-                  theme="black"
+                  theme="white"
                   name="name"
                   label="Name"
                   inputSize="lg"
@@ -96,7 +96,7 @@ export function Contacts({ index, id }: ILandingPage) {
                   required
                 />
                 <Input
-                  theme="black"
+                  theme="white"
                   inputSize="lg"
                   label="Surname"
                   name="surname"
@@ -106,7 +106,7 @@ export function Contacts({ index, id }: ILandingPage) {
                   onBlur={onBlurHandler}
                 />
                 <Input
-                  theme="black"
+                  theme="white"
                   inputSize="lg"
                   label="Company"
                   name="company"
@@ -115,7 +115,7 @@ export function Contacts({ index, id }: ILandingPage) {
                   onBlur={onBlurHandler}
                 />
                 <Input
-                  theme="black"
+                  theme="white"
                   inputSize="lg"
                   label="Phone"
                   value={state?.phone}

@@ -19,9 +19,9 @@ module.exports = async (env = {}, argv) => {
       port: APP_DEFAULT_PORT,
       hot: true,
       historyApiFallback: true,
-      //      proxy: {
-      //        '/api': 'http://localhost:3000/api/',
-      //      },
+      proxy: {
+        '/api': 'http://localhost:3000/api/',
+      },
     },
     module: {
       rules: [

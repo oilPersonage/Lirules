@@ -19,10 +19,12 @@ export function Input({
   notification,
   required,
   theme = 'white',
-  inputSize = 'md',
+  inputSize = 'lg',
   label,
   name,
+  isValid,
   onBlur,
+  type = 'text',
   regExp,
   isPhone,
 }: InputProps) {
@@ -48,14 +50,16 @@ export function Input({
   return (
     <label
       className={cn(styles.Input, classSizes[inputSize], {
-        [styles.Input_black]: theme === 'white',
+        [styles.Input_dark]: theme !== 'white',
         [styles.Input_notEmpty]: !!value,
+        [styles.Input_isValid]: isValid,
+        [styles.Input_isNotValid]: value !== '' && !isValid,
       })}
     >
       {label && <p className={styles.Input__label}>{label}</p>}
       <input
         className={styles.Input__field}
-        type="text"
+        type={type}
         value={value || ''}
         placeholder={placeholder}
         onChange={onChangeInput}

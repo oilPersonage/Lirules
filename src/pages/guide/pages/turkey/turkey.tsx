@@ -60,7 +60,7 @@ export function Turkey({ isStartAnimate }: TGuadePageProps) {
 
   return (
     <div>
-      <Content refs={refs} />
+      <Content refs={refs} isStartAnimate={isStartAnimate} />
     </div>
   );
 }

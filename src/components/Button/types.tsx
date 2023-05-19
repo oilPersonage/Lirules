@@ -1,7 +1,6 @@
-import { ReactElement } from 'react';
-
 export type ButtonSize = 'md' | 'lg' | 'sm';
 export type ButtonType = 'link' | 'accent' | 'outline';
+export type ThemeType = 'light' | 'dark';
 
 export interface IButton {
   size?: ButtonSize;
@@ -14,4 +13,5 @@ export interface IButton {
   uppercase?: boolean;
   animateConfig?: any;
   theme?: 'dark' | 'light';
+  notification?: string;
 }

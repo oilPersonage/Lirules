@@ -1,0 +1,16 @@
+@import "@styles/variables.scss";
+
+.Item {
+  &__title {
+    font-size: 33px;
+    max-width: 800px;
+    margin: 0 auto;
+    font-weight: bold;
+    opacity: 0;
+    transition: $slowTransitionHover;
+
+    &_animate {
+      opacity: 1;
+    }
+  }
+}

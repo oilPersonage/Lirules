@@ -1,0 +1,18 @@
+@import "@styles/variables.scss";
+
+.LoginButtons {
+  position: fixed;
+  z-index: 333;
+  top: calc($md - $base);
+  right: calc($lg - $base * 2);
+  display: flex;
+
+  &__button {
+    opacity: 0.6;
+    transition: $middleTransitionHover;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}

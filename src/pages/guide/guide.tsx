@@ -8,6 +8,7 @@ import { Cards } from '@pages/guide/cards';
 import { PAGE_NAMES } from '@pages/guide/cards/items';
 import { Contacts } from '@pages/guide/components/contacts';
 import { Overlay } from '@pages/guide/components/overlay';
+import { LoginWrapper } from '@pages/guide/login/loginWrapper';
 import { GuideThailand, GuideTurkey } from '@pages/guide/pages';
 
 import styles from './styles.scss';
@@ -40,6 +41,8 @@ export function Guide() {
       {/*<h2 className={cn(styles.Guide__heading, { [styles.Guide__heading_hide]: selectedPage })}>*/}
       {/*  СДЕЛАЙ СВОЙ ВЫБОР*/}
       {/*</h2>*/}
+      <LoginWrapper />
+
       <div className={styles.Guide__logo}>
         <Logotype />
       </div>

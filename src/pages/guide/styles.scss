@@ -16,6 +16,8 @@
   position: relative;
   padding-top: 20vh;
   height: 100vh;
+  max-width: 100vw;
+  overflow: hidden;
 
   &__logo {
     position: fixed;

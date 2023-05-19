@@ -1,5 +1,6 @@
 import { About } from '@pages/landing/content/about';
 import { Cases } from '@pages/landing/content/cases';
+import { Contacts } from '@pages/landing/content/contacts';
 import { Course } from '@pages/landing/content/course';
 import { Tariffs } from '@pages/landing/content/tariffs/tariffs';
 

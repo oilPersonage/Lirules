@@ -1,7 +1,7 @@
 import cn from 'classnames';
 import { motion } from 'framer-motion';
 
-import { ButtonSize, ButtonType, IButton } from '@components/Button/types';
+import { ButtonSize, ButtonType, IButton, ThemeType } from '@components/Button/types';
 
 import { isNotNil } from '@utils/typeguard';
 
@@ -19,6 +19,11 @@ const classTypes: Record<ButtonType, string> = {
   outline: styles.Button__outline,
 };
 
+const classThemes: Record<ThemeType, string> = {
+  light: styles.Button__light,
+  dark: styles.Button__dark,
+};
+
 export function Button({
   size = 'lg',
   children,
@@ -30,47 +35,32 @@ export function Button({
   className,
   theme = 'dark',
   uppercase,
+  notification,
 }: IButton) {
   function onClickHandler() {
     if (!isLoading && isNotNil(onClick)) onClick();
   }
 
   function getClassName() {
-    return cn(
-      className,
-      styles.Button,
-      `styles.Button__${theme}`,
-      classTypes[type],
-      classSizes[size],
-      {
-        [styles.Button__isLoading]: isLoading,
-        [styles.Button__isLoaded]: isLoaded,
-        [styles.Button__uppercase]: uppercase,
-      }
-    );
+    return cn(className, styles.Button, classTypes[type], classThemes[theme], classSizes[size], {
+      [styles.Button__isLoading]: isLoading,
+      [styles.Button__isLoaded]: isLoaded,
+      [styles.Button__uppercase]: uppercase,
+    });
   }
 
   if (animateConfig) {
     return (
       <motion.button className={getClassName()} onClick={onClickHandler} {...animateConfig}>
-        <div className={styles.Button__isLoaded} />
-        <div className={styles.Button__isLoading} />
+        {notification && <div className={styles.Button__notification}>{notification}</div>}
         <span className={className}>{children}</span>
       </motion.button>
     );
   }
 
   return (
-    <button
-      className={cn(styles.Button, classTypes[type], classSizes[size], {
-        [styles.Button__isLoading]: isLoading,
-        [styles.Button__isLoaded]: isLoaded,
-        [styles.Button__uppercase]: uppercase,
-      })}
-      onClick={onClickHandler}
-    >
-      <div className={styles.Button__isLoaded} />
-      <div className={styles.Button__isLoading} />
+    <button className={getClassName()} onClick={onClickHandler}>
+      {notification && <div className={styles.Button__notification}>{notification}</div>}
       <span>{children}</span>
     </button>
   );

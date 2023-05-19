@@ -1,5 +1,7 @@
 import { RefObject } from 'react';
 
+import cn from 'classnames';
+
 import { DispatchState } from '@utils/typeguard';
 
 import { HandleNextPage } from '@pages/guide/types';
@@ -8,11 +10,12 @@ import styles from './styles.scss';
 
 export type NavigationProps = {
   handleNextScreen: HandleNextPage;
+  isStartAnimate: boolean;
 };
 
-export function Navigation({ handleNextScreen }: NavigationProps) {
+export function Navigation({ handleNextScreen, isStartAnimate }: NavigationProps) {
   return (
-    <div className={styles.Navigation}>
+    <div className={cn(styles.Navigation, { [styles.Navigation__startAnimation]: isStartAnimate })}>
       <div className={styles.Navigation__goBack} onClick={() => handleNextScreen({ isBack: true })}>
         <span>
           <svg

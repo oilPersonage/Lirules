@@ -36,6 +36,7 @@ export function Parallax() {
     if (imagesCount >= renderItems.length) {
       const overflow = document.getElementById('overflow');
       overflow?.classList.add('remove');
+      // @ts-ignore
       dispatch(landingActions.startAnimation());
 
       setTimeout(() => {

@@ -57,6 +57,7 @@
     padding: $lg 88px;
     margin: 0 -$md;
     flex: 1;
+    transition: $middleTransitionHover;
 
     h4 {
       font-size: 36px;

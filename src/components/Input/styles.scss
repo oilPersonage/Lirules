@@ -20,12 +20,35 @@
     }
   }
 
+
+  &_isValid {
+    .Input {
+      &__label {
+        color: $accent;
+      }
+
+      &__field {
+        border-bottom: 1px solid $accent;
+      }
+    }
+  }
+
+  &_isNotValid {
+    .Input {
+
+      &__field {
+        border-bottom: 1px solid $red;
+      }
+    }
+  }
+
   &:focus-within, &_notEmpty {
     .Input__label {
       top: 0px;
       transform: translateY(0%);
+      opacity: 0.7;
       font-size: 12px;
-      font-weight: 700;
+      font-weight: 400;
     }
   }
 
@@ -48,6 +71,7 @@
     position: absolute;
     font-size: 16px;
     color: $white;
+    font-weight: bold;
     opacity: 0.3;
     margin: 0;
     top: 18px;
@@ -91,18 +115,19 @@
     outline: none;
     opacity: 0.7;
     border-radius: 0;
-    color: inherit;
     transition: $fastTransitionHover;
     font: 20px Montserrat;
-    font-weight: 100;
+    color: white;
     border-bottom: 1px solid rgba($white, 0.3);
     padding: 0;
+    font-weight: bold;
 
     &:focus, &:visited {
       border: none;
-      color: inherit;
+      color: white;
       outline: none;
       border-bottom: 1px solid $white;
+      font-weight: bold;
     }
   }
 
@@ -121,5 +146,21 @@
     width: $base;
     height: $base;
     background: rgba($accent, 0.5);
+  }
+
+  // DARK MODE
+  &_dark {
+    color: $black;
+
+    .Input {
+
+      &__label {
+        color: $black;
+      }
+
+      &__field {
+        border-bottom: 1px solid rgba($black, 0.3);
+      }
+    }
   }
 }
