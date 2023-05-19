@@ -36,17 +36,18 @@ export function About({ index, id }: ILandingPage) {
   const partnerRef = useRef<HTMLDivElement>(null);
 
   const animation = useCallback(function () {
-    if (partnerRef.current && headingRef.current && carouselRef.current) {
-      headingRef.current.style.transform = `translateX(${
-        (window.scrollPosition - (index + 1)) * window.innerWidth * 0.2
-      }px)`;
-      carouselRef.current.style.transform = `translateX(${
-        -((window.scrollPosition - (index + 1)) * window.innerWidth) * 0.2
-      }px)`;
-      partnerRef.current.style.transform = `translateX(${
-        (window.scrollPosition - (index + 1)) * window.innerWidth * 0.2
-      }px)`;
+    if (!partnerRef.current || !headingRef.current || !carouselRef.current) {
+      return;
     }
+    headingRef.current.style.transform = `translateX(${
+      (window.scrollPosition - (index + 1)) * window.innerWidth * 0.2
+    }px)`;
+    carouselRef.current.style.transform = `translateX(${
+      -((window.scrollPosition - (index + 1)) * window.innerWidth) * 0.2
+    }px)`;
+    partnerRef.current.style.transform = `translateX(${
+      (window.scrollPosition - (index + 1)) * window.innerWidth * 0.2
+    }px)`;
   }, []);
 
   useAnimationFrame({

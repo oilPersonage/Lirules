@@ -1,7 +1,11 @@
 import { RefObject, useCallback, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
 import { useMobileDetect } from '@hooks/useMobileDetect';
 import { useAnimationFrame } from '@hooks/useRequestAnimationFrame';
+import { dispatch } from 'redux-saga-promise-actions';
+
+import { landingActions } from '@reducers/landing';
 
 import { isNotNil } from '@utils/typeguard';
 
@@ -25,6 +29,7 @@ export function useOnScrollLanding(
   containerTextRef: RefObject<HTMLElement> // text div
 ) {
   const isMobile = useMobileDetect();
+  const dispatch = useDispatch();
 
   function setSpeed(index, isPrev) {
     isPrevPage = isPrev;
@@ -42,6 +47,7 @@ export function useOnScrollLanding(
       if (isNotNil(containerRef.current) && containerBGRef.current && containerTextRef.current) {
         if (window.activeNav !== rounded) {
           window.activeNav = rounded;
+          dispatch(landingActions.setActiveNav(rounded));
           // window.isAnimateParallax = window.activeNav === 0;
         }
 
