@@ -7,7 +7,7 @@ import { Arrows } from '@pages/guide/components/carousel/arrows';
 import { CarouselItem } from '@pages/guide/components/carousel/item';
 import { TCarouselItems } from '@pages/guide/pages/thailand/carousel/items';
 
-import styles from './styles.scss';
+import styles from './styles.module.scss';
 
 type TCarouselProps = {
   items: TCarouselItems;

@@ -5,7 +5,7 @@ import { ButtonSize, ButtonType, IButton, ThemeType } from '@components/Button/t
 
 import { isNotNil } from '@utils/typeguard';
 
-import styles from './styles.scss';
+import styles from './styles.module.scss';
 
 const classSizes: Record<ButtonSize, string> = {
   lg: styles.Button__lg,

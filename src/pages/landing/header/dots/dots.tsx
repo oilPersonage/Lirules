@@ -10,7 +10,7 @@ import { LANDING_PAGES } from '@pages/landing/const';
 import { DotsArray } from '@pages/landing/header/dots/types';
 import { dotsItem, dotsList } from '@pages/landing/header/framerMotionConfig';
 
-import styles from './styles.scss';
+import styles from './styles.module.scss';
 
 export function Dots() {
   const { isStartAnimation } = useSelector(landingSelectors.landing);

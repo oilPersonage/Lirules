@@ -1,7 +1,7 @@
 import { Heading } from '@components/Title';
 
 import { IOfferData } from './const';
-import styles from './styles.scss';
+import styles from './styles.module.scss';
 
 export function RenderDocContent({ data }: { data: IOfferData[] }) {
   return (

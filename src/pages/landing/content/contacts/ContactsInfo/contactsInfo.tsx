@@ -1,7 +1,7 @@
 import { ReactElement, useMemo, useState } from 'react';
 
 import { useModal } from '@hooks/useModal';
-import Location from '@icons/location.svg';
+import { ReactComponent as Location } from '@icons/location.svg';
 import cn from 'classnames';
 
 import { Modal } from '@components/Modal';
@@ -9,7 +9,7 @@ import { Modal } from '@components/Modal';
 import { Confidentiality } from './docs/confidentiality';
 import { Offer } from './docs/offer';
 import { Terms } from './docs/terms';
-import styles from './styles.scss';
+import styles from './styles.module.scss';
 
 enum LINK_TYPE {
   TERMS = 'terms',

@@ -17,26 +17,23 @@
     flex-direction: column;
     opacity: 0;
     will-change: transform, opacity;
-
   }
 
   &__text {
     color: $white;
     font-size: 14px;
     margin-bottom: 0;
+    text-align: center;
   }
 
   &__icon {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: $lg;
-    height: $lg;
+    width: $md * 2;
+    height: $md * 2;
     font-size: 40px;
-    padding: $base * 5;
-    background: rgba($white, 1);
     margin-bottom: $sm;
-    @include border-squircle();
 
     svg {
       width: 100%;
@@ -45,7 +42,7 @@
   }
 
   path, rect {
-    fill: $green;
-    stroke: $green;
+    fill: $white;
+    stroke: $white;
   }
 }

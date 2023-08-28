@@ -7,7 +7,7 @@ import { useParallax } from '@hooks/useParallax';
 import { landingActions, landingSelectors } from '@reducers/landing';
 
 import { parallaxItems } from './parallaxItems';
-import styles from './styles.scss';
+import styles from './styles.module.scss';
 
 export function Parallax() {
   const dispatch = useDispatch();

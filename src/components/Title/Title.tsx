@@ -1,6 +1,6 @@
 import { CSSProperties, ReactNode } from 'react';
 
-import styles from './styles.scss';
+import styles from './styles.module.scss';
 
 export type InternalTextProps = {
   /**

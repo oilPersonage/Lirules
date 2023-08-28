@@ -10,7 +10,7 @@ import { Login } from '@pages/guide/login/login/login';
 import { Registration } from '@pages/guide/login/registration/registration';
 import { emailCheck, passwordCheck, userNameCheck } from '@pages/guide/login/utils/userChecks';
 
-import styles from './styles.scss';
+import styles from './styles.module.scss';
 
 export enum ELoginType {
   LOGIN = 'ВХОД',

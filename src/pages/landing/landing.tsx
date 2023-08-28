@@ -8,7 +8,7 @@ import { landingActions } from '@reducers/landing';
 import LandingContent from '@pages/landing/content/content';
 import { Menu } from '@pages/landing/header/menu';
 
-import styles from './styles.scss';
+import styles from './styles.module.scss';
 
 export default function Landing() {
   const isMobile = useMobileDetect();

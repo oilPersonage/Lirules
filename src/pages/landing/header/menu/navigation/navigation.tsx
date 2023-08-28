@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { useMobileDetect } from '@hooks/useMobileDetect';
 import { useToggle } from '@hooks/useToggle';
-import Logotype from '@icons/logotype.svg';
+import { ReactComponent as Logotype } from '@icons/logotype.svg';
 import cn from 'classnames';
 import { AnimatePresence, motion } from 'framer-motion';
 
@@ -16,7 +16,7 @@ import { LANDING_PAGES } from '@pages/landing/const';
 import { navigationList } from '@pages/landing/header/framerMotionConfig';
 import { IOnClick } from '@pages/landing/header/menu/navigation/types';
 
-import styles from './styles.scss';
+import styles from './styles.module.scss';
 
 export const SCROLL_SPEED = 2.5;
 

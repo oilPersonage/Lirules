@@ -1,7 +1,7 @@
 import { Heading } from '@components/Title';
 
 import { EMAIL, INN, IP_NAME, OGRNIP, URL } from '../../../../../../../app_settings';
-import styles from './styles.scss';
+import styles from './styles.module.scss';
 
 export function Terms() {
   return (

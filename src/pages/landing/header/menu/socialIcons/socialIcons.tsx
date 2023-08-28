@@ -1,18 +1,17 @@
 import { memo } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
-import Instagram from '@icons/intagram.svg';
-import WhatsApp from '@icons/whatsapp.svg';
-import { logDOM } from '@testing-library/react';
+import { ReactComponent as Instagram } from '@icons/intagram.svg';
+import { ReactComponent as WhatsApp } from '@icons/whatsapp.svg';
 import { motion } from 'framer-motion';
 
-import { landingActions, landingSelectors } from '@reducers/landing';
+import { landingSelectors } from '@reducers/landing';
 
 import { onChangeCursorDot } from '@utils/onChangeCursorDot';
 
 import { menuItem, menuList } from '@pages/landing/header/framerMotionConfig';
 
-import styles from './styles.scss';
+import styles from './styles.module.scss';
 
 const LINKS = [
   { icon: WhatsApp, link: 'https://wa.me/+79260388842' },

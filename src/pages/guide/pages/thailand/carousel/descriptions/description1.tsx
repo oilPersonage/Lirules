@@ -1,6 +1,6 @@
 import cn from 'classnames';
 
-import styles from '@pages/guide/pages/thailand/carousel/styles.scss';
+import styles from '@pages/guide/pages/thailand/carousel/styles.module.scss';
 
 import { Cards } from './cards';
 

@@ -1,18 +1,18 @@
 import { useEffect, useRef, useState } from 'react';
 
 import { useMobileDetect } from '@hooks/useMobileDetect';
-import Arrow from '@icons/arrow.svg';
-import Blogger from '@images/landing/blogger.webp';
-import Model from '@images/landing/model.webp';
-import Photograph from '@images/landing/photograph.webp';
-import VideoMaker from '@images/landing/video.webp';
+import { ReactComponent as Arrow } from '@icons/arrow.svg';
+import { ReactComponent as Blogger } from '@images/landing/blogger.webp';
+import { ReactComponent as Model } from '@images/landing/model.webp';
+import { ReactComponent as Photograph } from '@images/landing/photograph.webp';
+import { ReactComponent as VideoMaker } from '@images/landing/video.webp';
 import cn from 'classnames';
 
 import { onChangeCursorDot } from '@utils/onChangeCursorDot';
 
 import { onTouchDetect } from '@pages/landing/content/about/сarousel/touchEvent';
 
-import styles from './styles.scss';
+import styles from './styles.module.scss';
 
 interface IItems {
   title: string[];

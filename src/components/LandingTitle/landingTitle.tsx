@@ -1,6 +1,6 @@
 import cn from 'classnames';
 
-import styles from './styles.scss';
+import styles from './styles.module.scss';
 
 type Title = { title: string; colorText?: string; className?: string; space?: boolean };
 

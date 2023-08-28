@@ -1,7 +1,7 @@
-import Cross from '@icons/cross.svg';
+import { ReactComponent as Cross } from '@icons/cross.svg';
 import cn from 'classnames';
 
-import styles from './styles.scss';
+import styles from './styles.module.scss';
 
 export function Popup({ children, isOpen, toggle }) {
   return isOpen ? (

@@ -13,12 +13,11 @@
 
     &Item {
       font-size: 24px;
+      width: 24px;
+      height: 24px;
       margin: 0 $base * 2;
       opacity: 0.5;
-
-      svg path {
-        transition: $middleTransitionHover;
-      }
+      transition: $middleTransitionHover;
 
       &:hover {
         opacity: 1;

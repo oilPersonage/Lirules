@@ -7,7 +7,7 @@ import { Button } from '@components/Button';
 import { ELoginType, TUSER } from '@pages/guide/login/loginWrapper';
 import { checkAllPropertyUser } from '@pages/guide/login/utils/checkAllPropertyUser';
 
-import styles from './styles.scss';
+import styles from './styles.module.scss';
 
 export type TFormProps = {
   name: ELoginType;

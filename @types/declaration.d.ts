@@ -7,13 +7,15 @@ declare module '*.gif';
 declare module '*.scss';
 
 declare module '*.svg' {
-  const ReactComponent: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
-  // eslint-disable-next-line import/no-default-export
-  export default ReactComponent;
+  import React = require('react');
+  export const ReactComponent: React.FC<React.SVGProps<SVGSVGElement>>;
+  const src: string;
+  // @ts-ignore
+  export default src;
 }
 
-declare module '*.scss' {
+declare module '*.scss?inline' {
   const content: { [className: string]: string };
-  // eslint-disable-next-line import/no-default-export
+  // @ts-ignore
   export default content;
 }

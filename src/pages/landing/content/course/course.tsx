@@ -7,7 +7,7 @@ import { ILandingPage } from '@pages/landing/content/content';
 import { CourseItem } from '@pages/landing/content/course/item';
 
 import { courseData } from './data';
-import styles from './styles.scss';
+import styles from './styles.module.scss';
 
 export function Course({ index, id }: ILandingPage) {
   const ref = useRef<HTMLDivElement>(null);

@@ -4,7 +4,7 @@ import { InputProps, InputSize } from '@components/Input/types';
 
 import { phoneFormatter } from '@utils/phoneFormatter';
 
-import styles from './styles.scss';
+import styles from './styles.module.scss';
 
 const classSizes: Record<InputSize, string> = {
   lg: styles.Input__lg,

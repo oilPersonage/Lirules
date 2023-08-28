@@ -1,9 +1,7 @@
-import { useMemo } from 'react';
-
-import Arrow from '@icons/angle-right.svg';
+import { ReactComponent as Arrow } from '@icons/angle-right.svg';
 import cn from 'classnames';
 
-import styles from '@pages/guide/components/carousel/styles.scss';
+import styles from '@pages/guide/components/carousel/styles.module.scss';
 
 export function Arrows({ isStartAnimate, showArrow, handleNextSlide }) {
   return (
@@ -16,7 +14,9 @@ export function Arrows({ isStartAnimate, showArrow, handleNextSlide }) {
         })}
         onClick={() => handleNextSlide(-1)}
       >
-        <Arrow />
+        <div className={styles.Carousel__arrowIcon}>
+          <Arrow viewBox="0 0 48 48" />
+        </div>
       </div>
       <div
         className={cn(styles.Carousel__arrowsRight, {
@@ -24,7 +24,9 @@ export function Arrows({ isStartAnimate, showArrow, handleNextSlide }) {
         })}
         onClick={() => handleNextSlide(1)}
       >
-        <Arrow />
+        <div className={styles.Carousel__arrowIcon}>
+          <Arrow viewBox="0 0 48 48" />
+        </div>
       </div>
     </div>
   );

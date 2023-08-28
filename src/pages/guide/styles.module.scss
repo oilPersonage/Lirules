@@ -14,10 +14,10 @@
 
 .Guide {
   position: relative;
-  padding-top: 20vh;
-  height: 100vh;
+  min-height: 100vh;
   max-width: 100vw;
-  overflow: hidden;
+  overflow-x: hidden;
+  //overflow: hidden;
 
   &__logo {
     position: fixed;
@@ -55,5 +55,12 @@
     position: absolute;
     z-index: 2;
     top: 0;
+    opacity: 0;
+    flex: 1;
+    min-width: 100%;
+
+    &_show {
+      opacity: 1;
+    }
   }
 }

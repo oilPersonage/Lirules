@@ -2,7 +2,7 @@ import { ForwardedRef, forwardRef, RefObject } from 'react';
 
 import cn from 'classnames';
 
-import styles from './styles.scss';
+import styles from './styles.module.scss';
 
 interface IRef {
   children?: JSX.Element | JSX.Element[];

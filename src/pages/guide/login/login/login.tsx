@@ -11,7 +11,7 @@ import { TFormProps } from '@pages/guide/login/registration/registration';
 import { checkAllPropertyUser } from '@pages/guide/login/utils/checkAllPropertyUser';
 import { emailCheck, userNameOrEmailCheck } from '@pages/guide/login/utils/userChecks';
 
-import styles from './styles.scss';
+import styles from './styles.module.scss';
 
 export function Login({ name, user, setUser }: TFormProps) {
   const filteredUser = useMemo(() => {

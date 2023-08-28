@@ -1,8 +1,8 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 
 import gsap from 'gsap';
 
-import { easingInLight, easingOut } from '@utils/customEase';
+import { easingInLight } from '@utils/customEase';
 
 import { Navigation } from '@pages/guide/components/navigation';
 import { Content } from '@pages/guide/pages/thailand/content/content';
@@ -23,13 +23,9 @@ export function Thailand({ isStartAnimate, handleNextPage }: TGuadePageProps) {
   const socialRef = useRef({});
 
   // NAVIGATION
-
   // ANIMATION
   useEffect(() => {
     if (!isStartAnimate) return;
-
-    // const top = topBlack.current;
-    // const bottom = bottomBlack.current;
     const button = buttonRef.current;
     const heading = headingRef.current;
     const description = descriptionRef.current;
@@ -37,16 +33,6 @@ export function Thailand({ isStartAnimate, handleNextPage }: TGuadePageProps) {
 
     const tl = gsap.timeline();
 
-    // gsap.to(bottom, {
-    //   y: '25vh',
-    //   ease: easingOut,
-    //   duration: 1,
-    // });
-    // tl.to(top, {
-    //   y: '-25vh',
-    //   ease: easingOut,
-    //   duration: 1,
-    // });
     tl.to(heading, { opacity: 1, duration: 1, ease: easingInLight });
     tl.fromTo(description, { y: '-53%', opacity: 0 }, { y: '-50%', opacity: 1, delay: -0.3 });
     tl.fromTo(button, { translateY: 30, opacity: 0 }, { translateY: 0, opacity: 1, delay: -0.4 });
@@ -63,9 +49,9 @@ export function Thailand({ isStartAnimate, handleNextPage }: TGuadePageProps) {
   };
 
   return (
-    <div>
+    <>
       <Navigation handleNextScreen={handleNextPage} isStartAnimate={isStartAnimate} />
       <Content refs={refs} isStartAnimate={isStartAnimate} />
-    </div>
+    </>
   );
 }

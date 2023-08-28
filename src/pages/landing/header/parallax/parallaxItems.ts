@@ -8,7 +8,7 @@ import phone from '@images/landing/phone.png';
 import balloons from '@images/landing/sphere.webp';
 import cn from 'classnames';
 
-import styles from './styles.scss';
+import styles from './styles.module.scss';
 
 export interface IParallaxItem {
   aspect: number;

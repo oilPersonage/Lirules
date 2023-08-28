@@ -23,7 +23,7 @@ import {
 } from '@pages/landing/content/contacts/const';
 import { ILandingPage } from '@pages/landing/content/content';
 
-import styles from './styles.scss';
+import styles from './styles.module.scss';
 
 export function Contacts({ index, id }: ILandingPage) {
   const isMobile = useMobileDetect();

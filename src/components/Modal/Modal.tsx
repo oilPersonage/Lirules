@@ -1,13 +1,13 @@
 import { ReactElement } from 'react';
 import { createPortal } from 'react-dom';
 
-import Cross from '@icons/cross.svg';
+import { ReactComponent as Cross } from '@icons/cross.svg';
 import cn from 'classnames';
 import { AnimatePresence, motion } from 'framer-motion';
 
 import { Button } from '@components/Button';
 
-import styles from './styles.scss';
+import styles from './styles.module.scss';
 
 type ModalSize = 'sm' | 'md' | 'lg';
 

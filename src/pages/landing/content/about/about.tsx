@@ -14,7 +14,7 @@ import { onChangeCursorDot } from '@utils/onChangeCursorDot';
 import { Carousel } from '@pages/landing/content/about/сarousel';
 import { ILandingPage } from '@pages/landing/content/content';
 
-import styles from './styles.scss';
+import styles from './styles.module.scss';
 
 const PARTNER_LIST = [
   { title: 'Mriya Resort & Spa', link: 'https://www.instagram.com/mriya_resort/' },

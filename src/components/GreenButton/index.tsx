@@ -1,6 +1,6 @@
 import cn from 'classnames';
 
-import styles from './styles.scss';
+import styles from './styles.module.scss';
 
 export function GreenButton({ text, icon }) {
   const IconComponent = icon;

@@ -1,6 +1,6 @@
 import { MutableRefObject, RefObject } from 'react';
 
-import styles from './styles.scss';
+import styles from './styles.module.scss';
 
 type OverlayProps = {
   refs: MutableRefObject<{ [key: string]: HTMLDivElement | null }>;

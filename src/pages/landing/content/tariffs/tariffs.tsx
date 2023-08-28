@@ -1,5 +1,5 @@
 import { useMobileDetect } from '@hooks/useMobileDetect';
-import Dollar from '@icons/dollar.svg';
+import { ReactComponent as Dollar } from '@icons/dollar.svg';
 import cn from 'classnames';
 
 import { Button } from '@components/Button';
@@ -8,7 +8,7 @@ import { ILandingPage } from '@pages/landing/content/content';
 import { MobileTariffs } from '@pages/landing/content/tariffs/mobileTariffs/mobileTariffs';
 
 import { TARIFF_LIST } from './const';
-import styles from './styles.scss';
+import styles from './styles.module.scss';
 
 export function Tariffs({ index, id }: ILandingPage) {
   const isMobile = useMobileDetect();

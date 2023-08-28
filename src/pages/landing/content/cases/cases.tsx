@@ -10,7 +10,7 @@ import { onChangeCursorDot } from '@utils/onChangeCursorDot';
 import { IReviews, Reviews } from '@pages/landing/content/cases/data';
 import { ILandingPage } from '@pages/landing/content/content';
 
-import styles from './styles.scss';
+import styles from './styles.module.scss';
 
 export function Cases({ index, id }: ILandingPage) {
   return (

@@ -5,7 +5,7 @@ import { Heading } from '@components/Title';
 import { RenderDocContent } from '@pages/landing/content/contacts/ContactsInfo/docs/renderDocContent';
 
 import { CONF_DATA } from './const';
-import styles from './styles.scss';
+import styles from './styles.module.scss';
 
 export function Confidentiality() {
   return (

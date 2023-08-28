@@ -1,7 +1,4 @@
-import { MutableRefObject, RefObject, useMemo } from 'react';
-
-import Budda from '@icons/budda.svg';
-import cn from 'classnames';
+import { ReactComponent as Budda } from '@icons/budda.svg';
 
 import { GreenButton } from '@components/GreenButton';
 
@@ -9,7 +6,7 @@ import { Carousel } from '@pages/guide/components/carousel';
 import { carouselItems } from '@pages/guide/pages/thailand/carousel/items';
 import { ContentProps } from '@pages/guide/pages/thailand/content/content';
 
-import styles from './styles.scss';
+import styles from './styles.module.scss';
 
 export function Content({ refs, isStartAnimate }: ContentProps) {
   const { buttonRef, headingRef } = refs;

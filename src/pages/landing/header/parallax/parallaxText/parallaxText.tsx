@@ -1,19 +1,19 @@
-import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import {useSelector} from 'react-redux';
+import {useNavigate} from 'react-router-dom';
 
-import { useMobileDetect } from '@hooks/useMobileDetect';
-import { pathConfig } from '@src/configuration/localRoutes';
-import { motion } from 'framer-motion';
+import {useMobileDetect} from '@hooks/useMobileDetect';
+import {pathConfig} from '@src/configuration/localRoutes';
+import {motion} from 'framer-motion';
 
-import { Button } from '@components/Button';
+import {Button} from '@components/Button';
 
-import { landingSelectors } from '@reducers/landing';
+import {landingSelectors} from '@reducers/landing';
 
-import { onChangeCursorDot } from '@utils/onChangeCursorDot';
+import {onChangeCursorDot} from '@utils/onChangeCursorDot';
 
-import { titleItem, titleList } from '@pages/landing/header/framerMotionConfig';
-import { SCROLL_SPEED } from '@pages/landing/header/menu/navigation/navigation';
-import styles from '@pages/landing/header/parallax/styles.scss';
+import {titleItem, titleList} from '@pages/landing/header/framerMotionConfig';
+import {SCROLL_SPEED} from '@pages/landing/header/menu/navigation/navigation';
+import styles from '@pages/landing/header/parallax/styles.module.scss';
 
 const TITLE = 'Lirules';
 const COURSE_INDEX = 2;
@@ -21,16 +21,16 @@ const COURSE_INDEX = 2;
 export function ParallaxText() {
   const navigate = useNavigate();
   const isMobile = useMobileDetect();
-  const { setSpeed } = useSelector(landingSelectors.landing);
-  const { isStartAnimation } = useSelector(landingSelectors.landing);
+  const {setSpeed} = useSelector(landingSelectors.landing);
+  const {isStartAnimation} = useSelector(landingSelectors.landing);
 
   const animateConfig = {
-    initial: { y: 20, opacity: 0 },
+    initial: {y: 20, opacity: 0},
     animate: {
       y: isStartAnimation ? 0 : -50,
       opacity: isStartAnimation ? 1 : 0,
     },
-    transition: { delay: 2.5 },
+    transition: {delay: 2.5},
   };
 
   return (
@@ -53,14 +53,14 @@ export function ParallaxText() {
 
       <motion.h2
         className={styles.Parallax__description}
-        initial={{ y: 50, opacity: 0 }}
+        initial={{y: 50, opacity: 0}}
         animate={{
           y: isStartAnimation ? 0 : 50,
           opacity: isStartAnimation ? 1 : 0,
         }}
-        transition={{ delay: 2 }}
+        transition={{delay: 2}}
       >
-        Авторская программа по обучению видеосъмеке на <span>телефон</span>
+        Авторская программа по обучению видеосъемке на <span>телефон</span>
       </motion.h2>
       <div
         className={styles.Parallax__button}
@@ -78,10 +78,10 @@ export function ParallaxText() {
         <Button
           onClick={() =>
             isMobile
-              ? document.getElementById('course')?.scrollIntoView({ behavior: 'smooth' })
+              ? document.getElementById('course')?.scrollIntoView({behavior: 'smooth'})
               : setSpeed
-              ? setSpeed((COURSE_INDEX - window.activeNav) / SCROLL_SPEED, true)
-              : null
+                ? setSpeed((COURSE_INDEX - window.activeNav) / SCROLL_SPEED, true)
+                : null
           }
           animateConfig={animateConfig}
           type="outline"

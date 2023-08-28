@@ -1,0 +1,60 @@
+@import "@styles/variables.scss";
+
+
+.Content {
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-height: 99px;
+  overflow: hidden;
+
+  &_hide {
+    transition: $middleTransitionHover;
+    opacity: 0;
+  }
+
+  &__scroll {
+    transition: $middleTransitionHover;
+  }
+
+  &__item {
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    //min-width: 550px;
+    //max-width: 550px;
+    padding: 0 $md;
+    text-align: center;
+    transition: $middleTransitionHover;
+    opacity: 0;
+
+    &_active {
+      opacity: 1;
+    }
+  }
+
+  p {
+    color: white;
+  }
+
+  &__title {
+    font-weight: bold;
+    text-align: center;
+    color: $white;
+    font-size: 48px;
+    margin: 0 0 $sm 0;
+    text-transform: uppercase;
+    transition: $middleTransitionHover;
+  }
+
+  &__description {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 24px;
+    transition: $middleTransitionHover;
+  }
+}

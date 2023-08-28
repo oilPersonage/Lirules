@@ -1,7 +1,7 @@
 import { useEffect, useMemo } from 'react';
 
 import { useAnimateGuideOverlay } from '@hooks/useAnimateGuideOverlay';
-import Logotype from '@icons/logotype.svg';
+import { ReactComponent as Logotype } from '@icons/logotype.svg';
 import cn from 'classnames';
 
 import { Cards } from '@pages/guide/cards';
@@ -11,7 +11,7 @@ import { Overlay } from '@pages/guide/components/overlay';
 import { LoginWrapper } from '@pages/guide/login/loginWrapper';
 import { GuideThailand, GuideTurkey } from '@pages/guide/pages';
 
-import styles from './styles.scss';
+import styles from './styles.module.scss';
 
 export function Guide() {
   useEffect(() => {
@@ -19,11 +19,12 @@ export function Guide() {
     overflow?.classList.add('hide');
   }, []);
 
-  const { onSelect, handleNextPage, selectedPage, showPage, overlayRefs } =
+  const { onSelect, handleNextPage, setShowPage, selectedPage, showPage, overlayRefs } =
     useAnimateGuideOverlay();
 
   const getScreenBySelect = useMemo(() => {
     if (!selectedPage) return null;
+
     const PAGES = {
       [PAGE_NAMES.THAILAND]: (
         <GuideThailand isStartAnimate={showPage} handleNextPage={handleNextPage} />
@@ -38,19 +39,20 @@ export function Guide() {
 
   return (
     <div className={styles.Guide}>
-      {/*<h2 className={cn(styles.Guide__heading, { [styles.Guide__heading_hide]: selectedPage })}>*/}
-      {/*  СДЕЛАЙ СВОЙ ВЫБОР*/}
-      {/*</h2>*/}
-      <LoginWrapper />
+      {/*<LoginWrapper />*/}
 
       <div className={styles.Guide__logo}>
         <Logotype />
       </div>
       <Contacts />
-      {!showPage && <Cards onSelect={onSelect} selectedPage={selectedPage} />}
+      {!showPage && (
+        <Cards setShowPage={setShowPage} selectedPage={selectedPage} onSelect={onSelect} />
+      )}
 
       {/* SCREENS */}
-      <div className={styles.Guide__page}>{getScreenBySelect}</div>
+      <div className={cn(styles.Guide__page, { [styles.Guide__page_show]: showPage })}>
+        {getScreenBySelect}
+      </div>
 
       {/*ANIMATION*/}
       <Overlay refs={overlayRefs} />

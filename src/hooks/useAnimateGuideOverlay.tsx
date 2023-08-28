@@ -8,22 +8,13 @@ import { PAGE_NAMES } from '@pages/guide/cards/items';
 import { HandleNextPage } from '@pages/guide/types';
 
 export function useAnimateGuideOverlay() {
+  const vw = window.innerWidth;
   const overlayRefs: MutableRefObject<{ [key: string]: HTMLDivElement | null }> = useRef({});
   const [selectedPage, setSelected] = useState<string | undefined>(undefined);
   const [showPage, setShowPage] = useState(false);
 
-  const onSelect = useCallback((ref, name) => {
+  const onSelect = useCallback((name: PAGE_NAMES) => {
     setSelected(name);
-    if (ref) {
-      gsap.to(ref, {
-        width: '100vw',
-        margin: '0 0 0 0',
-        borderRadius: 0,
-        duration: 1,
-        ease: easingOut,
-        onComplete: () => setShowPage(PAGE_NAMES[name]),
-      });
-    }
   }, []);
 
   const handleNextPage: HandleNextPage = useCallback(
@@ -75,6 +66,7 @@ export function useAnimateGuideOverlay() {
   return {
     onSelect,
     handleNextPage,
+    setShowPage,
     selectedPage,
     showPage,
     overlayRefs,

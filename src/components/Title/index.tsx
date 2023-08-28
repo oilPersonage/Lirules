@@ -2,7 +2,7 @@ import cn from 'classnames';
 
 import { InternalText, InternalTextProps } from '@components/Title/Title';
 
-import styles from './styles.scss';
+import styles from './styles.module.scss';
 
 export type InternalTextType = typeof InternalText;
 

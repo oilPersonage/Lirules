@@ -5,7 +5,7 @@ import { Heading } from '@components/Title';
 import { OFFER_DATA } from '@pages/landing/content/contacts/ContactsInfo/docs/const';
 import { RenderDocContent } from '@pages/landing/content/contacts/ContactsInfo/docs/renderDocContent';
 
-import styles from './styles.scss';
+import styles from './styles.module.scss';
 
 export function Offer() {
   return (

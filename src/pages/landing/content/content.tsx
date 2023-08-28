@@ -11,7 +11,7 @@ import { LANDING_PAGES } from '@pages/landing/const';
 import { LandingHeader } from '@pages/landing/header';
 import { Cursor } from '@pages/landing/header/cursor';
 import { ParallaxText } from '@pages/landing/header/parallax/parallaxText';
-import styles from '@pages/landing/styles.scss';
+import styles from '@pages/landing/styles.module.scss';
 
 export interface ILandingPage {
   index: number;

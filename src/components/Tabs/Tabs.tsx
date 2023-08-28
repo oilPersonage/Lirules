@@ -2,7 +2,7 @@ import { Children, ReactElement, useMemo, useState } from 'react';
 
 import cn from 'classnames';
 
-import styles from './styles.scss';
+import styles from './styles.module.scss';
 
 type TTabsProps = {
   children: ReactElement[];

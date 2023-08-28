@@ -1,24 +1,24 @@
 import { useEffect, useRef } from 'react';
 
-import Beach from '@icons/beah.svg';
-import Eat from '@icons/eat.svg';
-import Fest from '@icons/fest.svg';
-import Money from '@icons/money.svg';
-import Path from '@icons/path.svg';
+import { ReactComponent as Beach } from '@icons/beah.svg';
+import { ReactComponent as Eat } from '@icons/eat.svg';
+import { ReactComponent as Fest } from '@icons/fest.svg';
+import { ReactComponent as Money } from '@icons/money.svg';
+import { ReactComponent as Path } from '@icons/path.svg';
 import gsap from 'gsap';
 
 import { easingInOut } from '@utils/customEase';
 
 import { TDescription } from '@pages/guide/pages/thailand/carousel/descriptions/description1';
 
-import styles from './styles.scss';
+import styles from './styles.module.scss';
 
 const items = [
-  { icon: <Path />, text: 'Как добраться до места' },
-  { icon: <Eat />, text: 'Лучшие рестораны и заведения' },
-  { icon: <Beach />, text: 'Пляжи на любой вкус и цвет' },
-  { icon: <Fest />, text: 'Фестивали и мероприятия' },
-  { icon: <Money />, text: 'Сколько стоит' },
+  { icon: <Path viewBox="0 0 124 124" />, text: 'Как добраться до места' },
+  { icon: <Eat viewBox="0 0 124 124" />, text: 'Лучшие рестораны и заведения' },
+  { icon: <Beach viewBox="0 0 124 124" />, text: 'Пляжи на любой вкус и цвет' },
+  { icon: <Fest viewBox="0 0 124 124" />, text: 'Фестивали и мероприятия' },
+  { icon: <Money viewBox="0 0 124 124" />, text: 'Сколько стоит' },
 ];
 
 export function Cards({ isStartAnimate, isPrev }: TDescription) {

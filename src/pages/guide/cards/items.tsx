@@ -7,6 +7,7 @@ export enum PAGE_NAMES {
   TURKEY = 'TURKEY',
   CRIMEA = 'CRIMEA',
   NONAME = 'NONAME',
+  KAPI = 'KAPI',
 }
 
 export type PAGE_PROGRESS = {
@@ -16,6 +17,7 @@ export type PAGE_PROGRESS = {
   inProgress?: boolean;
   heading: string;
   color: 'green' | 'yellow' | 'orange';
+  external?: string;
 };
 
 export const PAGES: PAGE_PROGRESS[] = [
@@ -25,7 +27,7 @@ export const PAGES: PAGE_PROGRESS[] = [
     img: CrimeaImg,
     inProgress: true,
     color: 'yellow',
-    text: 'Мы продумываем для вас гениальные маршруты',
+    text: 'Данная страница находится в процессе разработки',
   },
   {
     name: PAGE_NAMES.TURKEY,
@@ -51,9 +53,9 @@ export const PAGES: PAGE_PROGRESS[] = [
     inProgress: true,
   },
   {
-    name: PAGE_NAMES.NONAME,
+    name: PAGE_NAMES.KAPI,
     heading: 'НОВОЕ ПУТЕШЕСТВИЕ',
-    img: CrimeaImg,
+    img: CapadociaImg,
     inProgress: true,
     color: 'yellow',
     text: 'Мы продумываем для вас гениальные маршруты',

@@ -1,29 +1,14 @@
-import { useEffect, useRef, useState } from 'react';
-
-import Dollar from '@icons/dollar.svg';
-import Lock from '@icons/lock.svg';
-import mobileImg from '@images/landing/mobileTariffs.jpg';
+import { ReactComponent as Lock } from '@icons/lock.svg';
 import cn from 'classnames';
 
 import { Button } from '@components/Button';
 import { LandingTitle } from '@components/LandingTitle';
 
-import { onTouchDetect } from '@pages/landing/content/about/сarousel/touchEvent';
 import { TARIFF_LIST } from '@pages/landing/content/tariffs/const';
 
-import styles from './styles.scss';
-
-const PRICE_HEIGHT = 24;
-
-const classImages = {
-  0: styles.Mobile__img0,
-  1: styles.Mobile__img1,
-  2: styles.Mobile__img2,
-};
+import styles from './styles.module.scss';
 
 export function MobileTariffs() {
-  const buttonRef = useRef<HTMLDivElement>(null);
-
   return (
     <div className={styles.Mobile__wrapper}>
       <div className={styles.Mobile__titleWrapper}>

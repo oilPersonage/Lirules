@@ -2,8 +2,9 @@ import { RefObject } from 'react';
 
 import cn from 'classnames';
 
-import styles from '@pages/guide/components/carousel/styles.scss';
 import { TCarouselItem } from '@pages/guide/pages/thailand/carousel/items';
+
+import styles from './styles.module.scss';
 
 export type TCarouselItemProps = {
   el: TCarouselItem;

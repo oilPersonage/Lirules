@@ -1,6 +1,14 @@
 {
   "compilerOptions": {
     "baseUrl": "./",
+    "isolatedModules": true,
+    //    "files": [
+    //      "@types/declaration.d.ts",
+    //      "@types/index.d.ts"
+    //    ],
+    "types": [
+      "vite/client"
+    ],
     "noEmit": false,
     "noImplicitAny": false,
     "jsx": "react-jsx",
